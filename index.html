@@ -109,7 +109,12 @@
       vertical-align: top;
     }
     .content tbody tr:hover{ background: rgba(255,255,255,.03); }
-    .content tbody td:first-child{ width:44px; color: rgba(255,255,255,.80); font-variant-numeric: tabular-nums; }
+
+    .content tbody td:first-child{
+      width:44px;
+      color: rgba(255,255,255,.80);
+      font-variant-numeric: tabular-nums;
+    }
 
     .pill{
       display:inline-block;
@@ -146,7 +151,6 @@
       padding: 10px 12px;
       border-radius: 14px;
     }
-    a{ color: var(--text); }
   </style>
 </head>
 
@@ -169,7 +173,7 @@
           <div class="badge">5. divisjon (2026)</div>
         </div>
         <div class="content">
-          <div id="a-tabell" class="loading">Laster lokal data…</div>
+          <div id="a-tabell" class="loading">Laster data…</div>
         </div>
       </div>
 
@@ -179,7 +183,7 @@
           <div class="badge">7. divisjon (2026)</div>
         </div>
         <div class="content">
-          <div id="b-tabell" class="loading">Laster lokal data…</div>
+          <div id="b-tabell" class="loading">Laster data…</div>
         </div>
       </div>
     </section>
@@ -188,76 +192,30 @@
   </div>
 
   <script>
-    function esc(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+    function esc(s){
+      return String(s).replace(/[&<>"']/g, m => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+      }[m]));
+    }
 
     function renderTable(targetId, title, data){
-  const el = document.getElementById(targetId);
-
-  if (!data || !data.rows || !data.rows.length){
-    el.className = "error";
-    el.innerHTML = `Fant ingen rader for ${esc(title)}.`;
-    return;
-  }
-
-  // Hjelpefunksjoner
-  const n0 = (v) => (v === undefined || v === null || v === "" ? "0" : String(v));
-  const txt = (v, fallback="") => (v === undefined || v === null || v === "" ? fallback : String(v));
-
-  // Regn ut diff hvis mulig (fra "goals", typ "12-8" eller "12–8")
-  const calcDiff = (goalsStr) => {
-    const s = String(goalsStr || "");
-    const m = s.match(/(\d+)\s*[–-]\s*(\d+)/); // dash eller en-dash
-    if (!m) return "0";
-    return String(parseInt(m[1], 10) - parseInt(m[2], 10));
-  };
-
-  el.className = "";
-  el.innerHTML = `
-    <table>
-      <thead>
-        <tr>
-          <th>#</th><th>Lag</th><th>K</th><th>V</th><th>U</th><th>T</th><th>Mål</th><th>Diff</th><th>P</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${data.rows.map(r => {
-          const pos   = txt(r.pos, "-");
-          const team  = txt(r.team, "");
-          const played= n0(r.played);
-          const wins  = n0(r.wins);
-          const draws = n0(r.draws);
-          const losses= n0(r.losses);
-          const goals = txt(r.goals, "0–0");
-          const diff  = txt(r.diff, calcDiff(goals)); // bruk r.diff hvis det finnes, ellers regn ut
-          const pts   = n0(r.points);
-
-          const isFagerborg = team.toLowerCase().includes("fagerborg");
-
-          return `
-            <tr ${isFagerborg ? 'style="background: rgba(50,213,131,.10);"' : ""}>
-              <td>${esc(pos)}</td>
-              <td>${esc(team)}</td>
-              <td>${esc(played)}</td>
-              <td>${esc(wins)}</td>
-              <td>${esc(draws)}</td>
-              <td>${esc(losses)}</td>
-              <td>${esc(goals)}</td>
-              <td>${esc(diff)}</td>
-              <td><b>${esc(pts)}</b></td>
-            </tr>
-          `;
-        }).join("")}
-      </tbody>
-    </table>
-    <div class="pill">Kilde: fotball.no (fiksId=${esc(data.fiksId)})</div>
-  `;
-}
       const el = document.getElementById(targetId);
+
       if (!data || !data.rows || !data.rows.length){
         el.className = "error";
         el.innerHTML = `Fant ingen rader for ${esc(title)}.`;
         return;
       }
+
+      const n0  = (v) => (v === undefined || v === null || v === "" ? "0" : String(v));
+      const txt = (v, fallback="") => (v === undefined || v === null || v === "" ? fallback : String(v));
+
+      const calcDiff = (goalsStr) => {
+        const s = String(goalsStr || "");
+        const m = s.match(/(\d+)\s*[–-]\s*(\d+)/);
+        if (!m) return "0";
+        return String(parseInt(m[1], 10) - parseInt(m[2], 10));
+      };
 
       el.className = "";
       el.innerHTML = `
@@ -268,19 +226,33 @@
             </tr>
           </thead>
           <tbody>
-            ${data.rows.map(r => `
-              <tr>
-                <td>${esc(r.pos)}</td>
-                <td>${esc(r.team)}</td>
-                <td>${esc(r.played)}</td>
-                <td>${esc(r.wins)}</td>
-                <td>${esc(r.draws)}</td>
-                <td>${esc(r.losses)}</td>
-                <td>${esc(r.goals)}</td>
-                <td>${esc(r.diff)}</td>
-                <td><b>${esc(r.points)}</b></td>
-              </tr>
-            `).join("")}
+            ${data.rows.map(r => {
+              const pos    = txt(r.pos, "-");
+              const team   = txt(r.team, "");
+              const played = n0(r.played);
+              const wins   = n0(r.wins);
+              const draws  = n0(r.draws);
+              const losses = n0(r.losses);
+              const goals  = txt(r.goals, "0–0");
+              const diff   = txt(r.diff, calcDiff(goals));
+              const pts    = n0(r.points);
+
+              const isFagerborg = team.toLowerCase().includes("fagerborg");
+
+              return `
+                <tr ${isFagerborg ? 'style="background: rgba(50,213,131,.10);"' : ""}>
+                  <td>${esc(pos)}</td>
+                  <td>${esc(team)}</td>
+                  <td>${esc(played)}</td>
+                  <td>${esc(wins)}</td>
+                  <td>${esc(draws)}</td>
+                  <td>${esc(losses)}</td>
+                  <td>${esc(goals)}</td>
+                  <td>${esc(diff)}</td>
+                  <td><b>${esc(pts)}</b></td>
+                </tr>
+              `;
+            }).join("")}
           </tbody>
         </table>
         <div class="pill">Kilde: fotball.no (fiksId=${esc(data.fiksId)})</div>
@@ -291,24 +263,28 @@
       const a = document.getElementById("a-tabell");
       const b = document.getElementById("b-tabell");
       a.className = b.className = "loading";
-      a.textContent = b.textContent = "Laster lokal data…";
+      a.textContent = b.textContent = "Laster data…";
 
       try{
-        const res = await fetch("./data/tables.json?ts=" + Date.now(), { cache: "no-store" });
+        // Fast URL (funker også om du embedder siden et annet sted)
+        const res = await fetch(
+          "https://elmoro10.github.io/Fagerborg-BK-Tabeller/data/tables.json?ts=" + Date.now(),
+          { cache: "no-store" }
+        );
         if (!res.ok) throw new Error("HTTP " + res.status);
+
         const json = await res.json();
 
         renderTable("a-tabell", "A-lag", json.a);
         renderTable("b-tabell", "B-lag", json.b);
 
-        const meta = document.getElementById("meta");
-        meta.textContent = `Sist oppdatert: ${json.updatedAt || "ukjent"} (auto via GitHub Actions)`;
+        document.getElementById("meta").textContent =
+          `Sist oppdatert: ${json.updatedAt || "ukjent"} (auto via GitHub Actions)`;
       } catch (e){
         a.className = b.className = "error";
-        a.innerHTML = b.innerHTML =
-          `Mangler ./data/tables.json (eller Actions har ikke kjørt enda). Feil: ${esc(e.message)}`;
+        a.innerHTML = b.innerHTML = `Klarte ikke hente tables.json. Feil: ${esc(e.message)}`;
         document.getElementById("meta").textContent =
-          "Tips: Kjør GitHub Actions-jobben manuelt én gang (se steg under).";
+          "Sjekk at data/tables.json åpner i nettleseren din.";
       }
     }
 
