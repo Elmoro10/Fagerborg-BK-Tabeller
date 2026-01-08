@@ -23,9 +23,10 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
-      background: radial-gradient(1200px 500px at 20% -10%, rgba(50,213,131,.15), transparent 60%),
-                  radial-gradient(900px 500px at 80% 0%, rgba(59,130,246,.10), transparent 60%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 500px at 20% -10%, rgba(50,213,131,.15), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(59,130,246,.10), transparent 60%),
+        var(--bg);
     }
 
     .wrap{ max-width: 1200px; margin: 0 auto; padding: 28px 16px 40px; }
@@ -88,14 +89,48 @@
 
     .content{ padding: 10px 10px 14px; }
 
-    /* IFRAME som holder selve tabellen */
-    .widget-frame{
+    /* Tabell-stil */
+    .content table{
       width: 100%;
-      border: 0;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .content thead th{
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      text-align: left;
+      white-space: nowrap;
+    }
+    .content tbody td{
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      vertical-align: top;
+    }
+    .content tbody tr:hover{ background: rgba(255,255,255,.03); }
+    .content tbody td:first-child{
+      color: rgba(255,255,255,.80);
+      font-variant-numeric: tabular-nums;
+      width: 44px;
+    }
+    .content a{ color: var(--text); text-decoration: none; }
+    .content a:hover{ text-decoration: underline; }
+
+    .loading{
+      color: rgba(255,255,255,.75);
+      padding: 10px;
+      border: 1px dashed rgba(255,255,255,.18);
       border-radius: 14px;
-      background: transparent;
-      overflow: hidden;
-      height: 820px; /* juster ved behov */
+      background: rgba(0,0,0,.12);
+    }
+    .error{
+      color: #ffb4b4;
+      padding: 10px;
+      border: 1px solid rgba(255,180,180,.35);
+      border-radius: 14px;
+      background: rgba(255,180,180,.08);
     }
 
     .note{
@@ -116,7 +151,7 @@
     <header>
       <div>
         <h1>Tabeller</h1>
-        <div class="sub">Seriestilling for Fagerborgs lag</div>
+        <div class="sub">Seriestilling for Fagerborgs lag (2026)</div>
       </div>
       <div class="actions">
         <button class="btn" onclick="location.reload()">⟳ Oppdater</button>
@@ -127,36 +162,129 @@
       <div class="card">
         <div class="card-head">
           <div class="card-title"><span class="cup"></span> A-Lag</div>
-          <div class="badge">5. divisjon</div>
+          <div class="badge">5. divisjon (2026)</div>
         </div>
         <div class="content">
-          <iframe
-            class="widget-frame"
-            title="A-lag tabell 2026"
-            src="https://www.fotball.no/fotballdata/turnering/hjem/?fiksId=205403&underside=tabellen">
-          </iframe>
+          <div id="a-tabell" class="loading">Laster tabell…</div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-head">
           <div class="card-title"><span class="cup"></span> B-Lag</div>
-          <div class="badge">7. divisjon</div>
+          <div class="badge">7. divisjon (2026)</div>
         </div>
         <div class="content">
-          <iframe
-            class="widget-frame"
-            title="B-lag tabell 2026"
-            src="https://www.fotball.no/fotballdata/turnering/hjem/?fiksId=205410&underside=tabellen">
-          </iframe>
+          <div id="b-tabell" class="loading">Laster tabell…</div>
         </div>
       </div>
     </section>
 
     <div class="note">
-      Hvis tabellen fortsatt er blank: åpne DevTools → Console og se om scriptet fra <code>api.fotballdata.no</code> blir blokkert av en nettleser-utvidelse (adblock/privacy).
-      Widgeten skal normalt fungere med <code>type=tables&amp;teamid=...</code>. :contentReference[oaicite:1]{index=1}
+      Hvis du ser “Fant ikke tabellrader”, er det fordi NFF endrer layout/tekstformat. Da justerer vi parseren (si ifra).
     </div>
   </div>
+
+  <script>
+    function esc(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+    async function loadTable(fiksId, targetId) {
+      const target = document.getElementById(targetId);
+      target.className = "loading";
+      target.textContent = "Laster tabell…";
+
+      // Reader-proxy: gjør at vi kan hente innholdet som tekst på GitHub Pages uten CORS/iframe-blokkering.
+      const url = `https://r.jina.ai/https://www.fotball.no/fotballdata/turnering/hjem/?fiksId=${fiksId}&underside=tabellen`;
+
+      let text;
+      try{
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        text = await res.text();
+      } catch (e) {
+        target.className = "error";
+        target.innerHTML = `Klarte ikke å hente tabell (${esc(e.message)}).<br>
+          <a href="https://www.fotball.no/fotballdata/turnering/hjem/?fiksId=${fiksId}&underside=tabellen" target="_blank" rel="noopener">Åpne på fotball.no</a>`;
+        return;
+      }
+
+      const lines = text.split("\n").map(l => l.trim()).filter(Boolean);
+
+      // Finn seksjonen for tabellen
+      const startIdx = lines.findIndex(l => l.toLowerCase() === "## tabellen" || l.toLowerCase() === "tabellen");
+      if (startIdx === -1) {
+        target.className = "error";
+        target.innerHTML = `Fant ikke "Tabellen" i kilden.<br>
+          <a href="https://www.fotball.no/fotballdata/turnering/hjem/?fiksId=${fiksId}&underside=tabellen" target="_blank" rel="noopener">Åpne på fotball.no</a>`;
+        return;
+      }
+
+      // Parser rader som typisk ser ut som:
+      // "1 Lag  10 6 2 2  20-10 (10) 20"
+      const rowRe = /^(\d+)\s+(.+?)\s{2,}(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+\-\d+)\s+\(([-\d]+)\)\s+(\d+)$/;
+
+      const rows = [];
+      for (let i = startIdx; i < Math.min(lines.length, startIdx + 200); i++) {
+        const m = lines[i].match(rowRe);
+        if (m) {
+          rows.push({
+            pos: m[1],
+            team: m[2],
+            sp: m[3],
+            w: m[4],
+            d: m[5],
+            l: m[6],
+            gfga: m[7],
+            gd: m[8],
+            pts: m[9]
+          });
+        }
+        // Stopp om vi treffer neste seksjon
+        if (i > startIdx + 5 && lines[i].startsWith("## ")) break;
+      }
+
+      if (!rows.length) {
+        target.className = "error";
+        target.innerHTML = `Fant ingen tabellrader i forventet format.<br>
+          <a href="https://www.fotball.no/fotballdata/turnering/hjem/?fiksId=${fiksId}&underside=tabellen" target="_blank" rel="noopener">Åpne på fotball.no</a>`;
+        return;
+      }
+
+      // Render
+      const html = `
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>Lag</th><th>K</th><th>V</th><th>U</th><th>T</th><th>Mål</th><th>Diff</th><th>P</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(r => `
+              <tr>
+                <td>${esc(r.pos)}</td>
+                <td>${esc(r.team)}</td>
+                <td>${esc(r.sp)}</td>
+                <td>${esc(r.w)}</td>
+                <td>${esc(r.d)}</td>
+                <td>${esc(r.l)}</td>
+                <td>${esc(r.gfga)}</td>
+                <td>${esc(r.gd)}</td>
+                <td><b>${esc(r.pts)}</b></td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+        <div style="margin-top:8px;color:rgba(255,255,255,.6);font-size:12px">
+          Kilde: fotball.no (fiksId=${esc(fiksId)})
+        </div>
+      `;
+      target.className = "";
+      target.innerHTML = html;
+    }
+
+    // 2026-turneringene du ga:
+    loadTable(205403, "a-tabell");
+    loadTable(205410, "b-tabell");
+  </script>
 </body>
 </html>
