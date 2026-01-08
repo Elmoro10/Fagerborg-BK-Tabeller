@@ -191,6 +191,67 @@
     function esc(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 
     function renderTable(targetId, title, data){
+  const el = document.getElementById(targetId);
+
+  if (!data || !data.rows || !data.rows.length){
+    el.className = "error";
+    el.innerHTML = `Fant ingen rader for ${esc(title)}.`;
+    return;
+  }
+
+  // Hjelpefunksjoner
+  const n0 = (v) => (v === undefined || v === null || v === "" ? "0" : String(v));
+  const txt = (v, fallback="") => (v === undefined || v === null || v === "" ? fallback : String(v));
+
+  // Regn ut diff hvis mulig (fra "goals", typ "12-8" eller "12–8")
+  const calcDiff = (goalsStr) => {
+    const s = String(goalsStr || "");
+    const m = s.match(/(\d+)\s*[–-]\s*(\d+)/); // dash eller en-dash
+    if (!m) return "0";
+    return String(parseInt(m[1], 10) - parseInt(m[2], 10));
+  };
+
+  el.className = "";
+  el.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>#</th><th>Lag</th><th>K</th><th>V</th><th>U</th><th>T</th><th>Mål</th><th>Diff</th><th>P</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${data.rows.map(r => {
+          const pos   = txt(r.pos, "-");
+          const team  = txt(r.team, "");
+          const played= n0(r.played);
+          const wins  = n0(r.wins);
+          const draws = n0(r.draws);
+          const losses= n0(r.losses);
+          const goals = txt(r.goals, "0–0");
+          const diff  = txt(r.diff, calcDiff(goals)); // bruk r.diff hvis det finnes, ellers regn ut
+          const pts   = n0(r.points);
+
+          const isFagerborg = team.toLowerCase().includes("fagerborg");
+
+          return `
+            <tr ${isFagerborg ? 'style="background: rgba(50,213,131,.10);"' : ""}>
+              <td>${esc(pos)}</td>
+              <td>${esc(team)}</td>
+              <td>${esc(played)}</td>
+              <td>${esc(wins)}</td>
+              <td>${esc(draws)}</td>
+              <td>${esc(losses)}</td>
+              <td>${esc(goals)}</td>
+              <td>${esc(diff)}</td>
+              <td><b>${esc(pts)}</b></td>
+            </tr>
+          `;
+        }).join("")}
+      </tbody>
+    </table>
+    <div class="pill">Kilde: fotball.no (fiksId=${esc(data.fiksId)})</div>
+  `;
+}
       const el = document.getElementById(targetId);
       if (!data || !data.rows || !data.rows.length){
         el.className = "error";
