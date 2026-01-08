@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tabeller – Fagerborg BK</title>
+
+  <style>
+    :root{
+      --bg: #0b0f17;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.65);
+      --accent: #32d583; /* grønn */
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background: radial-gradient(1200px 500px at 20% -10%, rgba(50,213,131,.15), transparent 60%),
+                  radial-gradient(900px 500px at 80% 0%, rgba(59,130,246,.10), transparent 60%),
+                  var(--bg);
+    }
+
+    .wrap{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 16px 40px;
+    }
+
+    header{
+      display:flex;
+      gap:14px;
+      align-items:flex-end;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      margin-bottom: 18px;
+    }
+
+    h1{
+      margin:0;
+      font-size: 40px;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .sub{
+      margin-top:6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      transition: transform .08s ease, background .2s ease;
+      user-select:none;
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); }
+    .btn:active{ transform: translateY(1px); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+      h1{ font-size: 34px; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .card-title{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-weight: 800;
+      font-size: 18px;
+    }
+    .badge{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,.14);
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.15);
+      white-space:nowrap;
+    }
+    .cup{
+      width: 18px;
+      height: 18px;
+      display:inline-block;
+      border-radius: 6px;
+      background: rgba(50,213,131,.18);
+      border: 1px solid rgba(50,213,131,.35);
+      box-shadow: 0 8px 30px rgba(50,213,131,.18);
+    }
+
+    .content{
+      padding: 10px 10px 14px;
+    }
+
+    /* --- Styling av tabeller som fotballdata-widgeten skriver ut --- */
+    .content table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .content thead th{
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: none;
+      font-size: 12px;
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .content tbody td{
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .content tbody tr:hover{
+      background: rgba(255,255,255,.03);
+    }
+
+    /* første kolonne (pos) litt “chip” look */
+    .content tbody td:first-child{
+      color: rgba(255,255,255,.80);
+      font-variant-numeric: tabular-nums;
+      width: 44px;
+    }
+
+    /* gjør lenker pene */
+    .content a{
+      color: var(--text);
+      text-decoration: none;
+    }
+    .content a:hover{
+      text-decoration: underline;
+    }
+
+    /* liten “footer” */
+    .note{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 10px 12px;
+      border-radius: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Tabeller</h1>
+        <div class="sub">Seriestilling for Fagerborgs lag</div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" onclick="location.reload()">
+          ⟳ Oppdater
+        </button>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title"><span class="cup"></span> A-Lag</div>
+          <div class="badge">5. divisjon</div>
+        </div>
+        <div class="content" id="a-tabell">
+          <!-- Fotballdata widget skriver inn tabellen her -->
+          <script src="https://api.fotballdata.no/js.fd?type=tables&tournid=205403&lay=1" type="text/javascript"></script>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title"><span class="cup"></span> B-Lag</div>
+          <div class="badge">7. divisjon</div>
+        </div>
+        <div class="content" id="b-tabell">
+          <script src="https://api.fotballdata.no/js.fd?type=tables&tournid=205410&lay=1" type="text/javascript"></script>
+        </div>
+      </div>
+    </section>
+
+    <div class="note">
+      Tips: Hvis tabellen ikke dukker opp her heller, er det fordi parameteren må være <b>teamid</b> (ikke tournid) i deres oppsett.
+      Fotballdata viser eksempler med <code>teamid</code> for tabeller. :contentReference[oaicite:2]{index=2}
+    </div>
+  </div>
+</body>
+</html>
