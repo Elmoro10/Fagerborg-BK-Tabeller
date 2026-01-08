@@ -1,127 +1,1327 @@
 {
-  "updatedAt": "2026-01-08 16:44 UTC",
+  "updatedAt": "2026-01-08 16:48 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
       {
-        "pos": "0",
+        "pos": "1",
         "team": "Bækkelaget",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
+        "played": "03120501001",
+        "wins": "",
+        "draws": "1",
+        "losses": "08.04.2026",
+        "goals": "",
+        "points": "03120501001"
       },
       {
-        "pos": "0",
-        "team": "Fagerborg",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Furuset",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "HSIL",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Jusstudentenes",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Klemetsrud",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Korsvoll 2",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
+        "pos": "1",
         "team": "Linderud",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
+        "played": "03120501002",
+        "wins": "",
+        "draws": "1",
+        "losses": "08.04.2026",
+        "goals": "",
+        "points": "03120501002"
       },
       {
-        "pos": "0",
+        "pos": "1",
         "team": "Majorstuen",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
+        "played": "03120501003",
+        "wins": "",
+        "draws": "1",
+        "losses": "08.04.2026",
+        "goals": "",
+        "points": "03120501003"
       },
       {
-        "pos": "0",
+        "pos": "1",
         "team": "Oldenborg",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
+        "played": "03120501004",
+        "wins": "",
+        "draws": "1",
+        "losses": "08.04.2026",
+        "goals": "",
+        "points": "03120501004"
       },
       {
-        "pos": "0",
+        "pos": "1",
         "team": "Oslo City",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
+        "played": "03120501005",
+        "wins": "",
+        "draws": "1",
+        "losses": "08.04.2026",
+        "goals": "",
+        "points": "03120501005"
       },
       {
-        "pos": "0",
+        "pos": "1",
         "team": "Wam-Kam",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
+        "played": "03120501006",
+        "wins": "",
+        "draws": "1",
+        "losses": "08.04.2026",
+        "goals": "",
+        "points": "03120501006"
+      },
+      {
+        "pos": "2",
+        "team": "Korsvoll 2",
+        "played": "03120501011",
+        "wins": "",
+        "draws": "2",
+        "losses": "15.04.2026",
+        "goals": "",
+        "points": "03120501011"
+      },
+      {
+        "pos": "2",
+        "team": "Furuset",
+        "played": "03120501007",
+        "wins": "",
+        "draws": "2",
+        "losses": "15.04.2026",
+        "goals": "",
+        "points": "03120501007"
+      },
+      {
+        "pos": "2",
+        "team": "HSIL",
+        "played": "03120501008",
+        "wins": "",
+        "draws": "2",
+        "losses": "15.04.2026",
+        "goals": "",
+        "points": "03120501008"
+      },
+      {
+        "pos": "2",
+        "team": "Jusstudentenes",
+        "played": "03120501009",
+        "wins": "",
+        "draws": "2",
+        "losses": "15.04.2026",
+        "goals": "",
+        "points": "03120501009"
+      },
+      {
+        "pos": "2",
+        "team": "Klemetsrud",
+        "played": "03120501010",
+        "wins": "",
+        "draws": "2",
+        "losses": "15.04.2026",
+        "goals": "",
+        "points": "03120501010"
+      },
+      {
+        "pos": "2",
+        "team": "Fagerborg",
+        "played": "03120501012",
+        "wins": "",
+        "draws": "2",
+        "losses": "15.04.2026",
+        "goals": "",
+        "points": "03120501012"
+      },
+      {
+        "pos": "3",
+        "team": "Bækkelaget",
+        "played": "03120501013",
+        "wins": "",
+        "draws": "3",
+        "losses": "22.04.2026",
+        "goals": "",
+        "points": "03120501013"
+      },
+      {
+        "pos": "3",
+        "team": "Fagerborg",
+        "played": "03120501014",
+        "wins": "",
+        "draws": "3",
+        "losses": "22.04.2026",
+        "goals": "",
+        "points": "03120501014"
+      },
+      {
+        "pos": "3",
+        "team": "Majorstuen",
+        "played": "03120501015",
+        "wins": "",
+        "draws": "3",
+        "losses": "22.04.2026",
+        "goals": "",
+        "points": "03120501015"
+      },
+      {
+        "pos": "3",
+        "team": "Oldenborg",
+        "played": "03120501016",
+        "wins": "",
+        "draws": "3",
+        "losses": "22.04.2026",
+        "goals": "",
+        "points": "03120501016"
+      },
+      {
+        "pos": "3",
+        "team": "Oslo City",
+        "played": "03120501017",
+        "wins": "",
+        "draws": "3",
+        "losses": "22.04.2026",
+        "goals": "",
+        "points": "03120501017"
+      },
+      {
+        "pos": "3",
+        "team": "Wam-Kam",
+        "played": "03120501018",
+        "wins": "",
+        "draws": "3",
+        "losses": "22.04.2026",
+        "goals": "",
+        "points": "03120501018"
+      },
+      {
+        "pos": "4",
+        "team": "Korsvoll 2",
+        "played": "03120501022",
+        "wins": "",
+        "draws": "4",
+        "losses": "29.04.2026",
+        "goals": "",
+        "points": "03120501022"
+      },
+      {
+        "pos": "4",
+        "team": "HSIL",
+        "played": "03120501019",
+        "wins": "",
+        "draws": "4",
+        "losses": "29.04.2026",
+        "goals": "",
+        "points": "03120501019"
+      },
+      {
+        "pos": "4",
+        "team": "Jusstudentenes",
+        "played": "03120501020",
+        "wins": "",
+        "draws": "4",
+        "losses": "29.04.2026",
+        "goals": "",
+        "points": "03120501020"
+      },
+      {
+        "pos": "4",
+        "team": "Klemetsrud",
+        "played": "03120501021",
+        "wins": "",
+        "draws": "4",
+        "losses": "29.04.2026",
+        "goals": "",
+        "points": "03120501021"
+      },
+      {
+        "pos": "4",
+        "team": "Linderud",
+        "played": "03120501023",
+        "wins": "",
+        "draws": "4",
+        "losses": "29.04.2026",
+        "goals": "",
+        "points": "03120501023"
+      },
+      {
+        "pos": "4",
+        "team": "Furuset",
+        "played": "03120501024",
+        "wins": "",
+        "draws": "4",
+        "losses": "29.04.2026",
+        "goals": "",
+        "points": "03120501024"
+      },
+      {
+        "pos": "5",
+        "team": "Bækkelaget",
+        "played": "03120501025",
+        "wins": "",
+        "draws": "5",
+        "losses": "06.05.2026",
+        "goals": "",
+        "points": "03120501025"
+      },
+      {
+        "pos": "5",
+        "team": "Fagerborg",
+        "played": "03120501026",
+        "wins": "",
+        "draws": "5",
+        "losses": "06.05.2026",
+        "goals": "",
+        "points": "03120501026"
+      },
+      {
+        "pos": "5",
+        "team": "Furuset",
+        "played": "03120501027",
+        "wins": "",
+        "draws": "5",
+        "losses": "06.05.2026",
+        "goals": "",
+        "points": "03120501027"
+      },
+      {
+        "pos": "5",
+        "team": "Oldenborg",
+        "played": "03120501028",
+        "wins": "",
+        "draws": "5",
+        "losses": "06.05.2026",
+        "goals": "",
+        "points": "03120501028"
+      },
+      {
+        "pos": "5",
+        "team": "Oslo City",
+        "played": "03120501029",
+        "wins": "",
+        "draws": "5",
+        "losses": "06.05.2026",
+        "goals": "",
+        "points": "03120501029"
+      },
+      {
+        "pos": "5",
+        "team": "Wam-Kam",
+        "played": "03120501030",
+        "wins": "",
+        "draws": "5",
+        "losses": "06.05.2026",
+        "goals": "",
+        "points": "03120501030"
+      },
+      {
+        "pos": "6",
+        "team": "Korsvoll 2",
+        "played": "03120501033",
+        "wins": "",
+        "draws": "6",
+        "losses": "13.05.2026",
+        "goals": "",
+        "points": "03120501033"
+      },
+      {
+        "pos": "6",
+        "team": "Jusstudentenes",
+        "played": "03120501031",
+        "wins": "",
+        "draws": "6",
+        "losses": "13.05.2026",
+        "goals": "",
+        "points": "03120501031"
+      },
+      {
+        "pos": "6",
+        "team": "Klemetsrud",
+        "played": "03120501032",
+        "wins": "",
+        "draws": "6",
+        "losses": "13.05.2026",
+        "goals": "",
+        "points": "03120501032"
+      },
+      {
+        "pos": "6",
+        "team": "Linderud",
+        "played": "03120501034",
+        "wins": "",
+        "draws": "6",
+        "losses": "13.05.2026",
+        "goals": "",
+        "points": "03120501034"
+      },
+      {
+        "pos": "6",
+        "team": "Majorstuen",
+        "played": "03120501035",
+        "wins": "",
+        "draws": "6",
+        "losses": "13.05.2026",
+        "goals": "",
+        "points": "03120501035"
+      },
+      {
+        "pos": "6",
+        "team": "HSIL",
+        "played": "03120501036",
+        "wins": "",
+        "draws": "6",
+        "losses": "13.05.2026",
+        "goals": "",
+        "points": "03120501036"
+      },
+      {
+        "pos": "7",
+        "team": "Bækkelaget",
+        "played": "03120501037",
+        "wins": "",
+        "draws": "7",
+        "losses": "20.05.2026",
+        "goals": "",
+        "points": "03120501037"
+      },
+      {
+        "pos": "7",
+        "team": "Fagerborg",
+        "played": "03120501038",
+        "wins": "",
+        "draws": "7",
+        "losses": "20.05.2026",
+        "goals": "",
+        "points": "03120501038"
+      },
+      {
+        "pos": "7",
+        "team": "Furuset",
+        "played": "03120501039",
+        "wins": "",
+        "draws": "7",
+        "losses": "20.05.2026",
+        "goals": "",
+        "points": "03120501039"
+      },
+      {
+        "pos": "7",
+        "team": "HSIL",
+        "played": "03120501040",
+        "wins": "",
+        "draws": "7",
+        "losses": "20.05.2026",
+        "goals": "",
+        "points": "03120501040"
+      },
+      {
+        "pos": "7",
+        "team": "Oslo City",
+        "played": "03120501041",
+        "wins": "",
+        "draws": "7",
+        "losses": "20.05.2026",
+        "goals": "",
+        "points": "03120501041"
+      },
+      {
+        "pos": "7",
+        "team": "Wam-Kam",
+        "played": "03120501042",
+        "wins": "",
+        "draws": "7",
+        "losses": "20.05.2026",
+        "goals": "",
+        "points": "03120501042"
+      },
+      {
+        "pos": "8",
+        "team": "Korsvoll 2",
+        "played": "03120501044",
+        "wins": "",
+        "draws": "8",
+        "losses": "27.05.2026",
+        "goals": "",
+        "points": "03120501044"
+      },
+      {
+        "pos": "8",
+        "team": "Klemetsrud",
+        "played": "03120501043",
+        "wins": "",
+        "draws": "8",
+        "losses": "27.05.2026",
+        "goals": "",
+        "points": "03120501043"
+      },
+      {
+        "pos": "8",
+        "team": "Linderud",
+        "played": "03120501045",
+        "wins": "",
+        "draws": "8",
+        "losses": "27.05.2026",
+        "goals": "",
+        "points": "03120501045"
+      },
+      {
+        "pos": "8",
+        "team": "Majorstuen",
+        "played": "03120501046",
+        "wins": "",
+        "draws": "8",
+        "losses": "27.05.2026",
+        "goals": "",
+        "points": "03120501046"
+      },
+      {
+        "pos": "8",
+        "team": "Oldenborg",
+        "played": "03120501047",
+        "wins": "",
+        "draws": "8",
+        "losses": "27.05.2026",
+        "goals": "",
+        "points": "03120501047"
+      },
+      {
+        "pos": "8",
+        "team": "Jusstudentenes",
+        "played": "03120501048",
+        "wins": "",
+        "draws": "8",
+        "losses": "27.05.2026",
+        "goals": "",
+        "points": "03120501048"
+      },
+      {
+        "pos": "9",
+        "team": "Bækkelaget",
+        "played": "03120501049",
+        "wins": "",
+        "draws": "9",
+        "losses": "03.06.2026",
+        "goals": "",
+        "points": "03120501049"
+      },
+      {
+        "pos": "9",
+        "team": "Fagerborg",
+        "played": "03120501050",
+        "wins": "",
+        "draws": "9",
+        "losses": "03.06.2026",
+        "goals": "",
+        "points": "03120501050"
+      },
+      {
+        "pos": "9",
+        "team": "Furuset",
+        "played": "03120501051",
+        "wins": "",
+        "draws": "9",
+        "losses": "03.06.2026",
+        "goals": "",
+        "points": "03120501051"
+      },
+      {
+        "pos": "9",
+        "team": "HSIL",
+        "played": "03120501052",
+        "wins": "",
+        "draws": "9",
+        "losses": "03.06.2026",
+        "goals": "",
+        "points": "03120501052"
+      },
+      {
+        "pos": "9",
+        "team": "Jusstudentenes",
+        "played": "03120501053",
+        "wins": "",
+        "draws": "9",
+        "losses": "03.06.2026",
+        "goals": "",
+        "points": "03120501053"
+      },
+      {
+        "pos": "9",
+        "team": "Wam-Kam",
+        "played": "03120501054",
+        "wins": "",
+        "draws": "9",
+        "losses": "03.06.2026",
+        "goals": "",
+        "points": "03120501054"
+      },
+      {
+        "pos": "10",
+        "team": "Korsvoll 2",
+        "played": "03120501055",
+        "wins": "",
+        "draws": "10",
+        "losses": "10.06.2026",
+        "goals": "",
+        "points": "03120501055"
+      },
+      {
+        "pos": "10",
+        "team": "Linderud",
+        "played": "03120501056",
+        "wins": "",
+        "draws": "10",
+        "losses": "10.06.2026",
+        "goals": "",
+        "points": "03120501056"
+      },
+      {
+        "pos": "10",
+        "team": "Majorstuen",
+        "played": "03120501057",
+        "wins": "",
+        "draws": "10",
+        "losses": "10.06.2026",
+        "goals": "",
+        "points": "03120501057"
+      },
+      {
+        "pos": "10",
+        "team": "Oldenborg",
+        "played": "03120501058",
+        "wins": "",
+        "draws": "10",
+        "losses": "10.06.2026",
+        "goals": "",
+        "points": "03120501058"
+      },
+      {
+        "pos": "10",
+        "team": "Oslo City",
+        "played": "03120501059",
+        "wins": "",
+        "draws": "10",
+        "losses": "10.06.2026",
+        "goals": "",
+        "points": "03120501059"
+      },
+      {
+        "pos": "10",
+        "team": "Wam-Kam",
+        "played": "03120501060",
+        "wins": "",
+        "draws": "10",
+        "losses": "10.06.2026",
+        "goals": "",
+        "points": "03120501060"
+      },
+      {
+        "pos": "11",
+        "team": "Fagerborg",
+        "played": "03120501061",
+        "wins": "",
+        "draws": "11",
+        "losses": "17.06.2026",
+        "goals": "",
+        "points": "03120501061"
+      },
+      {
+        "pos": "11",
+        "team": "Furuset",
+        "played": "03120501062",
+        "wins": "",
+        "draws": "11",
+        "losses": "17.06.2026",
+        "goals": "",
+        "points": "03120501062"
+      },
+      {
+        "pos": "11",
+        "team": "HSIL",
+        "played": "03120501063",
+        "wins": "",
+        "draws": "11",
+        "losses": "17.06.2026",
+        "goals": "",
+        "points": "03120501063"
+      },
+      {
+        "pos": "11",
+        "team": "Jusstudentenes",
+        "played": "03120501064",
+        "wins": "",
+        "draws": "11",
+        "losses": "17.06.2026",
+        "goals": "",
+        "points": "03120501064"
+      },
+      {
+        "pos": "11",
+        "team": "Klemetsrud",
+        "played": "03120501065",
+        "wins": "",
+        "draws": "11",
+        "losses": "17.06.2026",
+        "goals": "",
+        "points": "03120501065"
+      },
+      {
+        "pos": "11",
+        "team": "Bækkelaget",
+        "played": "03120501066",
+        "wins": "",
+        "draws": "11",
+        "losses": "17.06.2026",
+        "goals": "",
+        "points": "03120501066"
+      },
+      {
+        "pos": "12",
+        "team": "Korsvoll 2",
+        "played": "03120501072",
+        "wins": "",
+        "draws": "12",
+        "losses": "12.08.2026",
+        "goals": "",
+        "points": "03120501072"
+      },
+      {
+        "pos": "12",
+        "team": "Fagerborg",
+        "played": "03120501067",
+        "wins": "",
+        "draws": "12",
+        "losses": "12.08.2026",
+        "goals": "",
+        "points": "03120501067"
+      },
+      {
+        "pos": "12",
+        "team": "Klemetsrud",
+        "played": "03120501068",
+        "wins": "",
+        "draws": "12",
+        "losses": "12.08.2026",
+        "goals": "",
+        "points": "03120501068"
+      },
+      {
+        "pos": "12",
+        "team": "Jusstudentenes",
+        "played": "03120501069",
+        "wins": "",
+        "draws": "12",
+        "losses": "12.08.2026",
+        "goals": "",
+        "points": "03120501069"
+      },
+      {
+        "pos": "12",
+        "team": "HSIL",
+        "played": "03120501070",
+        "wins": "",
+        "draws": "12",
+        "losses": "12.08.2026",
+        "goals": "",
+        "points": "03120501070"
+      },
+      {
+        "pos": "12",
+        "team": "Furuset",
+        "played": "03120501071",
+        "wins": "",
+        "draws": "12",
+        "losses": "12.08.2026",
+        "goals": "",
+        "points": "03120501071"
+      },
+      {
+        "pos": "13",
+        "team": "Bækkelaget",
+        "played": "03120501073",
+        "wins": "",
+        "draws": "13",
+        "losses": "19.08.2026",
+        "goals": "",
+        "points": "03120501073"
+      },
+      {
+        "pos": "13",
+        "team": "Oslo City",
+        "played": "03120501074",
+        "wins": "",
+        "draws": "13",
+        "losses": "19.08.2026",
+        "goals": "",
+        "points": "03120501074"
+      },
+      {
+        "pos": "13",
+        "team": "Oldenborg",
+        "played": "03120501075",
+        "wins": "",
+        "draws": "13",
+        "losses": "19.08.2026",
+        "goals": "",
+        "points": "03120501075"
+      },
+      {
+        "pos": "13",
+        "team": "Majorstuen",
+        "played": "03120501076",
+        "wins": "",
+        "draws": "13",
+        "losses": "19.08.2026",
+        "goals": "",
+        "points": "03120501076"
+      },
+      {
+        "pos": "13",
+        "team": "Linderud",
+        "played": "03120501077",
+        "wins": "",
+        "draws": "13",
+        "losses": "19.08.2026",
+        "goals": "",
+        "points": "03120501077"
+      },
+      {
+        "pos": "13",
+        "team": "Wam-Kam",
+        "played": "03120501078",
+        "wins": "",
+        "draws": "13",
+        "losses": "19.08.2026",
+        "goals": "",
+        "points": "03120501078"
+      },
+      {
+        "pos": "14",
+        "team": "Korsvoll 2",
+        "played": "03120501081",
+        "wins": "",
+        "draws": "14",
+        "losses": "26.08.2026",
+        "goals": "",
+        "points": "03120501081"
+      },
+      {
+        "pos": "14",
+        "team": "HSIL",
+        "played": "03120501079",
+        "wins": "",
+        "draws": "14",
+        "losses": "26.08.2026",
+        "goals": "",
+        "points": "03120501079"
+      },
+      {
+        "pos": "14",
+        "team": "Furuset",
+        "played": "03120501080",
+        "wins": "",
+        "draws": "14",
+        "losses": "26.08.2026",
+        "goals": "",
+        "points": "03120501080"
+      },
+      {
+        "pos": "14",
+        "team": "Klemetsrud",
+        "played": "03120501082",
+        "wins": "",
+        "draws": "14",
+        "losses": "26.08.2026",
+        "goals": "",
+        "points": "03120501082"
+      },
+      {
+        "pos": "14",
+        "team": "Jusstudentenes",
+        "played": "03120501083",
+        "wins": "",
+        "draws": "14",
+        "losses": "26.08.2026",
+        "goals": "",
+        "points": "03120501083"
+      },
+      {
+        "pos": "14",
+        "team": "Linderud",
+        "played": "03120501084",
+        "wins": "",
+        "draws": "14",
+        "losses": "26.08.2026",
+        "goals": "",
+        "points": "03120501084"
+      },
+      {
+        "pos": "15",
+        "team": "Fagerborg",
+        "played": "03120501085",
+        "wins": "",
+        "draws": "15",
+        "losses": "02.09.2026",
+        "goals": "",
+        "points": "03120501085"
+      },
+      {
+        "pos": "15",
+        "team": "Bækkelaget",
+        "played": "03120501086",
+        "wins": "",
+        "draws": "15",
+        "losses": "02.09.2026",
+        "goals": "",
+        "points": "03120501086"
+      },
+      {
+        "pos": "15",
+        "team": "Oslo City",
+        "played": "03120501087",
+        "wins": "",
+        "draws": "15",
+        "losses": "02.09.2026",
+        "goals": "",
+        "points": "03120501087"
+      },
+      {
+        "pos": "15",
+        "team": "Oldenborg",
+        "played": "03120501088",
+        "wins": "",
+        "draws": "15",
+        "losses": "02.09.2026",
+        "goals": "",
+        "points": "03120501088"
+      },
+      {
+        "pos": "15",
+        "team": "Majorstuen",
+        "played": "03120501089",
+        "wins": "",
+        "draws": "15",
+        "losses": "02.09.2026",
+        "goals": "",
+        "points": "03120501089"
+      },
+      {
+        "pos": "15",
+        "team": "Wam-Kam",
+        "played": "03120501090",
+        "wins": "",
+        "draws": "15",
+        "losses": "02.09.2026",
+        "goals": "",
+        "points": "03120501090"
+      },
+      {
+        "pos": "16",
+        "team": "Korsvoll 2",
+        "played": "03120501095",
+        "wins": "",
+        "draws": "16",
+        "losses": "09.09.2026",
+        "goals": "",
+        "points": "03120501095"
+      },
+      {
+        "pos": "16",
+        "team": "Klemetsrud",
+        "played": "03120501091",
+        "wins": "",
+        "draws": "16",
+        "losses": "09.09.2026",
+        "goals": "",
+        "points": "03120501091"
+      },
+      {
+        "pos": "16",
+        "team": "Jusstudentenes",
+        "played": "03120501092",
+        "wins": "",
+        "draws": "16",
+        "losses": "09.09.2026",
+        "goals": "",
+        "points": "03120501092"
+      },
+      {
+        "pos": "16",
+        "team": "HSIL",
+        "played": "03120501093",
+        "wins": "",
+        "draws": "16",
+        "losses": "09.09.2026",
+        "goals": "",
+        "points": "03120501093"
+      },
+      {
+        "pos": "16",
+        "team": "Linderud",
+        "played": "03120501094",
+        "wins": "",
+        "draws": "16",
+        "losses": "09.09.2026",
+        "goals": "",
+        "points": "03120501094"
+      },
+      {
+        "pos": "16",
+        "team": "Majorstuen",
+        "played": "03120501096",
+        "wins": "",
+        "draws": "16",
+        "losses": "09.09.2026",
+        "goals": "",
+        "points": "03120501096"
+      },
+      {
+        "pos": "17",
+        "team": "Furuset",
+        "played": "03120501097",
+        "wins": "",
+        "draws": "17",
+        "losses": "16.09.2026",
+        "goals": "",
+        "points": "03120501097"
+      },
+      {
+        "pos": "17",
+        "team": "Fagerborg",
+        "played": "03120501098",
+        "wins": "",
+        "draws": "17",
+        "losses": "16.09.2026",
+        "goals": "",
+        "points": "03120501098"
+      },
+      {
+        "pos": "17",
+        "team": "Bækkelaget",
+        "played": "03120501099",
+        "wins": "",
+        "draws": "17",
+        "losses": "16.09.2026",
+        "goals": "",
+        "points": "03120501099"
+      },
+      {
+        "pos": "17",
+        "team": "Oslo City",
+        "played": "03120501100",
+        "wins": "",
+        "draws": "17",
+        "losses": "16.09.2026",
+        "goals": "",
+        "points": "03120501100"
+      },
+      {
+        "pos": "17",
+        "team": "Oldenborg",
+        "played": "03120501101",
+        "wins": "",
+        "draws": "17",
+        "losses": "16.09.2026",
+        "goals": "",
+        "points": "03120501101"
+      },
+      {
+        "pos": "17",
+        "team": "Wam-Kam",
+        "played": "03120501102",
+        "wins": "",
+        "draws": "17",
+        "losses": "16.09.2026",
+        "goals": "",
+        "points": "03120501102"
+      },
+      {
+        "pos": "18",
+        "team": "Korsvoll 2",
+        "played": "03120501104",
+        "wins": "",
+        "draws": "18",
+        "losses": "23.09.2026",
+        "goals": "",
+        "points": "03120501104"
+      },
+      {
+        "pos": "18",
+        "team": "Linderud",
+        "played": "03120501103",
+        "wins": "",
+        "draws": "18",
+        "losses": "23.09.2026",
+        "goals": "",
+        "points": "03120501103"
+      },
+      {
+        "pos": "18",
+        "team": "Klemetsrud",
+        "played": "03120501105",
+        "wins": "",
+        "draws": "18",
+        "losses": "23.09.2026",
+        "goals": "",
+        "points": "03120501105"
+      },
+      {
+        "pos": "18",
+        "team": "Jusstudentenes",
+        "played": "03120501106",
+        "wins": "",
+        "draws": "18",
+        "losses": "23.09.2026",
+        "goals": "",
+        "points": "03120501106"
+      },
+      {
+        "pos": "18",
+        "team": "Majorstuen",
+        "played": "03120501107",
+        "wins": "",
+        "draws": "18",
+        "losses": "23.09.2026",
+        "goals": "",
+        "points": "03120501107"
+      },
+      {
+        "pos": "18",
+        "team": "Oldenborg",
+        "played": "03120501108",
+        "wins": "",
+        "draws": "18",
+        "losses": "23.09.2026",
+        "goals": "",
+        "points": "03120501108"
+      },
+      {
+        "pos": "19",
+        "team": "HSIL",
+        "played": "03120501109",
+        "wins": "",
+        "draws": "19",
+        "losses": "07.10.2026",
+        "goals": "",
+        "points": "03120501109"
+      },
+      {
+        "pos": "19",
+        "team": "Furuset",
+        "played": "03120501110",
+        "wins": "",
+        "draws": "19",
+        "losses": "07.10.2026",
+        "goals": "",
+        "points": "03120501110"
+      },
+      {
+        "pos": "19",
+        "team": "Fagerborg",
+        "played": "03120501111",
+        "wins": "",
+        "draws": "19",
+        "losses": "07.10.2026",
+        "goals": "",
+        "points": "03120501111"
+      },
+      {
+        "pos": "19",
+        "team": "Bækkelaget",
+        "played": "03120501112",
+        "wins": "",
+        "draws": "19",
+        "losses": "07.10.2026",
+        "goals": "",
+        "points": "03120501112"
+      },
+      {
+        "pos": "19",
+        "team": "Oslo City",
+        "played": "03120501113",
+        "wins": "",
+        "draws": "19",
+        "losses": "07.10.2026",
+        "goals": "",
+        "points": "03120501113"
+      },
+      {
+        "pos": "19",
+        "team": "Wam-Kam",
+        "played": "03120501114",
+        "wins": "",
+        "draws": "19",
+        "losses": "07.10.2026",
+        "goals": "",
+        "points": "03120501114"
+      },
+      {
+        "pos": "20",
+        "team": "Korsvoll 2",
+        "played": "03120501118",
+        "wins": "",
+        "draws": "20",
+        "losses": "14.10.2026",
+        "goals": "",
+        "points": "03120501118"
+      },
+      {
+        "pos": "20",
+        "team": "Oldenborg",
+        "played": "03120501115",
+        "wins": "",
+        "draws": "20",
+        "losses": "14.10.2026",
+        "goals": "",
+        "points": "03120501115"
+      },
+      {
+        "pos": "20",
+        "team": "Majorstuen",
+        "played": "03120501116",
+        "wins": "",
+        "draws": "20",
+        "losses": "14.10.2026",
+        "goals": "",
+        "points": "03120501116"
+      },
+      {
+        "pos": "20",
+        "team": "Linderud",
+        "played": "03120501117",
+        "wins": "",
+        "draws": "20",
+        "losses": "14.10.2026",
+        "goals": "",
+        "points": "03120501117"
+      },
+      {
+        "pos": "20",
+        "team": "Klemetsrud",
+        "played": "03120501119",
+        "wins": "",
+        "draws": "20",
+        "losses": "14.10.2026",
+        "goals": "",
+        "points": "03120501119"
+      },
+      {
+        "pos": "20",
+        "team": "Oslo City",
+        "played": "03120501120",
+        "wins": "",
+        "draws": "20",
+        "losses": "14.10.2026",
+        "goals": "",
+        "points": "03120501120"
+      },
+      {
+        "pos": "21",
+        "team": "Jusstudentenes",
+        "played": "03120501121",
+        "wins": "",
+        "draws": "21",
+        "losses": "21.10.2026",
+        "goals": "",
+        "points": "03120501121"
+      },
+      {
+        "pos": "21",
+        "team": "HSIL",
+        "played": "03120501122",
+        "wins": "",
+        "draws": "21",
+        "losses": "21.10.2026",
+        "goals": "",
+        "points": "03120501122"
+      },
+      {
+        "pos": "21",
+        "team": "Furuset",
+        "played": "03120501123",
+        "wins": "",
+        "draws": "21",
+        "losses": "21.10.2026",
+        "goals": "",
+        "points": "03120501123"
+      },
+      {
+        "pos": "21",
+        "team": "Fagerborg",
+        "played": "03120501124",
+        "wins": "",
+        "draws": "21",
+        "losses": "21.10.2026",
+        "goals": "",
+        "points": "03120501124"
+      },
+      {
+        "pos": "21",
+        "team": "Bækkelaget",
+        "played": "03120501125",
+        "wins": "",
+        "draws": "21",
+        "losses": "21.10.2026",
+        "goals": "",
+        "points": "03120501125"
+      },
+      {
+        "pos": "21",
+        "team": "Klemetsrud",
+        "played": "03120501126",
+        "wins": "",
+        "draws": "21",
+        "losses": "21.10.2026",
+        "goals": "",
+        "points": "03120501126"
+      },
+      {
+        "pos": "22",
+        "team": "Korsvoll 2",
+        "played": "03120501131",
+        "wins": "",
+        "draws": "22",
+        "losses": "28.10.2026",
+        "goals": "",
+        "points": "03120501131"
+      },
+      {
+        "pos": "22",
+        "team": "Oslo City",
+        "played": "03120501127",
+        "wins": "",
+        "draws": "22",
+        "losses": "28.10.2026",
+        "goals": "",
+        "points": "03120501127"
+      },
+      {
+        "pos": "22",
+        "team": "Oldenborg",
+        "played": "03120501128",
+        "wins": "",
+        "draws": "22",
+        "losses": "28.10.2026",
+        "goals": "",
+        "points": "03120501128"
+      },
+      {
+        "pos": "22",
+        "team": "Majorstuen",
+        "played": "03120501129",
+        "wins": "",
+        "draws": "22",
+        "losses": "28.10.2026",
+        "goals": "",
+        "points": "03120501129"
+      },
+      {
+        "pos": "22",
+        "team": "Linderud",
+        "played": "03120501130",
+        "wins": "",
+        "draws": "22",
+        "losses": "28.10.2026",
+        "goals": "",
+        "points": "03120501130"
+      },
+      {
+        "pos": "22",
+        "team": "Wam-Kam",
+        "played": "03120501132",
+        "wins": "",
+        "draws": "22",
+        "losses": "28.10.2026",
+        "goals": "",
+        "points": "03120501132"
       }
     ]
   },
@@ -129,104 +1329,904 @@
     "fiksId": 205410,
     "rows": [
       {
-        "pos": "0",
-        "team": "Fagerborg 2",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Frisk Asker",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Furuset 2",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Jutul",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Lille Tøyen",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Monolitten Idrettslag",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Oppegård",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Sagene 2",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
-        "team": "Sterling",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
-      },
-      {
-        "pos": "0",
+        "pos": "1",
         "team": "Veitvet",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0-0 (0)",
-        "points": "0"
+        "played": "03120702001",
+        "wins": "",
+        "draws": "1",
+        "losses": "20.04.2026",
+        "goals": "",
+        "points": "03120702001"
+      },
+      {
+        "pos": "1",
+        "team": "Lille Tøyen",
+        "played": "03120702002",
+        "wins": "",
+        "draws": "1",
+        "losses": "20.04.2026",
+        "goals": "",
+        "points": "03120702002"
+      },
+      {
+        "pos": "1",
+        "team": "Oppegård",
+        "played": "03120702003",
+        "wins": "",
+        "draws": "1",
+        "losses": "20.04.2026",
+        "goals": "",
+        "points": "03120702003"
+      },
+      {
+        "pos": "1",
+        "team": "Sagene 2",
+        "played": "03120702004",
+        "wins": "",
+        "draws": "1",
+        "losses": "20.04.2026",
+        "goals": "",
+        "points": "03120702004"
+      },
+      {
+        "pos": "1",
+        "team": "Sterling",
+        "played": "03120702005",
+        "wins": "",
+        "draws": "1",
+        "losses": "21.04.2026",
+        "goals": "",
+        "points": "03120702005"
+      },
+      {
+        "pos": "2",
+        "team": "Frisk Asker",
+        "played": "03120702006",
+        "wins": "",
+        "draws": "2",
+        "losses": "27.04.2026",
+        "goals": "",
+        "points": "03120702006"
+      },
+      {
+        "pos": "2",
+        "team": "Jutul",
+        "played": "03120702007",
+        "wins": "",
+        "draws": "2",
+        "losses": "27.04.2026",
+        "goals": "",
+        "points": "03120702007"
+      },
+      {
+        "pos": "2",
+        "team": "Lille Tøyen",
+        "played": "03120702008",
+        "wins": "",
+        "draws": "2",
+        "losses": "27.04.2026",
+        "goals": "",
+        "points": "03120702008"
+      },
+      {
+        "pos": "2",
+        "team": "Furuset 2",
+        "played": "03120702009",
+        "wins": "",
+        "draws": "2",
+        "losses": "27.04.2026",
+        "goals": "",
+        "points": "03120702009"
+      },
+      {
+        "pos": "2",
+        "team": "Sterling",
+        "played": "03120702010",
+        "wins": "",
+        "draws": "2",
+        "losses": "29.04.2026",
+        "goals": "",
+        "points": "03120702010"
+      },
+      {
+        "pos": "3",
+        "team": "Veitvet",
+        "played": "03120702011",
+        "wins": "",
+        "draws": "3",
+        "losses": "04.05.2026",
+        "goals": "",
+        "points": "03120702011"
+      },
+      {
+        "pos": "3",
+        "team": "Fagerborg 2",
+        "played": "03120702012",
+        "wins": "",
+        "draws": "3",
+        "losses": "04.05.2026",
+        "goals": "",
+        "points": "03120702012"
+      },
+      {
+        "pos": "3",
+        "team": "Oppegård",
+        "played": "03120702013",
+        "wins": "",
+        "draws": "3",
+        "losses": "04.05.2026",
+        "goals": "",
+        "points": "03120702013"
+      },
+      {
+        "pos": "3",
+        "team": "Sagene 2",
+        "played": "03120702014",
+        "wins": "",
+        "draws": "3",
+        "losses": "04.05.2026",
+        "goals": "",
+        "points": "03120702014"
+      },
+      {
+        "pos": "3",
+        "team": "Monolitten Idrettslag",
+        "played": "03120702015",
+        "wins": "",
+        "draws": "3",
+        "losses": "04.05.2026",
+        "goals": "",
+        "points": "03120702015"
+      },
+      {
+        "pos": "4",
+        "team": "Jutul",
+        "played": "03120702016",
+        "wins": "",
+        "draws": "4",
+        "losses": "11.05.2026",
+        "goals": "",
+        "points": "03120702016"
+      },
+      {
+        "pos": "4",
+        "team": "Lille Tøyen",
+        "played": "03120702017",
+        "wins": "",
+        "draws": "4",
+        "losses": "11.05.2026",
+        "goals": "",
+        "points": "03120702017"
+      },
+      {
+        "pos": "4",
+        "team": "Furuset 2",
+        "played": "03120702018",
+        "wins": "",
+        "draws": "4",
+        "losses": "11.05.2026",
+        "goals": "",
+        "points": "03120702018"
+      },
+      {
+        "pos": "4",
+        "team": "Monolitten Idrettslag",
+        "played": "03120702019",
+        "wins": "",
+        "draws": "4",
+        "losses": "11.05.2026",
+        "goals": "",
+        "points": "03120702019"
+      },
+      {
+        "pos": "4",
+        "team": "Frisk Asker",
+        "played": "03120702020",
+        "wins": "",
+        "draws": "4",
+        "losses": "11.05.2026",
+        "goals": "",
+        "points": "03120702020"
+      },
+      {
+        "pos": "5",
+        "team": "Veitvet",
+        "played": "03120702021",
+        "wins": "",
+        "draws": "5",
+        "losses": "18.05.2026",
+        "goals": "",
+        "points": "03120702021"
+      },
+      {
+        "pos": "5",
+        "team": "Fagerborg 2",
+        "played": "03120702022",
+        "wins": "",
+        "draws": "5",
+        "losses": "18.05.2026",
+        "goals": "",
+        "points": "03120702022"
+      },
+      {
+        "pos": "5",
+        "team": "Frisk Asker",
+        "played": "03120702023",
+        "wins": "",
+        "draws": "5",
+        "losses": "18.05.2026",
+        "goals": "",
+        "points": "03120702023"
+      },
+      {
+        "pos": "5",
+        "team": "Sagene 2",
+        "played": "03120702024",
+        "wins": "",
+        "draws": "5",
+        "losses": "18.05.2026",
+        "goals": "",
+        "points": "03120702024"
+      },
+      {
+        "pos": "5",
+        "team": "Oppegård",
+        "played": "03120702025",
+        "wins": "",
+        "draws": "5",
+        "losses": "18.05.2026",
+        "goals": "",
+        "points": "03120702025"
+      },
+      {
+        "pos": "6",
+        "team": "Lille Tøyen",
+        "played": "03120702026",
+        "wins": "",
+        "draws": "6",
+        "losses": "01.06.2026",
+        "goals": "",
+        "points": "03120702026"
+      },
+      {
+        "pos": "6",
+        "team": "Furuset 2",
+        "played": "03120702027",
+        "wins": "",
+        "draws": "6",
+        "losses": "01.06.2026",
+        "goals": "",
+        "points": "03120702027"
+      },
+      {
+        "pos": "6",
+        "team": "Monolitten Idrettslag",
+        "played": "03120702028",
+        "wins": "",
+        "draws": "6",
+        "losses": "01.06.2026",
+        "goals": "",
+        "points": "03120702028"
+      },
+      {
+        "pos": "6",
+        "team": "Oppegård",
+        "played": "03120702029",
+        "wins": "",
+        "draws": "6",
+        "losses": "01.06.2026",
+        "goals": "",
+        "points": "03120702029"
+      },
+      {
+        "pos": "6",
+        "team": "Sterling",
+        "played": "03120702030",
+        "wins": "",
+        "draws": "6",
+        "losses": "03.06.2026",
+        "goals": "",
+        "points": "03120702030"
+      },
+      {
+        "pos": "7",
+        "team": "Veitvet",
+        "played": "03120702031",
+        "wins": "",
+        "draws": "7",
+        "losses": "08.06.2026",
+        "goals": "",
+        "points": "03120702031"
+      },
+      {
+        "pos": "7",
+        "team": "Fagerborg 2",
+        "played": "03120702032",
+        "wins": "",
+        "draws": "7",
+        "losses": "08.06.2026",
+        "goals": "",
+        "points": "03120702032"
+      },
+      {
+        "pos": "7",
+        "team": "Frisk Asker",
+        "played": "03120702033",
+        "wins": "",
+        "draws": "7",
+        "losses": "08.06.2026",
+        "goals": "",
+        "points": "03120702033"
+      },
+      {
+        "pos": "7",
+        "team": "Jutul",
+        "played": "03120702034",
+        "wins": "",
+        "draws": "7",
+        "losses": "08.06.2026",
+        "goals": "",
+        "points": "03120702034"
+      },
+      {
+        "pos": "7",
+        "team": "Sterling",
+        "played": "03120702035",
+        "wins": "",
+        "draws": "7",
+        "losses": "09.06.2026",
+        "goals": "",
+        "points": "03120702035"
+      },
+      {
+        "pos": "8",
+        "team": "Furuset 2",
+        "played": "03120702036",
+        "wins": "",
+        "draws": "8",
+        "losses": "15.06.2026",
+        "goals": "",
+        "points": "03120702036"
+      },
+      {
+        "pos": "8",
+        "team": "Monolitten Idrettslag",
+        "played": "03120702037",
+        "wins": "",
+        "draws": "8",
+        "losses": "15.06.2026",
+        "goals": "",
+        "points": "03120702037"
+      },
+      {
+        "pos": "8",
+        "team": "Oppegård",
+        "played": "03120702038",
+        "wins": "",
+        "draws": "8",
+        "losses": "15.06.2026",
+        "goals": "",
+        "points": "03120702038"
+      },
+      {
+        "pos": "8",
+        "team": "Sagene 2",
+        "played": "03120702039",
+        "wins": "",
+        "draws": "8",
+        "losses": "15.06.2026",
+        "goals": "",
+        "points": "03120702039"
+      },
+      {
+        "pos": "8",
+        "team": "Lille Tøyen",
+        "played": "03120702040",
+        "wins": "",
+        "draws": "8",
+        "losses": "15.06.2026",
+        "goals": "",
+        "points": "03120702040"
+      },
+      {
+        "pos": "9",
+        "team": "Fagerborg 2",
+        "played": "03120702041",
+        "wins": "",
+        "draws": "9",
+        "losses": "22.06.2026",
+        "goals": "",
+        "points": "03120702041"
+      },
+      {
+        "pos": "9",
+        "team": "Frisk Asker",
+        "played": "03120702042",
+        "wins": "",
+        "draws": "9",
+        "losses": "22.06.2026",
+        "goals": "",
+        "points": "03120702042"
+      },
+      {
+        "pos": "9",
+        "team": "Jutul",
+        "played": "03120702043",
+        "wins": "",
+        "draws": "9",
+        "losses": "22.06.2026",
+        "goals": "",
+        "points": "03120702043"
+      },
+      {
+        "pos": "9",
+        "team": "Lille Tøyen",
+        "played": "03120702044",
+        "wins": "",
+        "draws": "9",
+        "losses": "22.06.2026",
+        "goals": "",
+        "points": "03120702044"
+      },
+      {
+        "pos": "9",
+        "team": "Sterling",
+        "played": "03120702045",
+        "wins": "",
+        "draws": "9",
+        "losses": "23.06.2026",
+        "goals": "",
+        "points": "03120702045"
+      },
+      {
+        "pos": "10",
+        "team": "Fagerborg 2",
+        "played": "03120702046",
+        "wins": "",
+        "draws": "10",
+        "losses": "17.08.2026",
+        "goals": "",
+        "points": "03120702046"
+      },
+      {
+        "pos": "10",
+        "team": "Monolitten Idrettslag",
+        "played": "03120702047",
+        "wins": "",
+        "draws": "10",
+        "losses": "17.08.2026",
+        "goals": "",
+        "points": "03120702047"
+      },
+      {
+        "pos": "10",
+        "team": "Jutul",
+        "played": "03120702048",
+        "wins": "",
+        "draws": "10",
+        "losses": "17.08.2026",
+        "goals": "",
+        "points": "03120702048"
+      },
+      {
+        "pos": "10",
+        "team": "Frisk Asker",
+        "played": "03120702049",
+        "wins": "",
+        "draws": "10",
+        "losses": "17.08.2026",
+        "goals": "",
+        "points": "03120702049"
+      },
+      {
+        "pos": "10",
+        "team": "Furuset 2",
+        "played": "03120702050",
+        "wins": "",
+        "draws": "10",
+        "losses": "17.08.2026",
+        "goals": "",
+        "points": "03120702050"
+      },
+      {
+        "pos": "11",
+        "team": "Veitvet",
+        "played": "03120702051",
+        "wins": "",
+        "draws": "11",
+        "losses": "24.08.2026",
+        "goals": "",
+        "points": "03120702051"
+      },
+      {
+        "pos": "11",
+        "team": "Sagene 2",
+        "played": "03120702052",
+        "wins": "",
+        "draws": "11",
+        "losses": "24.08.2026",
+        "goals": "",
+        "points": "03120702052"
+      },
+      {
+        "pos": "11",
+        "team": "Oppegård",
+        "played": "03120702053",
+        "wins": "",
+        "draws": "11",
+        "losses": "24.08.2026",
+        "goals": "",
+        "points": "03120702053"
+      },
+      {
+        "pos": "11",
+        "team": "Monolitten Idrettslag",
+        "played": "03120702054",
+        "wins": "",
+        "draws": "11",
+        "losses": "24.08.2026",
+        "goals": "",
+        "points": "03120702054"
+      },
+      {
+        "pos": "11",
+        "team": "Fagerborg 2",
+        "played": "03120702055",
+        "wins": "",
+        "draws": "11",
+        "losses": "24.08.2026",
+        "goals": "",
+        "points": "03120702055"
+      },
+      {
+        "pos": "12",
+        "team": "Jutul",
+        "played": "03120702056",
+        "wins": "",
+        "draws": "12",
+        "losses": "31.08.2026",
+        "goals": "",
+        "points": "03120702056"
+      },
+      {
+        "pos": "12",
+        "team": "Frisk Asker",
+        "played": "03120702057",
+        "wins": "",
+        "draws": "12",
+        "losses": "31.08.2026",
+        "goals": "",
+        "points": "03120702057"
+      },
+      {
+        "pos": "12",
+        "team": "Furuset 2",
+        "played": "03120702058",
+        "wins": "",
+        "draws": "12",
+        "losses": "31.08.2026",
+        "goals": "",
+        "points": "03120702058"
+      },
+      {
+        "pos": "12",
+        "team": "Lille Tøyen",
+        "played": "03120702059",
+        "wins": "",
+        "draws": "12",
+        "losses": "31.08.2026",
+        "goals": "",
+        "points": "03120702059"
+      },
+      {
+        "pos": "12",
+        "team": "Sterling",
+        "played": "03120702060",
+        "wins": "",
+        "draws": "12",
+        "losses": "01.09.2026",
+        "goals": "",
+        "points": "03120702060"
+      },
+      {
+        "pos": "13",
+        "team": "Fagerborg 2",
+        "played": "03120702061",
+        "wins": "",
+        "draws": "13",
+        "losses": "07.09.2026",
+        "goals": "",
+        "points": "03120702061"
+      },
+      {
+        "pos": "13",
+        "team": "Veitvet",
+        "played": "03120702062",
+        "wins": "",
+        "draws": "13",
+        "losses": "07.09.2026",
+        "goals": "",
+        "points": "03120702062"
+      },
+      {
+        "pos": "13",
+        "team": "Sagene 2",
+        "played": "03120702063",
+        "wins": "",
+        "draws": "13",
+        "losses": "07.09.2026",
+        "goals": "",
+        "points": "03120702063"
+      },
+      {
+        "pos": "13",
+        "team": "Oppegård",
+        "played": "03120702064",
+        "wins": "",
+        "draws": "13",
+        "losses": "07.09.2026",
+        "goals": "",
+        "points": "03120702064"
+      },
+      {
+        "pos": "13",
+        "team": "Sterling",
+        "played": "03120702065",
+        "wins": "",
+        "draws": "13",
+        "losses": "08.09.2026",
+        "goals": "",
+        "points": "03120702065"
+      },
+      {
+        "pos": "14",
+        "team": "Furuset 2",
+        "played": "03120702066",
+        "wins": "",
+        "draws": "14",
+        "losses": "14.09.2026",
+        "goals": "",
+        "points": "03120702066"
+      },
+      {
+        "pos": "14",
+        "team": "Lille Tøyen",
+        "played": "03120702067",
+        "wins": "",
+        "draws": "14",
+        "losses": "14.09.2026",
+        "goals": "",
+        "points": "03120702067"
+      },
+      {
+        "pos": "14",
+        "team": "Jutul",
+        "played": "03120702068",
+        "wins": "",
+        "draws": "14",
+        "losses": "14.09.2026",
+        "goals": "",
+        "points": "03120702068"
+      },
+      {
+        "pos": "14",
+        "team": "Monolitten Idrettslag",
+        "played": "03120702069",
+        "wins": "",
+        "draws": "14",
+        "losses": "14.09.2026",
+        "goals": "",
+        "points": "03120702069"
+      },
+      {
+        "pos": "14",
+        "team": "Sterling",
+        "played": "03120702070",
+        "wins": "",
+        "draws": "14",
+        "losses": "16.09.2026",
+        "goals": "",
+        "points": "03120702070"
+      },
+      {
+        "pos": "15",
+        "team": "Frisk Asker",
+        "played": "03120702071",
+        "wins": "",
+        "draws": "15",
+        "losses": "21.09.2026",
+        "goals": "",
+        "points": "03120702071"
+      },
+      {
+        "pos": "15",
+        "team": "Fagerborg 2",
+        "played": "03120702072",
+        "wins": "",
+        "draws": "15",
+        "losses": "21.09.2026",
+        "goals": "",
+        "points": "03120702072"
+      },
+      {
+        "pos": "15",
+        "team": "Veitvet",
+        "played": "03120702073",
+        "wins": "",
+        "draws": "15",
+        "losses": "21.09.2026",
+        "goals": "",
+        "points": "03120702073"
+      },
+      {
+        "pos": "15",
+        "team": "Sagene 2",
+        "played": "03120702074",
+        "wins": "",
+        "draws": "15",
+        "losses": "21.09.2026",
+        "goals": "",
+        "points": "03120702074"
+      },
+      {
+        "pos": "15",
+        "team": "Jutul",
+        "played": "03120702075",
+        "wins": "",
+        "draws": "15",
+        "losses": "21.09.2026",
+        "goals": "",
+        "points": "03120702075"
+      },
+      {
+        "pos": "16",
+        "team": "Oppegård",
+        "played": "03120702076",
+        "wins": "",
+        "draws": "16",
+        "losses": "05.10.2026",
+        "goals": "",
+        "points": "03120702076"
+      },
+      {
+        "pos": "16",
+        "team": "Monolitten Idrettslag",
+        "played": "03120702077",
+        "wins": "",
+        "draws": "16",
+        "losses": "05.10.2026",
+        "goals": "",
+        "points": "03120702077"
+      },
+      {
+        "pos": "16",
+        "team": "Furuset 2",
+        "played": "03120702078",
+        "wins": "",
+        "draws": "16",
+        "losses": "05.10.2026",
+        "goals": "",
+        "points": "03120702078"
+      },
+      {
+        "pos": "16",
+        "team": "Lille Tøyen",
+        "played": "03120702079",
+        "wins": "",
+        "draws": "16",
+        "losses": "05.10.2026",
+        "goals": "",
+        "points": "03120702079"
+      },
+      {
+        "pos": "16",
+        "team": "Sagene 2",
+        "played": "03120702080",
+        "wins": "",
+        "draws": "16",
+        "losses": "05.10.2026",
+        "goals": "",
+        "points": "03120702080"
+      },
+      {
+        "pos": "17",
+        "team": "Jutul",
+        "played": "03120702081",
+        "wins": "",
+        "draws": "17",
+        "losses": "12.10.2026",
+        "goals": "",
+        "points": "03120702081"
+      },
+      {
+        "pos": "17",
+        "team": "Frisk Asker",
+        "played": "03120702082",
+        "wins": "",
+        "draws": "17",
+        "losses": "12.10.2026",
+        "goals": "",
+        "points": "03120702082"
+      },
+      {
+        "pos": "17",
+        "team": "Fagerborg 2",
+        "played": "03120702083",
+        "wins": "",
+        "draws": "17",
+        "losses": "12.10.2026",
+        "goals": "",
+        "points": "03120702083"
+      },
+      {
+        "pos": "17",
+        "team": "Veitvet",
+        "played": "03120702084",
+        "wins": "",
+        "draws": "17",
+        "losses": "12.10.2026",
+        "goals": "",
+        "points": "03120702084"
+      },
+      {
+        "pos": "17",
+        "team": "Sterling",
+        "played": "03120702085",
+        "wins": "",
+        "draws": "17",
+        "losses": "13.10.2026",
+        "goals": "",
+        "points": "03120702085"
+      },
+      {
+        "pos": "18",
+        "team": "Veitvet",
+        "played": "03120702090",
+        "wins": "",
+        "draws": "18",
+        "losses": "19.10.2026",
+        "goals": "",
+        "points": "03120702090"
+      },
+      {
+        "pos": "18",
+        "team": "Sagene 2",
+        "played": "03120702086",
+        "wins": "",
+        "draws": "18",
+        "losses": "19.10.2026",
+        "goals": "",
+        "points": "03120702086"
+      },
+      {
+        "pos": "18",
+        "team": "Oppegård",
+        "played": "03120702087",
+        "wins": "",
+        "draws": "18",
+        "losses": "19.10.2026",
+        "goals": "",
+        "points": "03120702087"
+      },
+      {
+        "pos": "18",
+        "team": "Monolitten Idrettslag",
+        "played": "03120702088",
+        "wins": "",
+        "draws": "18",
+        "losses": "19.10.2026",
+        "goals": "",
+        "points": "03120702088"
+      },
+      {
+        "pos": "18",
+        "team": "Furuset 2",
+        "played": "03120702089",
+        "wins": "",
+        "draws": "18",
+        "losses": "19.10.2026",
+        "goals": "",
+        "points": "03120702089"
       }
     ]
   }
