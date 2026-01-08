@@ -8,87 +8,114 @@ from bs4 import BeautifulSoup
 A_URL = "https://www.fotball.no/fotballdata/turnering/hjem/?fiksId=205403&underside=tabellen"
 B_URL = "https://www.fotball.no/fotballdata/turnering/hjem/?fiksId=205410&underside=tabellen"
 
-HEADERS = {"User-Agent": "Mozilla/5.0 (GitHub Actions)"}
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (GitHub Actions)"
+}
 
 def extract_fiks_id(url: str) -> int:
     m = re.search(r"fiksId=(\d+)", url)
     return int(m.group(1)) if m else 0
 
+def normalize(h: str) -> str:
+    return re.sub(r"\s+", " ", (h or "").strip().lower())
+
+def is_match_table(headers: list[str]) -> bool:
+    # Kampoppsett-tabell har typ disse
+    bad = {"hjemmelag", "bortelag", "kampnr.", "kampnr", "bane", "resultat", "tid", "dato", "runde"}
+    return any(h in bad for h in headers)
+
+def is_standings_table(headers: list[str]) -> bool:
+    # Serietabell har typ disse (varierer litt)
+    # Vi krever "lag" + ("poeng" eller "p") + noe som ligner kamper/seire/tap
+    has_team = any(h == "lag" or "lag" in h for h in headers)
+    has_points = any(h == "poeng" or h == "p" or "poeng" in h for h in headers)
+    has_played = any(h == "k" or "kamper" in h or "spilt" in h for h in headers)
+    has_results = any(h in {"v", "u", "t"} or "vunnet" in h or "uavgjort" in h or "tapt" in h for h in headers)
+    return has_team and has_points and (has_played or has_results)
+
 def pick_standings_table(soup: BeautifulSoup):
-    # Velg tabellen som SER UT som en serietabell (har header med Lag/Poeng osv)
     best = None
     best_score = -1
+
     for t in soup.find_all("table"):
-        ths = [th.get_text(" ", strip=True).lower() for th in t.find_all("th")]
+        ths = [normalize(th.get_text(" ", strip=True)) for th in t.find_all("th")]
         if not ths:
             continue
+
+        # IKKE velg kamp-tabeller
+        if is_match_table(ths):
+            continue
+
+        # må se ut som serietabell
+        if not is_standings_table(ths):
+            continue
+
+        # score: flere "riktige" headers + flere rader
         score = 0
-        if any("lag" in h for h in ths): score += 5
-        if any("poeng" in h or h == "p" for h in ths): score += 5
-        if any("mål" in h for h in ths): score += 3
-        score += len(t.find_all("tr"))  # flere rader = sannsynlig tabell
+        score += 10 if any(h == "lag" or "lag" in h for h in ths) else 0
+        score += 10 if any(h == "poeng" or h == "p" or "poeng" in h for h in ths) else 0
+        score += 5 if any(h == "k" or "kamper" in h or "spilt" in h for h in ths) else 0
+        score += 3 if any(h in {"v","u","t"} or "vunnet" in h or "uavgjort" in h or "tapt" in h for h in ths) else 0
+        score += min(len(t.find_all("tr")), 50)  # litt bonus for rader
+
         if score > best_score:
             best_score = score
             best = t
+
     return best
+
+def idx(headers: list[str], *needles: str):
+    for i, h in enumerate(headers):
+        if any(n in h for n in needles):
+            return i
+    return None
 
 def parse(url: str):
     r = requests.get(url, headers=HEADERS, timeout=30)
     r.raise_for_status()
-    soup = BeautifulSoup(r.text, "html.parser")
 
+    soup = BeautifulSoup(r.text, "html.parser")
     table = pick_standings_table(soup)
     if table is None:
         return {"fiksId": extract_fiks_id(url), "rows": []}
 
-    # header til indekser
-    header = [th.get_text(" ", strip=True).lower() for th in table.find_all("th")]
+    headers = [normalize(th.get_text(" ", strip=True)) for th in table.find_all("th")]
 
-    def find_idx(*needles):
-        for i, h in enumerate(header):
-            if any(n in h for n in needles):
-                return i
-        return None
-
-    i_team = find_idx("lag")  # "Lag"
-    i_played = find_idx("kamper", "spilt", "k")
-    i_wins = find_idx("vunnet", "v")
-    i_draws = find_idx("uavgjort", "u")
-    i_losses = find_idx("tapt", "t")
-    i_goals = find_idx("mål")
-    i_points = find_idx("poeng", "p")
+    i_team   = idx(headers, "lag")
+    i_played = idx(headers, "kamper", "spilt", "k")
+    i_wins   = idx(headers, "vunnet", "v")
+    i_draws  = idx(headers, "uavgjort", "u")
+    i_losses = idx(headers, "tapt", "t")
+    i_goals  = idx(headers, "mål")
+    i_pts    = idx(headers, "poeng", "p")
 
     rows = []
     for tr in table.find_all("tr")[1:]:
         tds = [td.get_text(" ", strip=True) for td in tr.find_all("td")]
-        if len(tds) < 5:
+        if len(tds) < 4:
             continue
 
-        # Finn plass: første celle i raden som er et heltall >= 1
-        pos = ""
-        for cell in tds[:3]:
-            if cell.isdigit() and int(cell) >= 1:
-                pos = cell
-                break
-        if not pos:
+        # pos er nesten alltid første celle og et tall
+        pos = tds[0].strip()
+        if not pos.isdigit():
             continue
 
-        def safe(i):
-            return tds[i] if i is not None and i < len(tds) else ""
+        def safe(i, fallback=""):
+            return tds[i].strip() if i is not None and i < len(tds) else fallback
 
-        team = safe(i_team) if i_team is not None else (tds[1] if len(tds) > 1 else "")
+        team = safe(i_team, fallback=(tds[1].strip() if len(tds) > 1 else ""))
         if not team:
             continue
 
         rows.append({
             "pos": pos,
             "team": team,
-            "played": safe(i_played),
-            "wins": safe(i_wins),
-            "draws": safe(i_draws),
-            "losses": safe(i_losses),
-            "goals": safe(i_goals),
-            "points": safe(i_points),
+            "played": safe(i_played, "0"),
+            "wins": safe(i_wins, "0"),
+            "draws": safe(i_draws, "0"),
+            "losses": safe(i_losses, "0"),
+            "goals": safe(i_goals, "0–0"),
+            "points": safe(i_pts, "0"),
         })
 
     return {"fiksId": extract_fiks_id(url), "rows": rows}
