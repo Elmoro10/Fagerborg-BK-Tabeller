@@ -13,7 +13,7 @@
       --border: rgba(255,255,255,.10);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.65);
-      --accent: #32d583; /* grønn */
+      --accent: #32d583;
       --shadow: 0 20px 60px rgba(0,0,0,.35);
       --radius: 18px;
     }
@@ -28,38 +28,12 @@
                   var(--bg);
     }
 
-    .wrap{
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 16px 40px;
-    }
+    .wrap{ max-width: 1200px; margin: 0 auto; padding: 28px 16px 40px; }
+    header{ display:flex; gap:14px; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; margin-bottom:18px; }
+    h1{ margin:0; font-size:40px; letter-spacing:-0.02em; line-height:1.05; }
+    .sub{ margin-top:6px; color: var(--muted); font-size:14px; }
 
-    header{
-      display:flex;
-      gap:14px;
-      align-items:flex-end;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      margin-bottom: 18px;
-    }
-
-    h1{
-      margin:0;
-      font-size: 40px;
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-    }
-    .sub{
-      margin-top:6px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .actions{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
+    .actions{ display:flex; gap:10px; align-items:center; }
     .btn{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.06);
@@ -78,16 +52,8 @@
     .btn:hover{ background: rgba(255,255,255,.10); }
     .btn:active{ transform: translateY(1px); }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 14px;
-    }
-    @media (max-width: 920px){
-      .grid{ grid-template-columns: 1fr; }
-      h1{ font-size: 34px; }
-    }
+    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:14px; }
+    @media (max-width: 920px){ .grid{ grid-template-columns: 1fr; } h1{ font-size:34px; } }
 
     .card{
       background: linear-gradient(180deg, var(--panel), var(--panel2));
@@ -103,13 +69,7 @@
       padding: 14px 16px;
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .card-title{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      font-weight: 800;
-      font-size: 18px;
-    }
+    .card-title{ display:flex; gap:10px; align-items:center; font-weight:800; font-size:18px; }
     .badge{
       font-size: 12px;
       color: var(--muted);
@@ -120,58 +80,24 @@
       white-space:nowrap;
     }
     .cup{
-      width: 18px;
-      height: 18px;
-      display:inline-block;
-      border-radius: 6px;
+      width: 18px; height: 18px; display:inline-block; border-radius: 6px;
       background: rgba(50,213,131,.18);
       border: 1px solid rgba(50,213,131,.35);
       box-shadow: 0 8px 30px rgba(50,213,131,.18);
     }
 
-    .content{
-      padding: 10px 10px 14px;
-    }
+    .content{ padding: 10px 10px 14px; }
 
-    /* --- Styling av tabeller som fotballdata-widgeten skriver ut --- */
-    .content table{
+    /* IFRAME som holder selve tabellen */
+    .widget-frame{
       width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-    .content thead th{
-      color: var(--muted);
-      font-weight: 700;
-      text-transform: none;
-      font-size: 12px;
-      padding: 10px 10px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-    }
-    .content tbody td{
-      padding: 12px 10px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .content tbody tr:hover{
-      background: rgba(255,255,255,.03);
+      border: 0;
+      border-radius: 14px;
+      background: transparent;
+      overflow: hidden;
+      height: 820px; /* juster ved behov */
     }
 
-    /* første kolonne (pos) litt “chip” look */
-    .content tbody td:first-child{
-      color: rgba(255,255,255,.80);
-      font-variant-numeric: tabular-nums;
-      width: 44px;
-    }
-
-    /* gjør lenker pene */
-    .content a{
-      color: var(--text);
-      text-decoration: none;
-    }
-    .content a:hover{
-      text-decoration: underline;
-    }
-
-    /* liten “footer” */
     .note{
       margin-top: 14px;
       color: var(--muted);
@@ -181,6 +107,7 @@
       padding: 10px 12px;
       border-radius: 14px;
     }
+    code{ color: rgba(255,255,255,.85); }
   </style>
 </head>
 
@@ -191,11 +118,8 @@
         <h1>Tabeller</h1>
         <div class="sub">Seriestilling for Fagerborgs lag</div>
       </div>
-
       <div class="actions">
-        <button class="btn" onclick="location.reload()">
-          ⟳ Oppdater
-        </button>
+        <button class="btn" onclick="location.reload()">⟳ Oppdater</button>
       </div>
     </header>
 
@@ -205,10 +129,12 @@
           <div class="card-title"><span class="cup"></span> A-Lag</div>
           <div class="badge">5. divisjon</div>
         </div>
-        <div class="content" id="a-tabell">
-          <!-- Fotballdata widget skriver inn tabellen her -->
-          <!-- A-lag -->
-          <script src="https://api.fotballdata.no/js.fd?type=tables&teamid=311&lay=1" type="text/javascript"></script>
+        <div class="content">
+          <iframe
+            class="widget-frame"
+            title="A-lag tabell"
+            srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;padding:10px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial} table{width:100%;border-collapse:collapse} th,td{padding:10px;border-bottom:1px solid #e5e7eb;font-size:14px} thead th{font-size:12px;color:#6b7280;text-align:left} tbody tr:hover{background:#f9fafb}</style></head><body><script src="https://api.fotballdata.no/js.fd?type=tables&teamid=311&lay=1" type="text/javascript"></script></body></html>'>
+          </iframe>
         </div>
       </div>
 
@@ -217,16 +143,19 @@
           <div class="card-title"><span class="cup"></span> B-Lag</div>
           <div class="badge">7. divisjon</div>
         </div>
-        <div class="content" id="b-tabell">
-          <!-- B-lag -->
-          <script src="https://api.fotballdata.no/js.fd?type=tables&teamid=6458&lay=1" type="text/javascript"></script>
+        <div class="content">
+          <iframe
+            class="widget-frame"
+            title="B-lag tabell"
+            srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;padding:10px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial} table{width:100%;border-collapse:collapse} th,td{padding:10px;border-bottom:1px solid #e5e7eb;font-size:14px} thead th{font-size:12px;color:#6b7280;text-align:left} tbody tr:hover{background:#f9fafb}</style></head><body><script src="https://api.fotballdata.no/js.fd?type=tables&teamid=6458&lay=1" type="text/javascript"></script></body></html>'>
+          </iframe>
         </div>
       </div>
     </section>
 
     <div class="note">
-      Tips: Hvis tabellen ikke dukker opp her heller, er det fordi parameteren må være <b>teamid</b> (ikke tournid) i deres oppsett.
-      Fotballdata viser eksempler med <code>teamid</code> for tabeller. :contentReference[oaicite:2]{index=2}
+      Hvis tabellen fortsatt er blank: åpne DevTools → Console og se om scriptet fra <code>api.fotballdata.no</code> blir blokkert av en nettleser-utvidelse (adblock/privacy).
+      Widgeten skal normalt fungere med <code>type=tables&amp;teamid=...</code>. :contentReference[oaicite:1]{index=1}
     </div>
   </div>
 </body>
