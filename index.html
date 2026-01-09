@@ -7,149 +7,150 @@
 
   <style>
     :root{
-      --bg: #0b0f17;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.04);
-      --border: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.65);
-      --accent: #32d583;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 18px;
+      --bg:#0b0f17;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#d1d5db;
+      --accent:#16a34a;
+      --radius:10px;
     }
 
-    * { box-sizing: border-box; }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color: var(--text);
-      background:
-        radial-gradient(1200px 500px at 20% -10%, rgba(50,213,131,.15), transparent 60%),
-        radial-gradient(900px 500px at 80% 0%, rgba(59,130,246,.10), transparent 60%),
-        var(--bg);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:#f3f4f6;
+      color:var(--text);
     }
 
-    .wrap{ max-width: 1200px; margin: 0 auto; padding: 28px 16px 40px; }
-    header{ display:flex; gap:14px; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; margin-bottom:18px; }
-    h1{ margin:0; font-size:40px; letter-spacing:-0.02em; line-height:1.05; }
-    .sub{ margin-top:6px; color: var(--muted); font-size:14px; }
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:24px 16px 40px;
+    }
 
-    .actions{ display:flex; gap:10px; align-items:center; }
-    .btn{
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 13px;
+    header{
       display:flex;
-      align-items:center;
-      gap:8px;
-      transition: transform .08s ease, background .2s ease;
-      user-select:none;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
     }
-    .btn:hover{ background: rgba(255,255,255,.10); }
-    .btn:active{ transform: translateY(1px); }
 
-    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:14px; }
-    @media (max-width: 920px){ .grid{ grid-template-columns: 1fr; } h1{ font-size:34px; } }
+    h1{margin:0;font-size:36px}
+    .sub{color:var(--muted);font-size:14px}
+
+    .btn{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:8px 14px;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
 
     .card{
-      background: linear-gradient(180deg, var(--panel), var(--panel2));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
       overflow:hidden;
     }
+
     .card-head{
+      padding:12px 16px;
+      border-bottom:1px solid var(--border);
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      align-items:center;
+      background:#f9fafb;
     }
-    .card-title{ display:flex; gap:10px; align-items:center; font-weight:800; font-size:18px; }
+
+    .card-title{
+      font-size:18px;
+      font-weight:800;
+    }
+
     .badge{
-      font-size: 12px;
-      color: var(--muted);
-      border: 1px solid rgba(255,255,255,.14);
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.15);
+      font-size:12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:4px 10px;
+      background:#fff;
+      color:#374151;
+    }
+
+    .content{padding:12px}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:14px;
+    }
+
+    thead th{
+      text-align:left;
+      padding:10px;
+      font-size:12px;
+      color:#374151;
+      border-bottom:1px solid var(--border);
+      background:#f9fafb;
       white-space:nowrap;
     }
-    .cup{
-      width: 18px; height: 18px; display:inline-block; border-radius: 6px;
-      background: rgba(50,213,131,.18);
-      border: 1px solid rgba(50,213,131,.35);
-      box-shadow: 0 8px 30px rgba(50,213,131,.18);
+
+    tbody td{
+      padding:12px 10px;
+      border-bottom:1px solid #e5e7eb;
     }
 
-    .content{ padding: 10px 10px 14px; }
+    tbody tr:hover{background:#f9fafb}
 
-    .content table{
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-    .content thead th{
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 12px;
-      padding: 10px 10px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      text-align: left;
-      white-space: nowrap;
-    }
-    .content tbody td{
-      padding: 12px 10px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      vertical-align: top;
-    }
-    .content tbody tr:hover{ background: rgba(255,255,255,.03); }
-
-    .content tbody td:first-child{
-      width:44px;
-      color: rgba(255,255,255,.80);
-      font-variant-numeric: tabular-nums;
+    tbody tr.fagerborg{
+      background:#e6f7f1;
+      font-weight:700;
     }
 
     .pill{
+      margin-top:10px;
       display:inline-block;
       font-size:12px;
-      color: rgba(255,255,255,.75);
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.12);
-      padding: 6px 10px;
-      border-radius: 999px;
-      margin-top: 10px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#f9fafb;
+      color:#374151;
     }
 
     .loading{
-      color: rgba(255,255,255,.75);
-      padding: 10px;
-      border: 1px dashed rgba(255,255,255,.18);
-      border-radius: 14px;
-      background: rgba(0,0,0,.12);
+      padding:14px;
+      color:#6b7280;
+      border:1px dashed var(--border);
+      border-radius:8px;
     }
+
     .error{
-      color: #ffb4b4;
-      padding: 10px;
-      border: 1px solid rgba(255,180,180,.35);
-      border-radius: 14px;
-      background: rgba(255,180,180,.08);
+      padding:14px;
+      background:#fee2e2;
+      border:1px solid #fecaca;
+      border-radius:8px;
+      color:#991b1b;
     }
 
     .note{
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 12px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      padding: 10px 12px;
-      border-radius: 14px;
+      margin-top:16px;
+      font-size:12px;
+      color:#374151;
+      background:#fff;
+      border:1px solid var(--border);
+      padding:10px 12px;
+      border-radius:8px;
     }
   </style>
 </head>
@@ -161,15 +162,13 @@
         <h1>Tabeller</h1>
         <div class="sub">Seriestilling for Fagerborgs lag (2026)</div>
       </div>
-      <div class="actions">
-        <button class="btn" onclick="location.reload()">⟳ Oppdater</button>
-      </div>
+      <button class="btn" onclick="location.reload()">⟳ Oppdater</button>
     </header>
 
     <section class="grid">
       <div class="card">
         <div class="card-head">
-          <div class="card-title"><span class="cup"></span> A-Lag</div>
+          <div class="card-title">A-Lag</div>
           <div class="badge">5. divisjon (2026)</div>
         </div>
         <div class="content">
@@ -179,7 +178,7 @@
 
       <div class="card">
         <div class="card-head">
-          <div class="card-title"><span class="cup"></span> B-Lag</div>
+          <div class="card-title">B-Lag</div>
           <div class="badge">7. divisjon (2026)</div>
         </div>
         <div class="content">
@@ -192,33 +191,24 @@
   </div>
 
   <script>
-    function esc(s){
-      return String(s).replace(/[&<>"']/g, m => ({
-        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-      }[m]));
-    }
+    const esc=s=>String(s).replace(/[&<>"']/g,m=>(
+      {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]
+    ));
 
-    function renderTable(targetId, title, data){
-      const el = document.getElementById(targetId);
+    const n0=v=>(v??"0");
+    const calcDiff=g=>{
+      const m=String(g||"").match(/(\\d+)[–-](\\d+)/);
+      return m?String(+m[1]-+m[2]):"0";
+    };
 
-      if (!data || !data.rows || !data.rows.length){
-        el.className = "error";
-        el.innerHTML = `Fant ingen rader for ${esc(title)}.`;
+    function render(target,data){
+      if(!data?.rows?.length){
+        target.className="error";
+        target.textContent="Ingen data funnet.";
         return;
       }
 
-      const n0  = (v) => (v === undefined || v === null || v === "" ? "0" : String(v));
-      const txt = (v, fallback="") => (v === undefined || v === null || v === "" ? fallback : String(v));
-
-      const calcDiff = (goalsStr) => {
-        const s = String(goalsStr || "");
-        const m = s.match(/(\d+)\s*[–-]\s*(\d+)/);
-        if (!m) return "0";
-        return String(parseInt(m[1], 10) - parseInt(m[2], 10));
-      };
-
-      el.className = "";
-      el.innerHTML = `
+      target.innerHTML=`
         <table>
           <thead>
             <tr>
@@ -226,89 +216,46 @@
             </tr>
           </thead>
           <tbody>
-            ${data.rows.map(r => {
-              const pos    = txt(r.pos, "-");
-              const team   = txt(r.team, "");
-              const played = n0(r.played);
-              const wins   = n0(r.wins);
-              const draws  = n0(r.draws);
-              const losses = n0(r.losses);
-              const goals  = txt(r.goals, "0–0");
-              const diff   = txt(r.diff, calcDiff(goals));
-              const pts    = n0(r.points);
-
-              const isFagerborg = team.toLowerCase().includes("fagerborg");
-
-              return `
-                <tr ${isFagerborg ? 'style="background: rgba(50,213,131,.10);"' : ""}>
-                  <td>${esc(pos)}</td>
-                  <td>${esc(team)}</td>
-                  <td>${esc(played)}</td>
-                  <td>${esc(wins)}</td>
-                  <td>${esc(draws)}</td>
-                  <td>${esc(losses)}</td>
-                  <td>${esc(goals)}</td>
-                  <td>${esc(diff)}</td>
-                  <td><b>${esc(pts)}</b></td>
-                </tr>
-              `;
+            ${data.rows.map(r=>{
+              const fb=r.team.toLowerCase().includes("fagerborg");
+              return`
+                <tr class="${fb?"fagerborg":""}">
+                  <td>${esc(r.pos)}</td>
+                  <td>${esc(r.team)}</td>
+                  <td>${n0(r.played)}</td>
+                  <td>${n0(r.wins)}</td>
+                  <td>${n0(r.draws)}</td>
+                  <td>${n0(r.losses)}</td>
+                  <td>${esc(r.goals||"0-0")}</td>
+                  <td>${esc(r.diff||calcDiff(r.goals))}</td>
+                  <td><b>${n0(r.points)}</b></td>
+                </tr>`;
             }).join("")}
           </tbody>
         </table>
-        <div class="pill">Kilde: fotball.no (fiksId=${esc(data.fiksId)})</div>
-      `;
+        <div class="pill">Kilde: fotball.no (fiksId=${data.fiksId})</div>`;
     }
 
     async function boot(){
-      const a = document.getElementById("a-tabell");
-      const b = document.getElementById("b-tabell");
-      a.className = b.className = "loading";
-      a.textContent = b.textContent = "Laster data…";
-
       try{
-        // Fast URL (funker også om du embedder siden et annet sted)
-        const res = await fetch(
-          "https://elmoro10.github.io/Fagerborg-BK-Tabeller/data/tables.json?ts=" + Date.now(),
-          { cache: "no-store" }
+        const res=await fetch(
+          "https://elmoro10.github.io/Fagerborg-BK-Tabeller/data/tables.json?ts="+Date.now(),
+          {cache:"no-store"}
         );
-        if (!res.ok) throw new Error("HTTP " + res.status);
+        const json=await res.json();
 
-        const json = await res.json();
+        render(document.getElementById("a-tabell"),json.a);
+        render(document.getElementById("b-tabell"),json.b);
 
-        renderTable("a-tabell", "A-lag", json.a);
-        renderTable("b-tabell", "B-lag", json.b);
-
-        const meta = document.getElementById("meta");
-        
-       if (json.updatedAt) {
-         // Forventer noe ala "2026-01-08 23:45 UTC"
-         // Gjør det om til ISO: "2026-01-08T23:45:00Z"
-         const iso = json.updatedAt
-           .replace(" UTC", "")           // fjern " UTC"
-         .replace(" ", "T") + ":00Z";   // mellomrom -> T, legg til sekunder og Z
-         
-         const updated = new Date(iso);
-         
-         meta.textContent = isNaN(updated.getTime())
-           ? `🕒 Sist oppdatert: ${json.updatedAt} · oppdateres hvert 5. minutt`
-           : `🕒 Sist oppdatert: ${updated.toLocaleString("no-NO", {
-             dateStyle: "medium",
-             timeStyle: "short"
-           })} · oppdateres hvert 5. minutt`;
-       } else {
-         meta.textContent = "🕒 Sist oppdatert: ukjent";
-       }
-
-
-      } catch (e){
-        a.className = b.className = "error";
-        a.innerHTML = b.innerHTML = `Klarte ikke hente tables.json. Feil: ${esc(e.message)}`;
-        document.getElementById("meta").textContent =
-          "Sjekk at data/tables.json åpner i nettleseren din.";
+        const d=new Date(json.updatedAt+"Z");
+        document.getElementById("meta").textContent=
+          `🕒 Sist oppdatert: ${d.toLocaleString("no-NO",{dateStyle:"medium",timeStyle:"short"})} · oppdateres hvert 5. minutt`;
+      }catch(e){
+        document.getElementById("meta").textContent="Kunne ikke laste data.";
       }
     }
 
-    window.addEventListener("DOMContentLoaded", boot);
+    boot();
   </script>
 </body>
 </html>
