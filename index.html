@@ -281,7 +281,8 @@
         const meta = document.getElementById("meta");
         
         if (json.updatedAt) {
-          const updated = new Date(json.updatedAt + "Z"); // UTC → Date
+          const updated = new Date(json.updatedAt + "Z"); // UTC → lokal tid
+          
           meta.textContent = `🕒 Sist oppdatert: ${updated.toLocaleString("no-NO", {
             dateStyle: "medium",
             timeStyle: "short"
