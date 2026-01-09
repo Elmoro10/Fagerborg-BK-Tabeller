@@ -1,11 +1,255 @@
 {
-  "updatedAt": "2026-01-09 09:18 UTC",
+  "updatedAt": "2026-01-09 09:27 UTC",
   "a": {
     "fiksId": 205403,
-    "rows": []
+    "rows": [
+      {
+        "pos": "0",
+        "team": "Bækkelaget",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Fagerborg",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Furuset",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "HSIL",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Jusstudentenes",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Klemetsrud",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Korsvoll 2",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Linderud",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Majorstuen",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Oldenborg",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Oslo City",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Wam-Kam",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      }
+    ]
   },
   "b": {
     "fiksId": 205410,
-    "rows": []
+    "rows": [
+      {
+        "pos": "0",
+        "team": "Fagerborg 2",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Frisk Asker",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Furuset 2",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Jutul",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Lille Tøyen",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Monolitten Idrettslag",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Oppegård",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Sagene 2",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Sterling",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      },
+      {
+        "pos": "0",
+        "team": "Veitvet",
+        "played": "0",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "0",
+        "points": "0"
+      }
+    ]
   }
 }
