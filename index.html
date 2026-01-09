@@ -7,7 +7,6 @@
 
   <style>
     :root{
-      --bg:#0b0f17;
       --text:#111827;
       --muted:#6b7280;
       --border:#d1d5db;
@@ -23,134 +22,73 @@
       color:var(--text);
     }
 
-    .wrap{
-      max-width:1200px;
-      margin:0 auto;
-      padding:24px 16px 40px;
-    }
+    .wrap{max-width:1200px;margin:0 auto;padding:24px 16px 40px}
 
     header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:20px;
+      display:flex;justify-content:space-between;align-items:flex-end;
+      gap:12px;flex-wrap:wrap;margin-bottom:20px;
     }
 
     h1{margin:0;font-size:36px}
     .sub{color:var(--muted);font-size:14px}
 
     .btn{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:8px 14px;
-      font-weight:600;
-      cursor:pointer;
+      background:#fff;border:1px solid var(--border);border-radius:999px;
+      padding:8px 14px;font-weight:600;cursor:pointer;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     @media(max-width:900px){.grid{grid-template-columns:1fr}}
 
     .card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      overflow:hidden;
+      background:#fff;border:1px solid var(--border);
+      border-radius:var(--radius);overflow:hidden;
     }
 
     .card-head{
-      padding:12px 16px;
-      border-bottom:1px solid var(--border);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+      padding:12px 16px;border-bottom:1px solid var(--border);
+      display:flex;justify-content:space-between;align-items:center;
       background:#f9fafb;
     }
 
-    .card-title{
-      font-size:18px;
-      font-weight:800;
-    }
+    .card-title{font-size:18px;font-weight:800}
 
     .badge{
-      font-size:12px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:4px 10px;
-      background:#fff;
-      color:#374151;
+      font-size:12px;border:1px solid var(--border);border-radius:999px;
+      padding:4px 10px;background:#fff;color:#374151;
     }
 
     .content{padding:12px}
 
-    table{
-      width:100%;
-      border-collapse:collapse;
-      font-size:14px;
-    }
+    table{width:100%;border-collapse:collapse;font-size:14px}
 
     thead th{
-      text-align:left;
-      padding:10px;
-      font-size:12px;
-      color:#374151;
-      border-bottom:1px solid var(--border);
-      background:#f9fafb;
+      text-align:left;padding:10px;font-size:12px;color:#374151;
+      border-bottom:1px solid var(--border);background:#f9fafb;
       white-space:nowrap;
     }
 
-    tbody td{
-      padding:12px 10px;
-      border-bottom:1px solid #e5e7eb;
-    }
-
+    tbody td{padding:12px 10px;border-bottom:1px solid #e5e7eb}
     tbody tr:hover{background:#f9fafb}
 
-    tbody tr.fagerborg{
-      background:#e6f7f1;
-      font-weight:700;
-    }
-
     .pill{
-      margin-top:10px;
-      display:inline-block;
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:#f9fafb;
-      color:#374151;
+      margin-top:10px;display:inline-block;font-size:12px;
+      padding:6px 10px;border-radius:999px;border:1px solid var(--border);
+      background:#f9fafb;color:#374151;
     }
 
     .loading{
-      padding:14px;
-      color:#6b7280;
-      border:1px dashed var(--border);
-      border-radius:8px;
+      padding:14px;color:#6b7280;border:1px dashed var(--border);border-radius:8px;
     }
 
     .error{
-      padding:14px;
-      background:#fee2e2;
-      border:1px solid #fecaca;
-      border-radius:8px;
-      color:#991b1b;
+      padding:14px;background:#fee2e2;border:1px solid #fecaca;
+      border-radius:8px;color:#991b1b;
     }
 
     .note{
-      margin-top:16px;
-      font-size:12px;
-      color:#374151;
-      background:#fff;
-      border:1px solid var(--border);
-      padding:10px 12px;
-      border-radius:8px;
+      margin-top:16px;font-size:12px;color:#374151;background:#fff;
+      border:1px solid var(--border);padding:10px 12px;border-radius:8px;
     }
   </style>
 </head>
@@ -191,126 +129,139 @@
   </div>
 
   <script>
-  function esc(s){
-    return String(s).replace(/[&<>"']/g, m => ({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-    }[m]));
-  }
-
-  function parseUpdatedAtToLocal(updatedAtStr){
-    // Forventer: "YYYY-MM-DD HH:MM UTC"
-    // Eks: "2026-01-09 08:21 UTC"
-    const m = String(updatedAtStr || "").match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+UTC$/);
-    if (!m) return null;
-
-    const y  = Number(m[1]);
-    const mo = Number(m[2]) - 1; // 0-index
-    const d  = Number(m[3]);
-    const h  = Number(m[4]);
-    const mi = Number(m[5]);
-
-    return new Date(Date.UTC(y, mo, d, h, mi, 0));
-  }
-
-  function renderTable(targetId, title, data){
-    const el = document.getElementById(targetId);
-
-    if (!data || !data.rows || !data.rows.length){
-      el.className = "error";
-      el.innerHTML = `Fant ingen rader for ${esc(title)}.`;
-      return;
+    function esc(s){
+      return String(s).replace(/[&<>"']/g, m => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+      }[m]));
     }
 
-    const n0  = (v) => (v === undefined || v === null || v === "" ? "0" : String(v));
-    const txt = (v, fallback="") => (v === undefined || v === null || v === "" ? fallback : String(v));
+    // Robust parsing:
+    // - "2026-01-09 08:21 UTC"
+    // - "2026-01-09 08:21:33 UTC"
+    function parseUpdatedAtToDate(updatedAtStr){
+      const s = String(updatedAtStr || "").trim();
 
-    const calcDiff = (goalsStr) => {
-      const s = String(goalsStr || "");
-      const m = s.match(/(\d+)\s*[–-]\s*(\d+)/);
-      if (!m) return "0";
-      return String(parseInt(m[1], 10) - parseInt(m[2], 10));
-    };
-
-    el.className = "";
-    el.innerHTML = `
-      <table>
-        <thead>
-          <tr>
-            <th>#</th><th>Lag</th><th>K</th><th>V</th><th>U</th><th>T</th><th>Mål</th><th>Diff</th><th>P</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${data.rows.map(r => {
-            const pos    = txt(r.pos, "-");
-            const team   = txt(r.team, "");
-            const played = n0(r.played);
-            const wins   = n0(r.wins);
-            const draws  = n0(r.draws);
-            const losses = n0(r.losses);
-            const goals  = txt(r.goals, "0 - 0");
-            const diff   = txt(r.diff, calcDiff(goals));
-            const pts    = n0(r.points);
-
-            const isFagerborg = team.toLowerCase().includes("fagerborg");
-
-            return `
-              <tr ${isFagerborg ? 'style="background: rgba(50,213,131,.10);"' : ""}>
-                <td>${esc(pos)}</td>
-                <td>${esc(team)}</td>
-                <td>${esc(played)}</td>
-                <td>${esc(wins)}</td>
-                <td>${esc(draws)}</td>
-                <td>${esc(losses)}</td>
-                <td>${esc(goals)}</td>
-                <td>${esc(diff)}</td>
-                <td><b>${esc(pts)}</b></td>
-              </tr>
-            `;
-          }).join("")}
-        </tbody>
-      </table>
-      <div class="pill">Kilde: fotball.no (fiksId=${esc(data.fiksId)})</div>
-    `;
-  }
-
-  async function loadAndRender(){
-    const a = document.getElementById("a-tabell");
-    const b = document.getElementById("b-tabell");
-    const meta = document.getElementById("meta");
-
-    a.className = b.className = "loading";
-    a.textContent = b.textContent = "Laster data…";
-
-    try{
-      // Hent alltid fersk fil (cache-buster)
-      const url = "./data/tables.json?ts=" + Date.now();
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-
-      const json = await res.json();
-
-      renderTable("a-tabell", "A-lag", json.a);
-      renderTable("b-tabell", "B-lag", json.b);
-
-      const d = parseUpdatedAtToLocal(json.updatedAt);
-      if (d){
-        meta.textContent =
-          `🕒 Sist oppdatert: ${d.toLocaleString("no-NO", { dateStyle: "medium", timeStyle: "short" })} · oppdateres hvert 5. minutt`;
-      } else {
-        meta.textContent = `🕒 Sist oppdatert: ${json.updatedAt || "ukjent"} · oppdateres hvert 5. minutt`;
+      // Match med/uten sekunder
+      const m = s.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})(?::(\d{2}))?\s*UTC$/i);
+      if (m){
+        const y  = Number(m[1]);
+        const mo = Number(m[2]) - 1;
+        const d  = Number(m[3]);
+        const h  = Number(m[4]);
+        const mi = Number(m[5]);
+        const se = Number(m[6] || "0");
+        return new Date(Date.UTC(y, mo, d, h, mi, se));
       }
-    } catch (e){
-      a.className = b.className = "error";
-      a.innerHTML = b.innerHTML = `Klarte ikke hente tables.json. Feil: ${esc(e.message)}`;
-      meta.textContent = "🕒 Sist oppdatert: (feil ved lasting)";
-    }
-  }
 
-  window.addEventListener("DOMContentLoaded", () => {
-    loadAndRender();
-    // Oppdater visning automatisk (nyttig når siden er embedded i IdrettenOnline)
-    setInterval(loadAndRender, 60 * 1000); // hvert 1 minutt (Actions kjører hvert 5. min)
-  });
+      // fallback: prøv JS sin Date direkte (noen ganger funker)
+      const t = Date.parse(s);
+      if (!Number.isNaN(t)) return new Date(t);
+
+      return null;
+    }
+
+    function renderTable(targetId, title, data){
+      const el = document.getElementById(targetId);
+
+      if (!data || !data.rows || !data.rows.length){
+        el.className = "error";
+        el.innerHTML = `Fant ingen rader for ${esc(title)}.`;
+        return;
+      }
+
+      const n0  = (v) => (v === undefined || v === null || v === "" ? "0" : String(v));
+      const txt = (v, fallback="") => (v === undefined || v === null || v === "" ? fallback : String(v));
+
+      const calcDiff = (goalsStr) => {
+        const s = String(goalsStr || "");
+        const m = s.match(/(\d+)\s*[–-]\s*(\d+)/);
+        if (!m) return "0";
+        return String(parseInt(m[1], 10) - parseInt(m[2], 10));
+      };
+
+      el.className = "";
+      el.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>Lag</th><th>K</th><th>V</th><th>U</th><th>T</th><th>Mål</th><th>Diff</th><th>P</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${data.rows.map(r => {
+              const pos    = txt(r.pos, "-");
+              const team   = txt(r.team, "");
+              const played = n0(r.played);
+              const wins   = n0(r.wins);
+              const draws  = n0(r.draws);
+              const losses = n0(r.losses);
+              const goals  = txt(r.goals, "0-0");
+              const diff   = txt(r.diff, calcDiff(goals));
+              const pts    = n0(r.points);
+
+              const isFagerborg = team.toLowerCase().includes("fagerborg");
+
+              return `
+                <tr ${isFagerborg ? 'style="background:#e6f7f1;font-weight:700;"' : ""}>
+                  <td>${esc(pos)}</td>
+                  <td>${esc(team)}</td>
+                  <td>${esc(played)}</td>
+                  <td>${esc(wins)}</td>
+                  <td>${esc(draws)}</td>
+                  <td>${esc(losses)}</td>
+                  <td>${esc(goals)}</td>
+                  <td>${esc(diff)}</td>
+                  <td><b>${esc(pts)}</b></td>
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+        <div class="pill">Kilde: fotball.no (fiksId=${esc(data.fiksId)})</div>
+      `;
+    }
+
+    async function loadAndRender(){
+      const a = document.getElementById("a-tabell");
+      const b = document.getElementById("b-tabell");
+      const meta = document.getElementById("meta");
+
+      a.className = b.className = "loading";
+      a.textContent = b.textContent = "Laster data…";
+
+      try{
+        // ABSOLUTT URL + cache-buster (viktig for IdrettenOnline embed)
+        const base = "https://elmoro10.github.io/Fagerborg-BK-Tabeller";
+        const url = base + "/data/tables.json?ts=" + Date.now();
+
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+
+        const json = await res.json();
+
+        renderTable("a-tabell", "A-lag", json.a);
+        renderTable("b-tabell", "B-lag", json.b);
+
+        const d = parseUpdatedAtToDate(json.updatedAt);
+        if (d){
+          meta.textContent =
+            `🕒 Sist oppdatert: ${d.toLocaleString("no-NO", { dateStyle: "medium", timeStyle: "short" })} · oppdateres hvert 5. minutt`;
+        } else {
+          meta.textContent =
+            `🕒 Sist oppdatert: ${json.updatedAt || "ukjent"} · oppdateres hvert 5. minutt`;
+        }
+      } catch (e){
+        a.className = b.className = "error";
+        a.innerHTML = b.innerHTML = `Klarte ikke hente tables.json. Feil: ${esc(e.message)}`;
+        meta.textContent = "🕒 Sist oppdatert: (feil ved lasting)";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadAndRender();
+      // Refresh hvert 60 sekund (Actions kjører hvert 5 min – men embed caches, så vi “pinger”)
+      setInterval(loadAndRender, 60 * 1000);
+    });
   </script>
 </body>
 </html>
