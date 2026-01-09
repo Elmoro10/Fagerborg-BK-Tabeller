@@ -191,71 +191,126 @@
   </div>
 
   <script>
-    const esc=s=>String(s).replace(/[&<>"']/g,m=>(
-      {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]
-    ));
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, m => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[m]));
+  }
 
-    const n0=v=>(v??"0");
-    const calcDiff=g=>{
-      const m=String(g||"").match(/(\\d+)[–-](\\d+)/);
-      return m?String(+m[1]-+m[2]):"0";
+  function parseUpdatedAtToLocal(updatedAtStr){
+    // Forventer: "YYYY-MM-DD HH:MM UTC"
+    // Eks: "2026-01-09 08:21 UTC"
+    const m = String(updatedAtStr || "").match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+UTC$/);
+    if (!m) return null;
+
+    const y  = Number(m[1]);
+    const mo = Number(m[2]) - 1; // 0-index
+    const d  = Number(m[3]);
+    const h  = Number(m[4]);
+    const mi = Number(m[5]);
+
+    return new Date(Date.UTC(y, mo, d, h, mi, 0));
+  }
+
+  function renderTable(targetId, title, data){
+    const el = document.getElementById(targetId);
+
+    if (!data || !data.rows || !data.rows.length){
+      el.className = "error";
+      el.innerHTML = `Fant ingen rader for ${esc(title)}.`;
+      return;
+    }
+
+    const n0  = (v) => (v === undefined || v === null || v === "" ? "0" : String(v));
+    const txt = (v, fallback="") => (v === undefined || v === null || v === "" ? fallback : String(v));
+
+    const calcDiff = (goalsStr) => {
+      const s = String(goalsStr || "");
+      const m = s.match(/(\d+)\s*[–-]\s*(\d+)/);
+      if (!m) return "0";
+      return String(parseInt(m[1], 10) - parseInt(m[2], 10));
     };
 
-    function render(target,data){
-      if(!data?.rows?.length){
-        target.className="error";
-        target.textContent="Ingen data funnet.";
-        return;
+    el.className = "";
+    el.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>Lag</th><th>K</th><th>V</th><th>U</th><th>T</th><th>Mål</th><th>Diff</th><th>P</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${data.rows.map(r => {
+            const pos    = txt(r.pos, "-");
+            const team   = txt(r.team, "");
+            const played = n0(r.played);
+            const wins   = n0(r.wins);
+            const draws  = n0(r.draws);
+            const losses = n0(r.losses);
+            const goals  = txt(r.goals, "0 - 0");
+            const diff   = txt(r.diff, calcDiff(goals));
+            const pts    = n0(r.points);
+
+            const isFagerborg = team.toLowerCase().includes("fagerborg");
+
+            return `
+              <tr ${isFagerborg ? 'style="background: rgba(50,213,131,.10);"' : ""}>
+                <td>${esc(pos)}</td>
+                <td>${esc(team)}</td>
+                <td>${esc(played)}</td>
+                <td>${esc(wins)}</td>
+                <td>${esc(draws)}</td>
+                <td>${esc(losses)}</td>
+                <td>${esc(goals)}</td>
+                <td>${esc(diff)}</td>
+                <td><b>${esc(pts)}</b></td>
+              </tr>
+            `;
+          }).join("")}
+        </tbody>
+      </table>
+      <div class="pill">Kilde: fotball.no (fiksId=${esc(data.fiksId)})</div>
+    `;
+  }
+
+  async function loadAndRender(){
+    const a = document.getElementById("a-tabell");
+    const b = document.getElementById("b-tabell");
+    const meta = document.getElementById("meta");
+
+    a.className = b.className = "loading";
+    a.textContent = b.textContent = "Laster data…";
+
+    try{
+      // Hent alltid fersk fil (cache-buster)
+      const url = "./data/tables.json?ts=" + Date.now();
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+
+      const json = await res.json();
+
+      renderTable("a-tabell", "A-lag", json.a);
+      renderTable("b-tabell", "B-lag", json.b);
+
+      const d = parseUpdatedAtToLocal(json.updatedAt);
+      if (d){
+        meta.textContent =
+          `🕒 Sist oppdatert: ${d.toLocaleString("no-NO", { dateStyle: "medium", timeStyle: "short" })} · oppdateres hvert 5. minutt`;
+      } else {
+        meta.textContent = `🕒 Sist oppdatert: ${json.updatedAt || "ukjent"} · oppdateres hvert 5. minutt`;
       }
-
-      target.innerHTML=`
-        <table>
-          <thead>
-            <tr>
-              <th>#</th><th>Lag</th><th>K</th><th>V</th><th>U</th><th>T</th><th>Mål</th><th>Diff</th><th>P</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${data.rows.map(r=>{
-              const fb=r.team.toLowerCase().includes("fagerborg");
-              return`
-                <tr class="${fb?"fagerborg":""}">
-                  <td>${esc(r.pos)}</td>
-                  <td>${esc(r.team)}</td>
-                  <td>${n0(r.played)}</td>
-                  <td>${n0(r.wins)}</td>
-                  <td>${n0(r.draws)}</td>
-                  <td>${n0(r.losses)}</td>
-                  <td>${esc(r.goals||"0-0")}</td>
-                  <td>${esc(r.diff||calcDiff(r.goals))}</td>
-                  <td><b>${n0(r.points)}</b></td>
-                </tr>`;
-            }).join("")}
-          </tbody>
-        </table>
-        <div class="pill">Kilde: fotball.no (fiksId=${data.fiksId})</div>`;
+    } catch (e){
+      a.className = b.className = "error";
+      a.innerHTML = b.innerHTML = `Klarte ikke hente tables.json. Feil: ${esc(e.message)}`;
+      meta.textContent = "🕒 Sist oppdatert: (feil ved lasting)";
     }
+  }
 
-    async function boot(){
-      try{
-        const res=await fetch(
-          "https://elmoro10.github.io/Fagerborg-BK-Tabeller/data/tables.json?ts="+Date.now(),
-          {cache:"no-store"}
-        );
-        const json=await res.json();
-
-        render(document.getElementById("a-tabell"),json.a);
-        render(document.getElementById("b-tabell"),json.b);
-
-        const d=new Date(json.updatedAt+"Z");
-        document.getElementById("meta").textContent=
-          `🕒 Sist oppdatert: ${d.toLocaleString("no-NO",{dateStyle:"medium",timeStyle:"short"})} · oppdateres hvert 5. minutt`;
-      }catch(e){
-        document.getElementById("meta").textContent="Kunne ikke laste data.";
-      }
-    }
-
-    boot();
+  window.addEventListener("DOMContentLoaded", () => {
+    loadAndRender();
+    // Oppdater visning automatisk (nyttig når siden er embedded i IdrettenOnline)
+    setInterval(loadAndRender, 60 * 1000); // hvert 1 minutt (Actions kjører hvert 5. min)
+  });
   </script>
 </body>
 </html>
