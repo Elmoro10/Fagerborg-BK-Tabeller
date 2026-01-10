@@ -35,16 +35,19 @@
       padding:16px 12px 24px;
     }
 
+    /* Grid: begge tabeller side om side på stor skjerm */
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:12px;
     }
+    @media(max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+    }
 
+    /* Single-visning (team=a/b): IKKE gjør den smalere på PC */
     .grid.single{
-      grid-template-columns:1fr;
-      max-width:720px;
-      margin:0 auto;
+      grid-template-columns: 1fr;
     }
 
     .card{
@@ -53,12 +56,14 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       overflow:hidden;
+      min-width:0;
     }
 
     .card-head{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
+      gap:10px;
       padding:12px 14px;
       border-bottom:1px solid var(--line);
       background:var(--head);
@@ -67,195 +72,29 @@
     .card-title{
       font-weight:900;
       font-size:18px;
+      letter-spacing:-.01em;
     }
 
     .badge{
       font-size:12px;
       color:var(--muted);
       border:1px solid var(--line);
+      background:#fff;
       padding:6px 10px;
       border-radius:999px;
-      background:#fff;
+      white-space:nowrap;
     }
 
+    /* Scroll-container: på mobil kan man scrolle horisontalt */
     .table-wrap{
+      width:100%;
       overflow-x:auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     table{
       width:100%;
-      min-width:880px;
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-    }
-
-    thead th{
-      background:var(--head);
-      font-size:12px;
-      text-transform:uppercase;
-      color:var(--muted);
-      padding:12px;
-      border-bottom:1px solid var(--line);
-      text-align:center;
-    }
-
-    tbody td{
-      padding:14px 12px;
-      border-bottom:1px solid var(--line);
-      text-align:center;
-    }
-
-    tbody tr{ position:relative; }
-    tbody tr::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:0;
-      bottom:0;
-      width:4px;
-    }
-
-    tbody tr.up::before{ background:var(--up); }
-    tbody tr.down::before{ background:var(--down); }
-
-    .teamcell{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      text-align:left;
-    }
-
-    .logo{
-      width:22px;
-      height:22px;
-      border-radius:50%;
-      border:1px solid var(--line);
-      background:#fff;
-      object-fit:contain;
-    }
-
-    .teamname{ font-weight:800; }
-
-    .meta{
-      margin-top:12px;
-      padding:10px;
-      border:1px solid var(--line);
-      border-radius:12px;
-      font-size:12px;
-      color:var(--muted);
-      background:#fff;
-    }
-
-    .loading{ padding:14px; color:var(--muted); }
-  </style>
-</head>
-
-<body>
-<div class="wrap">
-
-<section class="grid" id="grid">
-
-  <div class="card" id="card-a">
-    <div class="card-head">
-      <div class="card-title">A-Laget</div>
-      <div class="badge">5. divisjon (2026)</div>
-    </div>
-    <div id="a-tabell" class="loading">Laster…</div>
-  </div>
-
-  <div class="card" id="card-b">
-    <div class="card-head">
-      <div class="card-title">B-Laget</div>
-      <div class="badge">7. divisjon (2026)</div>
-    </div>
-    <div id="b-tabell" class="loading">Laster…</div>
-  </div>
-
-</section>
-
-<div class="meta" id="meta">—</div>
-
-</div>
-
-<script>
-function getTeamFilter(){
-  const t = new URLSearchParams(location.search).get("team");
-  return (t === "a" || t === "b") ? t : "all";
-}
-
-function applyTeamFilterUI(){
-  const filter = getTeamFilter();
-  const grid = document.getElementById("grid");
-  const cardA = document.getElementById("card-a");
-  const cardB = document.getElementById("card-b");
-  const meta = document.getElementById("meta");
-
-  if (filter === "a"){
-    cardB.style.display = "none";
-    grid.classList.add("single");
-    meta.style.display = "none";
-  }
-  else if (filter === "b"){
-    cardA.style.display = "none";
-    grid.classList.add("single");
-    meta.style.display = "none";
-  }
-}
-
-function renderTable(elId, rows){
-  const el = document.getElementById(elId);
-  if (!rows || !rows.length){
-    el.innerHTML = "Ingen data";
-    return;
-  }
-
-  el.innerHTML = `
-    <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>POS</th><th>CLUB</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF-GA</th><th>DIFF</th><th>PTS</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${rows.map((r,i)=>`
-          <tr class="${i<2?'up':''} ${i>=rows.length-2?'down':''}">
-            <td>${i+1}</td>
-            <td>
-              <div class="teamcell">
-                <img class="logo" src="${r.logoUrl||''}">
-                <div class="teamname">${r.team}</div>
-              </div>
-            </td>
-            <td>${r.played}</td>
-            <td>${r.wins}</td>
-            <td>${r.draws}</td>
-            <td>${r.losses}</td>
-            <td>${r.goals}</td>
-            <td>${r.diff}</td>
-            <td><b>${r.points}</b></td>
-          </tr>
-        `).join("")}
-      </tbody>
-    </table>
-    </div>
-  `;
-}
-
-async function load(){
-  applyTeamFilterUI();
-  const res = await fetch("./data/tables.json?ts="+Date.now());
-  const j = await res.json();
-
-  renderTable("a-tabell", j.a.rows);
-  renderTable("b-tabell", j.b.rows);
-
-  document.getElementById("meta").textContent =
-    "Sist oppdatert: " + j.updatedAt;
-}
-
-load();
-</script>
-</body>
-</html>
+      /* På PC skal den få plass, me*
