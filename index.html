@@ -15,10 +15,14 @@
       --shadow: 0 12px 30px rgba(15,23,42,.08);
       --radius:16px;
 
-      --w:#22c55e; /* win */
-      --d:#f59e0b; /* draw */
-      --l:#ef4444; /* loss */
-      --x:#cbd5e1; /* empty */
+      --win:#22c55e;
+      --draw:#f59e0b;
+      --loss:#ef4444;
+      --empty:#cbd5e1;
+
+      --promote:#16a34a;  /* topp 2 */
+      --relegate:#ef4444; /* bunn 2 */
+      --neutral:#e2e8f0;
     }
 
     *{box-sizing:border-box}
@@ -32,7 +36,7 @@
     .wrap{
       max-width: 1220px;
       margin: 0 auto;
-      padding: 26px 16px 44px;
+      padding: 22px 14px 38px;
     }
 
     header{
@@ -41,10 +45,10 @@
       justify-content:space-between;
       gap:12px;
       flex-wrap:wrap;
-      margin-bottom:18px;
+      margin-bottom:14px;
     }
 
-    h1{margin:0;font-size:44px;letter-spacing:-0.03em;line-height:1}
+    h1{margin:0;font-size:42px;letter-spacing:-0.03em;line-height:1}
     .sub{margin-top:8px;color:var(--muted);font-size:14px}
 
     .btn{
@@ -61,11 +65,11 @@
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:18px;
-      margin-top:16px;
+      margin-top:14px;
     }
     @media (max-width: 980px){
       .grid{grid-template-columns:1fr}
-      h1{font-size:38px}
+      h1{font-size:36px}
     }
 
     .card{
@@ -86,9 +90,6 @@
     }
 
     .card-title{
-      display:flex;
-      align-items:center;
-      gap:10px;
       font-weight:900;
       font-size:20px;
     }
@@ -105,17 +106,23 @@
 
     .content{ padding: 10px 12px 14px; }
 
+    /* viktig for mobil + idrettenonline iframe */
+    .table-wrap{
+      width:100%;
+      overflow-x:auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 12px;
+    }
+
     table{
       width:100%;
+      min-width: 760px; /* gjør at det ikke knuser på smale visninger */
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
     }
 
     thead th{
-      position: sticky;
-      top: 0;
-      z-index: 1;
       text-transform: uppercase;
       letter-spacing: .08em;
       font-size: 11px;
@@ -130,93 +137,64 @@
       padding: 14px 12px;
       border-bottom:1px solid #eef2f7;
       vertical-align:middle;
-    }
-
-    tbody tr{
       background:#fff;
     }
 
-    tbody tr:hover{
-      background:#fafafa;
-    }
+    tbody tr:hover td{ background:#fafafa; }
 
     .pos{
       width:56px;
-      font-weight:800;
-      color:#0f172a;
+      font-weight:900;
       position:relative;
       padding-left:18px;
     }
-
     .pos::before{
       content:"";
       position:absolute;
-      left:0;
-      top:0;
-      bottom:0;
+      left:0; top:0; bottom:0;
       width:4px;
       border-radius:2px;
-      background:#e2e8f0;
+      background: var(--neutral);
     }
+    tr.promoted .pos::before{ background: var(--promote); }
+    tr.relegated .pos::before{ background: var(--relegate); }
 
-    /* “PL-ish”: farge på stripe kan du endre senere basert på pos */
-    tr.fagerborg .pos::before{ background:#16a34a; }
-    tr.fagerborg{
-      background: #ecfdf5;
-    }
+    tr.fagerborg td{ background:#ecfdf5; }
+    tr.fagerborg:hover td{ background:#e6fbf2; }
 
     .club{
-      font-weight:800;
-    }
-
-    .num{
-      font-variant-numeric: tabular-nums;
-      text-align:center;
-      width:54px;
-    }
-
-    .points{
-      width:70px;
-      text-align:center;
       font-weight:900;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .goals{ width:84px; text-align:center; font-variant-numeric: tabular-nums; color:#334155; }
-    .diff{ width:70px; text-align:center; font-variant-numeric: tabular-nums; color:#334155; }
-
-    .form{
-      width:140px;
-      text-align:right;
-    }
-
-    .dots{
-      display:inline-flex;
-      gap:6px;
+      display:flex;
       align-items:center;
-      justify-content:flex-end;
+      gap:10px;
+      min-width: 220px;
     }
 
+    .crest{
+      width:22px; height:22px;
+      border-radius:6px;
+      object-fit:contain;
+      background:#fff;
+      border:1px solid rgba(15,23,42,.08);
+      flex: 0 0 auto;
+    }
+
+    .num{ text-align:center; width:54px; font-variant-numeric: tabular-nums; }
+    .points{ width:78px; text-align:center; font-weight:950; font-variant-numeric: tabular-nums; }
+    .goals{ width:90px; text-align:center; font-variant-numeric: tabular-nums; color:#334155; }
+    .diff{ width:70px; text-align:center; font-variant-numeric: tabular-nums; color:#334155; }
+    .form{ width:150px; text-align:right; }
+
+    .dots{ display:inline-flex; gap:6px; align-items:center; justify-content:flex-end; }
     .dot{
       width:10px;height:10px;border-radius:999px;
-      background: var(--x);
+      background: var(--empty);
       box-shadow: inset 0 0 0 1px rgba(15,23,42,.08);
     }
-    .dot.w{ background: var(--w); }
-    .dot.d{ background: var(--d); }
-    .dot.l{ background: var(--l); }
-    .dot.x{ background: var(--x); }
-
-    .pill{
-      margin-top: 10px;
-      display:inline-block;
-      font-size:12px;
-      color:#334155;
-      border:1px solid var(--border);
-      background:#fff;
-      border-radius:999px;
-      padding:6px 10px;
-    }
+    .dot.w{ background: var(--win); }
+    .dot.d{ background: var(--draw); }
+    .dot.l{ background: var(--loss); }
+    .dot.x{ background: var(--empty); }
 
     .note{
       margin-top:16px;
@@ -244,6 +222,12 @@
       background:#fff1f2;
       color:#991b1b;
     }
+
+    /* Mobil: skjul “goals+diff” for å få det pent */
+    @media (max-width: 520px){
+      table{ min-width: 540px; }
+      .hide-mobile{ display:none; }
+    }
   </style>
 </head>
 
@@ -258,9 +242,9 @@
     </header>
 
     <section class="grid">
-      <div class="card">
+      <div class="card" id="card-a">
         <div class="card-head">
-          <div class="card-title">A-Lag</div>
+          <div class="card-title">A-Laget</div>
           <div class="badge">5. divisjon (2026)</div>
         </div>
         <div class="content">
@@ -268,9 +252,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id="card-b">
         <div class="card-head">
-          <div class="card-title">B-Lag</div>
+          <div class="card-title">B-Laget</div>
           <div class="badge">7. divisjon (2026)</div>
         </div>
         <div class="content">
@@ -290,7 +274,6 @@
     }
 
     function parseUpdatedAtToLocal(updatedAtStr){
-      // "YYYY-MM-DD HH:MM UTC"
       const m = String(updatedAtStr || "").match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+UTC$/);
       if (!m) return null;
       const y  = Number(m[1]);
@@ -303,9 +286,7 @@
 
     function dotsHTML(form){
       const arr = Array.isArray(form) ? form.slice(0,5) : [];
-      // sørg for 5 prikker alltid
       while(arr.length < 5) arr.push("X");
-
       return `<span class="dots">${
         arr.map(x => {
           const v = String(x || "X").toUpperCase();
@@ -313,6 +294,11 @@
           return `<span class="dot ${cls}" title="${esc(v)}"></span>`;
         }).join("")
       }</span>`;
+    }
+
+    function toIntPos(pos){
+      const n = parseInt(String(pos || "").replace(/[^\d]/g,""), 10);
+      return Number.isFinite(n) ? n : null;
     }
 
     function renderTable(targetId, data){
@@ -324,46 +310,71 @@
         return;
       }
 
+      const rows = data.rows;
+      const n = rows.length;
+
       el.className = "";
       el.innerHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th style="width:56px;">Pos</th>
-              <th>Club</th>
-              <th class="num">P</th>
-              <th class="num">W</th>
-              <th class="num">D</th>
-              <th class="num">L</th>
-              <th class="goals">GF-GA</th>
-              <th class="diff">Diff</th>
-              <th class="points">Points</th>
-              <th class="form">Form</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${data.rows.map(r => {
-              const team = String(r.team || "");
-              const isF = team.toLowerCase().includes("fagerborg");
-              return `
-                <tr class="${isF ? "fagerborg" : ""}">
-                  <td class="pos">${esc(r.pos)}</td>
-                  <td class="club">${esc(r.team)}</td>
-                  <td class="num">${esc(r.played)}</td>
-                  <td class="num">${esc(r.wins)}</td>
-                  <td class="num">${esc(r.draws)}</td>
-                  <td class="num">${esc(r.losses)}</td>
-                  <td class="goals">${esc(r.goals)}</td>
-                  <td class="diff">${esc(r.diff)}</td>
-                  <td class="points">${esc(r.points)}</td>
-                  <td class="form">${dotsHTML(r.form)}</td>
-                </tr>
-              `;
-            }).join("")}
-          </tbody>
-        </table>
-        <div class="pill">Kilde: fotball.no (fiksId=${esc(data.fiksId)})</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:56px;">Pos</th>
+                <th>Club</th>
+                <th class="num">P</th>
+                <th class="num">W</th>
+                <th class="num">D</th>
+                <th class="num">L</th>
+                <th class="goals hide-mobile">GF-GA</th>
+                <th class="diff hide-mobile">Diff</th>
+                <th class="points">Points</th>
+                <th class="form">Form</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows.map((r, idx) => {
+                const team = String(r.team || "");
+                const isF = team.toLowerCase().includes("fagerborg");
+                const posInt = toIntPos(r.pos);
+                const promote = posInt !== null && posInt <= 2;
+                const relegate = posInt !== null && posInt >= (n - 1);
+
+                const crest = r.logoUrl ? `<img class="crest" src="${esc(r.logoUrl)}" alt="" loading="lazy" />` : "";
+
+                return `
+                  <tr class="${isF ? "fagerborg" : ""} ${promote ? "promoted" : ""} ${relegate ? "relegated" : ""}">
+                    <td class="pos">${esc(r.pos)}</td>
+                    <td class="club">${crest}<span>${esc(r.team)}</span></td>
+                    <td class="num">${esc(r.played)}</td>
+                    <td class="num">${esc(r.wins)}</td>
+                    <td class="num">${esc(r.draws)}</td>
+                    <td class="num">${esc(r.losses)}</td>
+                    <td class="goals hide-mobile">${esc(r.goals)}</td>
+                    <td class="diff hide-mobile">${esc(r.diff)}</td>
+                    <td class="points">${esc(r.points)}</td>
+                    <td class="form">${dotsHTML(r.form)}</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
       `;
+    }
+
+    function applySingleTeamMode(){
+      const params = new URLSearchParams(location.search);
+      const team = (params.get("team") || "").toLowerCase(); // "a" eller "b"
+      const cardA = document.getElementById("card-a");
+      const cardB = document.getElementById("card-b");
+
+      if (team === "a"){
+        cardB.style.display = "none";
+        document.querySelector("h1").textContent = "A-Laget";
+      } else if (team === "b"){
+        cardA.style.display = "none";
+        document.querySelector("h1").textContent = "B-Laget";
+      }
     }
 
     async function loadAndRender(){
@@ -383,13 +394,9 @@
         renderTable("b-tabell", json.b);
 
         const d = parseUpdatedAtToLocal(json.updatedAt);
-        if (d){
-          meta.textContent =
-            `🕒 Sist oppdatert: ${d.toLocaleString("no-NO", { dateStyle:"medium", timeStyle:"short" })} · Actions prøver hvert 5. min · siden refresher hvert 60s`;
-        } else {
-          meta.textContent =
-            `🕒 Sist oppdatert: ${json.updatedAt || "ukjent"} · Actions prøver hvert 5. min · siden refresher hvert 60s`;
-        }
+        meta.textContent = d
+          ? `🕒 Sist oppdatert: ${d.toLocaleString("no-NO", { dateStyle:"medium", timeStyle:"short" })}`
+          : `🕒 Sist oppdatert: ${json.updatedAt || "ukjent"}`;
       } catch (e){
         aEl.className = bEl.className = "error";
         aEl.innerHTML = bEl.innerHTML = `Klarte ikke hente tables.json. Feil: ${esc(e.message)}`;
@@ -398,8 +405,9 @@
     }
 
     window.addEventListener("DOMContentLoaded", () => {
+      applySingleTeamMode();
       loadAndRender();
-      setInterval(loadAndRender, 60 * 1000); // viktig for IdrettenOnline iframe-cache
+      setInterval(loadAndRender, 60 * 1000);
     });
   </script>
 </body>
