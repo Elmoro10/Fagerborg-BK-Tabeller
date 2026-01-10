@@ -35,7 +35,7 @@
       padding:16px 12px 24px;
     }
 
-    /* Fjernet stor header/oppdater-knapp som du ba om */
+    /* Fjernet stor header/oppdater-knapp */
     header{ display:none; }
 
     .grid{
@@ -82,7 +82,6 @@
       white-space:nowrap;
     }
 
-    /* Mobilvennlig: gi tabellen en “scroll-container” */
     .table-wrap{
       width:100%;
       overflow-x:auto;
@@ -94,7 +93,7 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      min-width:680px; /* gjør at den scroller på mobil i stedet for å knekke layout */
+      min-width:820px; /* gir horisontal scroll på mobil */
     }
 
     thead th{
@@ -124,9 +123,7 @@
     }
 
     /* PL-ish left bar */
-    tbody tr{
-      position:relative;
-    }
+    tbody tr{ position:relative; }
     tbody tr::before{
       content:"";
       position:absolute;
@@ -139,13 +136,13 @@
     tbody tr.up::before{ background: var(--up); }
     tbody tr.down::before{ background: var(--down); }
 
-    /* Logo + navn */
     .teamcell{
       display:flex;
       align-items:center;
       gap:10px;
       min-width:240px;
     }
+
     .logo{
       width:22px;
       height:22px;
@@ -164,7 +161,6 @@
       line-height:1.1;
     }
 
-    /* Tallkolonner */
     .num{
       font-variant-numeric: tabular-nums;
       text-align:center;
@@ -178,6 +174,25 @@
     .points{
       font-weight:900;
     }
+
+    /* FORM dots */
+    .form{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      min-width:120px;
+    }
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:#d1d5db; /* default grå */
+      box-shadow: inset 0 0 0 1px rgba(15,23,42,.08);
+      flex:0 0 auto;
+    }
+    .dot.w{ background:#16a34a; }
+    .dot.d{ background:#9ca3af; }
+    .dot.l{ background:#dc2626; }
 
     .loading, .error{
       padding:14px;
@@ -251,11 +266,7 @@
     }
 
     function sortByPos(rows){
-      return [...rows].sort((a,b) => {
-        const pa = Number(a.pos ?? 0);
-        const pb = Number(b.pos ?? 0);
-        return pa - pb;
-      });
+      return [...rows].sort((a,b) => Number(a.pos ?? 0) - Number(b.pos ?? 0));
     }
 
     function calcDiff(goalsStr){
@@ -266,13 +277,27 @@
     }
 
     function logoHTML(row){
-      // NB: For logoer må scraperen legge inn row.logo (URL).
-      // Browser kan normalt ikke scrape fotball.no pga CORS.
-      const url = row.logo;
+      const url = row.logoUrl; // <-- riktig felt
       if (!url){
         return `<span class="logo fallback" aria-hidden="true"></span>`;
       }
       return `<img class="logo" src="${esc(url)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo fallback'}))">`;
+    }
+
+    function formHTML(row){
+      // Forventer W/D/L i row.form, men scraperen fyller ikke dette ennå.
+      // Vi viser 5 grå prikker hvis form mangler, så UI matcher PL uansett.
+      const arr = Array.isArray(row.form) ? row.form.slice(0,5) : [];
+      const filled = arr.map(x => String(x).toUpperCase());
+      while (filled.length < 5) filled.push(""); // grå
+      return `
+        <div class="form" aria-label="Form">
+          ${filled.map(v => {
+            const cls = v === "W" ? "w" : v === "L" ? "l" : v === "D" ? "d" : "";
+            return `<span class="dot ${cls}" aria-hidden="true"></span>`;
+          }).join("")}
+        </div>
+      `;
     }
 
     function renderTable(targetId, data){
@@ -292,15 +317,16 @@
           <table>
             <thead>
               <tr>
-                <th class="pos">Pos</th>
-                <th>Club</th>
+                <th class="pos">POS</th>
+                <th>CLUB</th>
                 <th class="num">P</th>
                 <th class="num">W</th>
                 <th class="num">D</th>
                 <th class="num">L</th>
                 <th class="num">GF–GA</th>
-                <th class="num">Diff</th>
-                <th class="num points">Pts</th>
+                <th class="num">DIFF</th>
+                <th class="num points">POINTS</th>
+                <th class="num">FORM</th>
               </tr>
             </thead>
             <tbody>
@@ -315,7 +341,7 @@
                 const diff = (r.diff ?? "").toString().trim() !== "" ? String(r.diff) : calcDiff(goals);
                 const pts = String(r.points ?? "0");
 
-                // KUN pos styrer farge (ikke poeng)
+                // Kun posisjon styrer farge:
                 // 1-2 grønn, to nederste rød
                 const isUp = idx === 0 || idx === 1;
                 const isDown = idx >= rows.length - 2;
@@ -338,6 +364,7 @@
                     <td class="num">${esc(goals)}</td>
                     <td class="num">${esc(diff)}</td>
                     <td class="num points">${esc(pts)}</td>
+                    <td class="num">${formHTML(r)}</td>
                   </tr>
                 `;
               }).join("")}
@@ -364,11 +391,9 @@
         renderTable("b-tabell", json.b);
 
         const d = parseUpdatedAtUTC(json.updatedAt);
-        if (d){
-          meta.textContent = "🕒 Sist oppdatert: " + d.toLocaleString("no-NO", { dateStyle:"medium", timeStyle:"short" });
-        } else {
-          meta.textContent = "🕒 Sist oppdatert: " + (json.updatedAt || "ukjent");
-        }
+        meta.textContent = "🕒 Sist oppdatert: " + (d
+          ? d.toLocaleString("no-NO", { dateStyle:"medium", timeStyle:"short" })
+          : (json.updatedAt || "ukjent"));
       } catch (e){
         aEl.className = bEl.className = "error";
         aEl.innerHTML = bEl.innerHTML = "Feil ved lasting av tables.json: " + esc(e.message);
@@ -378,7 +403,6 @@
 
     window.addEventListener("DOMContentLoaded", () => {
       loadAndRender();
-      // IdrettenOnline kan cache iframes – derfor refresher vi data jevnlig på klienten.
       setInterval(loadAndRender, 60 * 1000);
     });
   </script>
