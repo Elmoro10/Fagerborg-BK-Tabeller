@@ -46,6 +46,13 @@
       .grid{ grid-template-columns: 1fr; }
     }
 
+    /* Når vi viser bare én tabell */
+    .grid.single{
+      grid-template-columns: 1fr;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
     .card{
       background:var(--card);
       border:1px solid var(--line);
@@ -224,8 +231,8 @@
 
 <body>
   <div class="wrap">
-    <section class="grid">
-      <div class="card">
+    <section class="grid" id="grid">
+      <div class="card" id="card-a">
         <div class="card-head">
           <div class="card-title">A-Laget</div>
           <div class="badge">5. divisjon (2026)</div>
@@ -233,7 +240,7 @@
         <div id="a-tabell" class="loading">Laster…</div>
       </div>
 
-      <div class="card">
+      <div class="card" id="card-b">
         <div class="card-head">
           <div class="card-title">B-Laget</div>
           <div class="badge">7. divisjon (2026)</div>
@@ -262,8 +269,7 @@
     }
 
     function normGoals(goalsStr){
-      // "0 - 0" / "0–0" / "0-0" -> "0-0"
-      const s = String(goalsStr || "").trim().replace("–","-");
+      const s = String(goalsStr || "").trim().replace("−","-").replace("–","-");
       const m = s.match(/(\d+)\s*-\s*(\d+)/);
       if (!m) return "0-0";
       return `${m[1]}-${m[2]}`;
@@ -304,10 +310,36 @@
     }
 
     function sortRows(rows){
-      // Hvis alle pos==0, behold rekkefølgen fra JSON (fotball.no kan gi “0” før sesongstart).
-      // Hvis pos finnes, sorter på pos.
       if (allPosAreZero(rows)) return [...rows];
       return [...rows].sort((a,b) => Number(a.pos ?? 0) - Number(b.pos ?? 0));
+    }
+
+    function getTeamFilter(){
+      const params = new URLSearchParams(location.search);
+      const t = (params.get("team") || "").trim().toLowerCase();
+      if (t === "a" || t === "b") return t;
+      return "all";
+    }
+
+    function applyTeamFilterUI(){
+      const filter = getTeamFilter();
+      const grid = document.getElementById("grid");
+      const cardA = document.getElementById("card-a");
+      const cardB = document.getElementById("card-b");
+
+      if (filter === "a"){
+        cardB.style.display = "none";
+        cardA.style.display = "";
+        grid.classList.add("single");
+      } else if (filter === "b"){
+        cardA.style.display = "none";
+        cardB.style.display = "";
+        grid.classList.add("single");
+      } else {
+        cardA.style.display = "";
+        cardB.style.display = "";
+        grid.classList.remove("single");
+      }
     }
 
     function renderTable(targetId, data){
@@ -315,12 +347,12 @@
 
       if (!data || !Array.isArray(data.rows) || data.rows.length === 0){
         el.className = "error";
-        el.innerHTML = "Ingen tabellrader funnet (rows er tom).";
+        el.innerHTML = "Ingen tabellrader funnet.";
         return;
       }
 
       const rows = sortRows(data.rows);
-      const syntheticPos = allPosAreZero(rows); // true før sesongstart
+      const syntheticPos = allPosAreZero(rows);
 
       el.className = "";
       el.innerHTML = `
@@ -352,8 +384,6 @@
                 const diff = (r.diff ?? "").toString().trim() !== "" ? String(r.diff) : calcDiff(goals);
                 const pts = String(r.points ?? "0");
 
-                // Kun posisjon styrer stripe:
-                // 1-2 grønn, 2 nederste rød
                 const isUp = idx === 0 || idx === 1;
                 const isDown = idx >= rows.length - 2;
                 const cls = `${isUp ? "up" : ""} ${isDown ? "down" : ""}`.trim();
@@ -412,6 +442,7 @@
     }
 
     window.addEventListener("DOMContentLoaded", () => {
+      applyTeamFilterUI();
       loadAndRender();
       setInterval(loadAndRender, 60 * 1000);
     });
