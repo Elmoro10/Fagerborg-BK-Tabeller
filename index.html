@@ -35,7 +35,6 @@
       padding:16px 12px 24px;
     }
 
-    /* Fjernet stor header/oppdater-knapp */
     header{ display:none; }
 
     .grid{
@@ -93,7 +92,7 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      min-width:820px; /* gir horisontal scroll på mobil */
+      min-width:880px;
     }
 
     thead th{
@@ -140,7 +139,7 @@
       display:flex;
       align-items:center;
       gap:10px;
-      min-width:240px;
+      min-width:260px;
     }
 
     .logo{
@@ -186,7 +185,7 @@
       width:10px;
       height:10px;
       border-radius:999px;
-      background:#d1d5db; /* default grå */
+      background:#d1d5db;
       box-shadow: inset 0 0 0 1px rgba(15,23,42,.08);
       flex:0 0 auto;
     }
@@ -254,42 +253,42 @@
     }
 
     function parseUpdatedAtUTC(s){
-      // "YYYY-MM-DD HH:MM UTC"
       const m = String(s || "").match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+UTC$/);
       if (!m) return null;
-      const y = Number(m[1]);
-      const mo = Number(m[2]) - 1;
-      const d = Number(m[3]);
-      const h = Number(m[4]);
-      const mi = Number(m[5]);
-      return new Date(Date.UTC(y, mo, d, h, mi, 0));
+      return new Date(Date.UTC(
+        Number(m[1]), Number(m[2]) - 1, Number(m[3]),
+        Number(m[4]), Number(m[5]), 0
+      ));
     }
 
-    function sortByPos(rows){
-      return [...rows].sort((a,b) => Number(a.pos ?? 0) - Number(b.pos ?? 0));
+    function normGoals(goalsStr){
+      // "0 - 0" / "0–0" / "0-0" -> "0-0"
+      const s = String(goalsStr || "").trim().replace("–","-");
+      const m = s.match(/(\d+)\s*-\s*(\d+)/);
+      if (!m) return "0-0";
+      return `${m[1]}-${m[2]}`;
     }
 
     function calcDiff(goalsStr){
-      const s = String(goalsStr || "");
-      const m = s.match(/(\d+)\s*[–-]\s*(\d+)/);
+      const s = normGoals(goalsStr);
+      const m = s.match(/(\d+)-(\d+)/);
       if (!m) return "0";
-      return String(parseInt(m[1], 10) - parseInt(m[2], 10));
+      return String(parseInt(m[1],10) - parseInt(m[2],10));
     }
 
     function logoHTML(row){
-      const url = row.logoUrl; // <-- riktig felt
+      const url = row.logoUrl;
       if (!url){
         return `<span class="logo fallback" aria-hidden="true"></span>`;
       }
-      return `<img class="logo" src="${esc(url)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo fallback'}))">`;
+      return `<img class="logo" src="${esc(url)}" alt="" loading="lazy"
+        onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo fallback'}))">`;
     }
 
     function formHTML(row){
-      // Forventer W/D/L i row.form, men scraperen fyller ikke dette ennå.
-      // Vi viser 5 grå prikker hvis form mangler, så UI matcher PL uansett.
       const arr = Array.isArray(row.form) ? row.form.slice(0,5) : [];
       const filled = arr.map(x => String(x).toUpperCase());
-      while (filled.length < 5) filled.push(""); // grå
+      while (filled.length < 5) filled.push("");
       return `
         <div class="form" aria-label="Form">
           ${filled.map(v => {
@@ -298,6 +297,17 @@
           }).join("")}
         </div>
       `;
+    }
+
+    function allPosAreZero(rows){
+      return rows.every(r => Number(String(r.pos ?? "0").trim()) === 0);
+    }
+
+    function sortRows(rows){
+      // Hvis alle pos==0, behold rekkefølgen fra JSON (fotball.no kan gi “0” før sesongstart).
+      // Hvis pos finnes, sorter på pos.
+      if (allPosAreZero(rows)) return [...rows];
+      return [...rows].sort((a,b) => Number(a.pos ?? 0) - Number(b.pos ?? 0));
     }
 
     function renderTable(targetId, data){
@@ -309,7 +319,8 @@
         return;
       }
 
-      const rows = sortByPos(data.rows);
+      const rows = sortRows(data.rows);
+      const syntheticPos = allPosAreZero(rows); // true før sesongstart
 
       el.className = "";
       el.innerHTML = `
@@ -331,26 +342,25 @@
             </thead>
             <tbody>
               ${rows.map((r, idx) => {
-                const pos = String(r.pos ?? "");
+                const shownPos = syntheticPos ? String(idx + 1) : String(r.pos ?? "");
                 const team = String(r.team ?? "");
                 const p = String(r.played ?? "0");
                 const w = String(r.wins ?? "0");
                 const d = String(r.draws ?? "0");
                 const l = String(r.losses ?? "0");
-                const goals = String(r.goals ?? "0-0");
+                const goals = normGoals(r.goals ?? "0-0");
                 const diff = (r.diff ?? "").toString().trim() !== "" ? String(r.diff) : calcDiff(goals);
                 const pts = String(r.points ?? "0");
 
-                // Kun posisjon styrer farge:
-                // 1-2 grønn, to nederste rød
+                // Kun posisjon styrer stripe:
+                // 1-2 grønn, 2 nederste rød
                 const isUp = idx === 0 || idx === 1;
                 const isDown = idx >= rows.length - 2;
-
                 const cls = `${isUp ? "up" : ""} ${isDown ? "down" : ""}`.trim();
 
                 return `
                   <tr class="${cls}">
-                    <td class="pos">${esc(pos)}</td>
+                    <td class="pos">${esc(shownPos)}</td>
                     <td>
                       <div class="teamcell">
                         ${logoHTML(r)}
