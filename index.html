@@ -251,24 +251,20 @@
 
     /* ============================================================
        ✅ FRONT / COMPACT MODE (view=front)
-       Viser kun: POS | CLUB | K | P
+       Viser: POS | CLUB | K | +/- | P
        Ingen horisontal scroll.
        ============================================================ */
     body.front .wrap{ max-width: 680px; }
-
     body.front .table-wrap{ overflow-x: hidden; }
-
     body.front table{
       min-width: 0 !important;
       table-layout: fixed;
     }
 
-    /* Skjul alt unntatt K og P */
     body.front th.hide-front, body.front td.hide-front, body.front col.hide-front{
       display:none !important;
     }
 
-    /* Smalere kolonner i front */
     body.front{
       --clubw: 260px;
       --numw: 58px;
@@ -276,7 +272,6 @@
       --minTable: 0px;
     }
 
-    /* I front: skjul legend (valgfritt) */
     body.front .legend-row{ display:none; }
   </style>
 </head>
@@ -409,12 +404,17 @@
               <col style="width:var(--posw)">
               <col style="width:var(--clubw)">
               <col style="width:var(--numw)"><!-- K -->
+
               <col class="hide-front" style="width:var(--numw)"><!-- S -->
               <col class="hide-front" style="width:var(--numw)"><!-- U -->
               <col class="hide-front" style="width:var(--numw)"><!-- T -->
+
               <col class="hide-front col-mf" style="width:var(--numw)"><!-- MF -->
               <col class="hide-front col-mm" style="width:var(--numw)"><!-- MM -->
-              <col class="hide-front" style="width:var(--numw)"><!-- +/- -->
+
+              <!-- ✅ DIFF skal vises i front, så IKKE hide-front her -->
+              <col style="width:var(--numw)"><!-- +/- -->
+
               <col style="width:var(--numw)"><!-- P -->
               <col class="hide-front" style="width:var(--formw)"><!-- FORM -->
             </colgroup>
@@ -424,12 +424,17 @@
                 <th class="c-pos">POS</th>
                 <th class="c-club">CLUB</th>
                 <th class="c-num">K</th>
+
                 <th class="c-num hide-front">S</th>
                 <th class="c-num hide-front">U</th>
                 <th class="c-num hide-front">T</th>
+
                 <th class="c-num hide-front col-mf">MF</th>
                 <th class="c-num hide-front col-mm">MM</th>
-                <th class="c-num hide-front">+/-</th>
+
+                <!-- ✅ DIFF skal vises i front -->
+                <th class="c-num">+/-</th>
+
                 <th class="c-num">P</th>
                 <th class="c-form hide-front">FORM</th>
               </tr>
@@ -444,8 +449,7 @@
                 const S = String(r.wins ?? "0");
                 const U = String(r.draws ?? "0");
                 const T = String(r.losses ?? "0");
-                const MF = String(g.mf);
-                const MM = String(g.mm);
+
                 const DIFF = fmtDiff(r.diff ?? (g.mf - g.mm));
                 const P = String(r.points ?? "0");
 
@@ -470,12 +474,17 @@
                     </td>
 
                     <td class="c-num">${esc(K)}</td>
+
                     <td class="c-num hide-front">${esc(S)}</td>
                     <td class="c-num hide-front">${esc(U)}</td>
                     <td class="c-num hide-front">${esc(T)}</td>
-                    <td class="c-num hide-front col-mf">${esc(MF)}</td>
-                    <td class="c-num hide-front col-mm">${esc(MM)}</td>
-                    <td class="c-num hide-front">${esc(DIFF)}</td>
+
+                    <td class="c-num hide-front col-mf">${esc(String(g.mf))}</td>
+                    <td class="c-num hide-front col-mm">${esc(String(g.mm))}</td>
+
+                    <!-- ✅ DIFF vises også i front -->
+                    <td class="c-num">${esc(DIFF)}</td>
+
                     <td class="c-num points">${esc(P)}</td>
                     <td class="c-form hide-front">${formHTML(r)}</td>
                   </tr>
