@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-01-11 00:00 UTC",
+  "updatedAt": "2026-01-11 00:50 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
       {
         "pos": "0",
         "team": "Bækkelaget",
-        "logoUrl": "https://images.fotball.no/clublogos/168.png",
+        "logoUrl": "data/logos/168.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -19,7 +19,7 @@
       {
         "pos": "0",
         "team": "Fagerborg",
-        "logoUrl": "https://images.fotball.no/clublogos/171.png",
+        "logoUrl": "data/logos/171.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -32,7 +32,7 @@
       {
         "pos": "0",
         "team": "Furuset",
-        "logoUrl": "https://images.fotball.no/clublogos/239.png",
+        "logoUrl": "data/logos/239.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -45,7 +45,7 @@
       {
         "pos": "0",
         "team": "HSIL",
-        "logoUrl": "https://images.fotball.no/clublogos/182.png",
+        "logoUrl": "data/logos/182.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -58,7 +58,7 @@
       {
         "pos": "0",
         "team": "Jusstudentenes",
-        "logoUrl": "https://images.fotball.no/clublogos/2081.png",
+        "logoUrl": "data/logos/2081.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -71,7 +71,7 @@
       {
         "pos": "0",
         "team": "Klemetsrud",
-        "logoUrl": "https://images.fotball.no/clublogos/185.png",
+        "logoUrl": "data/logos/185.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -84,7 +84,7 @@
       {
         "pos": "0",
         "team": "Korsvoll 2",
-        "logoUrl": "https://images.fotball.no/clublogos/187.png",
+        "logoUrl": "data/logos/187.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -97,7 +97,7 @@
       {
         "pos": "0",
         "team": "Linderud",
-        "logoUrl": "https://images.fotball.no/clublogos/189.png",
+        "logoUrl": "data/logos/189.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -110,7 +110,7 @@
       {
         "pos": "0",
         "team": "Majorstuen",
-        "logoUrl": "https://images.fotball.no/clublogos/3092.png",
+        "logoUrl": "data/logos/3092.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -123,7 +123,7 @@
       {
         "pos": "0",
         "team": "Oldenborg",
-        "logoUrl": "https://images.fotball.no/clublogos/1685.png",
+        "logoUrl": "data/logos/1685.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -136,7 +136,7 @@
       {
         "pos": "0",
         "team": "Oslo City",
-        "logoUrl": "https://images.fotball.no/clublogos/235.png",
+        "logoUrl": "data/logos/235.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -149,7 +149,7 @@
       {
         "pos": "0",
         "team": "Wam-Kam",
-        "logoUrl": "https://images.fotball.no/clublogos/1897.png",
+        "logoUrl": "data/logos/1897.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -167,7 +167,7 @@
       {
         "pos": "0",
         "team": "Fagerborg 2",
-        "logoUrl": "https://images.fotball.no/clublogos/171.png",
+        "logoUrl": "data/logos/171.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -180,7 +180,7 @@
       {
         "pos": "0",
         "team": "Frisk Asker",
-        "logoUrl": "https://images.fotball.no/clublogos/104.png",
+        "logoUrl": "data/logos/104.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -193,7 +193,7 @@
       {
         "pos": "0",
         "team": "Furuset 2",
-        "logoUrl": "https://images.fotball.no/clublogos/239.png",
+        "logoUrl": "data/logos/239.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -206,7 +206,7 @@
       {
         "pos": "0",
         "team": "Jutul",
-        "logoUrl": "https://images.fotball.no/clublogos/96.png",
+        "logoUrl": "data/logos/96.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -219,7 +219,7 @@
       {
         "pos": "0",
         "team": "Lille Tøyen",
-        "logoUrl": "https://images.fotball.no/clublogos/226.png",
+        "logoUrl": "data/logos/226.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -232,7 +232,7 @@
       {
         "pos": "0",
         "team": "Monolitten Idrettslag",
-        "logoUrl": "https://images.fotball.no/clublogos/167.png",
+        "logoUrl": "data/logos/167.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -245,7 +245,7 @@
       {
         "pos": "0",
         "team": "Oppegård",
-        "logoUrl": "https://images.fotball.no/clublogos/87.png",
+        "logoUrl": "data/logos/87.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -258,7 +258,7 @@
       {
         "pos": "0",
         "team": "Sagene 2",
-        "logoUrl": "https://images.fotball.no/clublogos/205.png",
+        "logoUrl": "data/logos/205.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -271,7 +271,7 @@
       {
         "pos": "0",
         "team": "Sterling",
-        "logoUrl": "https://images.fotball.no/clublogos/215.png",
+        "logoUrl": "data/logos/215.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
@@ -284,7 +284,7 @@
       {
         "pos": "0",
         "team": "Veitvet",
-        "logoUrl": "https://images.fotball.no/clublogos/200.png",
+        "logoUrl": "data/logos/200.png",
         "played": "0",
         "wins": "0",
         "draws": "0",
