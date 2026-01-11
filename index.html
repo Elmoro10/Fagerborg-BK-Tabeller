@@ -22,7 +22,7 @@
     }
 
     *{box-sizing:border-box}
-    html, body{ height:100%; }
+    html, body{ height:auto; }
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
@@ -33,13 +33,13 @@
     .wrap{
       max-width:1200px;
       margin:0 auto;
-      padding:16px 12px 24px;
+      padding:12px 10px 12px; /* mindre luft */
     }
 
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:12px;
+      gap:10px; /* mindre gap */
     }
     @media(max-width: 920px){
       .grid{ grid-template-columns: 1fr; }
@@ -60,7 +60,7 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      padding:12px 14px;
+      padding:10px 12px;          /* mindre luft */
       border-bottom:1px solid var(--line);
       background:var(--head);
     }
@@ -92,7 +92,7 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      min-width:0;
+      table-layout: fixed; /* <- NØKKELEN for perfekt alignment */
     }
 
     thead th{
@@ -105,14 +105,14 @@
       font-size:12px;
       text-transform:uppercase;
       letter-spacing:.04em;
-      padding:12px 10px;
+      padding:10px 8px;           /* mindre luft */
       border-bottom:1px solid var(--line);
       white-space:nowrap;
       text-align:center;
     }
 
     tbody td{
-      padding:14px 10px;
+      padding:12px 8px;           /* mindre luft */
       border-bottom:1px solid var(--line);
       background:#fff;
       vertical-align:middle;
@@ -136,11 +136,18 @@
     tbody tr.up::before{ background: var(--up); }
     tbody tr.down::before{ background: var(--down); }
 
+    /* Kolonne-bredder (matcher th og td) */
+    .col-pos{ width:56px; }
+    .col-club{ width:320px; text-align:left; }
+    .col-num{ width:54px; }
+    .col-form{ width:140px; }
+
+    /* Club-cell */
     .teamcell{
       display:flex;
       align-items:center;
       gap:10px;
-      min-width:240px;
+      min-width:0;
       justify-content:flex-start;
       text-align:left;
     }
@@ -162,17 +169,19 @@
       font-weight:800;
       line-height:1.1;
       white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .pos{ font-weight:900; width:52px; }
-    .num{ font-variant-numeric: tabular-nums; width:48px; }
+    .pos{ font-weight:900; }
+    .num{ font-variant-numeric: tabular-nums; }
     .points{ font-weight:900; }
 
     .form{
       display:flex;
       justify-content:center;
       gap:6px;
-      min-width:110px;
+      width:100%;
     }
     .dot{
       width:10px; height:10px; border-radius:999px;
@@ -185,8 +194,8 @@
     .dot.l{ background:#dc2626; }
 
     .loading, .error{
-      padding:14px;
-      margin:12px;
+      padding:12px;
+      margin:10px;
       border-radius:12px;
       font-size:14px;
     }
@@ -201,11 +210,11 @@
       color:#991b1b;
     }
 
-    /* Legende: vannrett */
+    /* Legend (kun under B-laget) */
     .legend-row{
       display:flex;
       flex-wrap:wrap;
-      gap:10px 18px;
+      gap:8px 14px;
       padding:10px 12px;
       border-top:1px solid var(--line);
       background:#fff;
@@ -214,10 +223,14 @@
     }
     .legend-item b{ color: var(--text); }
 
-    /* Mobil: skjul noen kolonner for å være smalere */
+    /* Mobil */
     @media (max-width: 640px){
-      .col-mf, .col-mm, .col-form { display:none; }
-      table{ min-width: 720px; }
+      /* skjul MF/MM/FORM på mobil */
+      .hide-mobile { display:none; }
+
+      /* la tabellen kunne scrolle litt på mobil */
+      table{ min-width: 780px; }
+      .col-club{ width:260px; }
     }
 
     /* EMBED MODE for IdrettenOnline */
@@ -226,7 +239,7 @@
     }
     body.embed .wrap{
       max-width: 100%;
-      padding: 0;
+      padding: 0; /* fjerner ekstra luft */
     }
     body.embed .card{
       border-radius: 0;
@@ -236,6 +249,10 @@
     body.embed .card-head{
       border-radius: 0;
     }
+    /* gjør alt litt tighter i embed */
+    body.embed .grid{ gap:8px; }
+    body.embed thead th{ padding:9px 8px; }
+    body.embed tbody td{ padding:11px 8px; }
   </style>
 </head>
 
@@ -257,7 +274,6 @@
         </div>
         <div id="b-tabell" class="loading">Laster…</div>
 
-        <!-- Legend kun under B-laget -->
         <div class="legend-row" id="legend-b">
           <span class="legend-item"><b>K</b> = Kamper</span>
           <span class="legend-item"><b>S</b> = Seier</span>
@@ -353,19 +369,15 @@
       if (filter === "a"){
         cardB.style.display = "none";
         grid.classList.add("single");
+        legendB.style.display = "none";
       } else if (filter === "b"){
         cardA.style.display = "none";
         grid.classList.add("single");
+        legendB.style.display = "";
       } else {
         cardA.style.display = "";
         cardB.style.display = "";
         grid.classList.remove("single");
-      }
-
-      // Legend kun under B, men hvis vi viser bare A, skjul den
-      if (filter === "a"){
-        legendB.style.display = "none";
-      } else {
         legendB.style.display = "";
       }
     }
@@ -388,17 +400,17 @@
           <table>
             <thead>
               <tr>
-                <th class="pos">POS</th>
-                <th style="text-align:left">CLUB</th>
-                <th class="num">K</th>
-                <th class="num">S</th>
-                <th class="num">U</th>
-                <th class="num">T</th>
-                <th class="num col-mf">MF</th>
-                <th class="num col-mm">MM</th>
-                <th class="num">+/-</th>
-                <th class="num points">P</th>
-                <th class="num col-form">FORM</th>
+                <th class="col-pos">POS</th>
+                <th class="col-club">CLUB</th>
+                <th class="col-num">K</th>
+                <th class="col-num">S</th>
+                <th class="col-num">U</th>
+                <th class="col-num">T</th>
+                <th class="col-num hide-mobile">MF</th>
+                <th class="col-num hide-mobile">MM</th>
+                <th class="col-num">+/-</th>
+                <th class="col-num points">P</th>
+                <th class="col-form hide-mobile">FORM</th>
               </tr>
             </thead>
             <tbody>
@@ -424,22 +436,22 @@
 
                 return `
                   <tr class="${cls}">
-                    <td class="pos">${esc(shownPos)}</td>
-                    <td style="text-align:left">
+                    <td class="col-pos pos">${esc(shownPos)}</td>
+                    <td class="col-club">
                       <div class="teamcell">
                         ${logoHTML(r)}
                         <div class="teamname">${esc(team)}</div>
                       </div>
                     </td>
-                    <td class="num">${esc(k)}</td>
-                    <td class="num">${esc(s)}</td>
-                    <td class="num">${esc(u)}</td>
-                    <td class="num">${esc(t)}</td>
-                    <td class="num col-mf">${esc(mf)}</td>
-                    <td class="num col-mm">${esc(mm)}</td>
-                    <td class="num">${esc(diff)}</td>
-                    <td class="num points">${esc(p)}</td>
-                    <td class="num col-form">${formHTML(r)}</td>
+                    <td class="col-num num">${esc(k)}</td>
+                    <td class="col-num num">${esc(s)}</td>
+                    <td class="col-num num">${esc(u)}</td>
+                    <td class="col-num num">${esc(t)}</td>
+                    <td class="col-num num hide-mobile">${esc(mf)}</td>
+                    <td class="col-num num hide-mobile">${esc(mm)}</td>
+                    <td class="col-num num">${esc(diff)}</td>
+                    <td class="col-num num points">${esc(p)}</td>
+                    <td class="col-form hide-mobile">${formHTML(r)}</td>
                   </tr>
                 `;
               }).join("")}
@@ -457,7 +469,6 @@
       aEl.textContent = bEl.textContent = "Laster…";
 
       try{
-        // ABSOLUTT URL (viktig i IdrettenOnline)
         const url = BASE_PAGES_URL + "/data/tables.json?ts=" + Date.now();
         const res = await fetch(url, { cache: "no-store" });
         if (!res.ok) throw new Error("HTTP " + res.status);
