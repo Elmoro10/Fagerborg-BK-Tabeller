@@ -11,7 +11,7 @@ A_FIKS = 205403
 B_FIKS = 205410
 
 BASE = "https://www.fotball.no"
-TOURNAMENT_URL = f"{BASE}/fotballdata/turnering/hjem/?fiksId={{}}"
+STANDINGS_URL = f"{BASE}/fotballdata/turnering/hjem/?fiksId={{}}&underside=tabellen"
 MATCHES_URL = f"{BASE}/fotballdata/turnering/hjem/?fiksId={{}}&underside=kamper"
 
 OUT_FILE = Path("data/tables.json")
@@ -47,13 +47,8 @@ def normalize_minus(s: str) -> str:
 
 
 def build_logo_map_from_matches(fiks_id: int) -> dict[str, str]:
-    """
-    Henter logoer fra kampsiden.
-    Robust: finner <a> som inneholder både lagnavn og <img>.
-    """
     html = get_html(MATCHES_URL.format(fiks_id))
     soup = BeautifulSoup(html, "html.parser")
-
     logo_map: dict[str, str] = {}
 
     for a in soup.find_all("a"):
@@ -78,9 +73,6 @@ def build_logo_map_from_matches(fiks_id: int) -> dict[str, str]:
 
 
 def find_standings_table(soup: BeautifulSoup):
-    """
-    Forsøk å finne en ekte <table> med relevante headers.
-    """
     tables = soup.find_all("table")
     best = None
     best_score = -1.0
@@ -101,7 +93,6 @@ def find_standings_table(soup: BeautifulSoup):
         if "mål" in h:
             score += 1
 
-        # litt bonus for mange rader
         score += min(len(t.find_all("tr")), 40) / 10.0
         return score
 
@@ -116,24 +107,24 @@ def find_standings_table(soup: BeautifulSoup):
 
 def parse_table_html(table, logo_map: dict[str, str]) -> list[dict]:
     """
-    Parser rader fra en ekte HTML-table.
-    Antatt kolonnerekkefølge (typisk):
-    Plass | Lag | Kamper | V | U | T | Mål | Diff | Poeng
+    Plass | Lag | Kamper | S (Seier) | U (Uavgjort) | T (Tap) | Mål | Diff | Poeng
+    Fotball.no kan variere litt, men dette funker for de vanligste tabellene.
     """
     rows = []
+
     for tr in table.find_all("tr"):
         tds = tr.find_all("td")
         if len(tds) < 6:
             continue
 
         cells = [norm_space(td.get_text(" ", strip=True)) for td in tds]
-        # defensivt
-        pos = cells[0] if len(cells) > 0 else ""
+
+        pos = cells[0] if len(cells) > 0 else "0"
+
         team = ""
         if len(tds) > 1:
             a = tds[1].find("a")
             team = norm_space(a.get_text(" ", strip=True) if a else tds[1].get_text(" ", strip=True))
-
         if not team:
             continue
 
@@ -142,15 +133,15 @@ def parse_table_html(table, logo_map: dict[str, str]) -> list[dict]:
         draws = cells[4] if len(cells) > 4 else "0"
         losses = cells[5] if len(cells) > 5 else "0"
 
-        # mål/diff/poeng kan ligge litt ulikt, så vi plukker “bakfra”
-        # prøv standard først:
+        # Mål / diff / poeng kan være litt ulikt plassert.
+        # Standard: goals=cells[6], diff=cells[7], points=cells[8]
         goals = cells[6] if len(cells) > 6 else "0-0"
         diff = cells[7] if len(cells) > 7 else ""
         points = cells[8] if len(cells) > 8 else (cells[-1] if cells else "0")
 
         goals = normalize_minus(goals)
 
-        # diff fallback
+        # diff fallback fra goals
         if not re.fullmatch(r"-?\d+", diff or ""):
             m = re.search(r"(\d+)\s*-\s*(\d+)", goals)
             diff = str(int(m.group(1)) - int(m.group(2))) if m else "0"
@@ -177,11 +168,6 @@ def parse_table_html(table, logo_map: dict[str, str]) -> list[dict]:
 
 
 def parse_standings_from_text(html: str, logo_map: dict[str, str]) -> list[dict]:
-    """
-    Parser tabellen fra ren tekst (fallback).
-    Forventer rader omtrent:
-    "1 Lagnavn 0 0 0 0 0 - 0 0 0"
-    """
     soup = BeautifulSoup(html, "html.parser")
     text = soup.get_text("\n", strip=True)
     lines = [norm_space(l) for l in text.split("\n") if norm_space(l)]
@@ -211,7 +197,7 @@ def parse_standings_from_text(html: str, logo_map: dict[str, str]) -> list[dict]
         pos = m.group(1)
         team = norm_space(m.group(2))
         played, wins, draws, losses = m.group(3), m.group(4), m.group(5), m.group(6)
-        gf, ga = m.group(7), m.group(8)
+        mf, mm = m.group(7), m.group(8)
         diff = m.group(9)
         points = m.group(10)
 
@@ -226,7 +212,7 @@ def parse_standings_from_text(html: str, logo_map: dict[str, str]) -> list[dict]
                 "wins": wins,
                 "draws": draws,
                 "losses": losses,
-                "goals": f"{gf}-{ga}",
+                "goals": f"{mf}-{mm}",
                 "diff": diff,
                 "points": points,
                 "form": [],
@@ -238,17 +224,14 @@ def parse_standings_from_text(html: str, logo_map: dict[str, str]) -> list[dict]
 
 def fetch_one(fiks_id: int) -> dict:
     logo_map = build_logo_map_from_matches(fiks_id)
-    html = get_html(TOURNAMENT_URL.format(fiks_id))
-
+    html = get_html(STANDINGS_URL.format(fiks_id))
     soup = BeautifulSoup(html, "html.parser")
 
-    # 1) Prøv ekte HTML-table først
     table = find_standings_table(soup)
     rows = []
     if table is not None:
         rows = parse_table_html(table, logo_map)
 
-    # 2) Fallback: tekst-parser
     if not rows:
         rows = parse_standings_from_text(html, logo_map)
 
@@ -275,17 +258,15 @@ def main():
     a = fetch_one(A_FIKS)
     b = fetch_one(B_FIKS)
 
-    # FAILSAFE: Hvis vi får tomt nå, men hadde data før -> IKKE skriv/commit tomt.
+    # Failsafe: ikke overskriv eksisterende data med tomt
     if (not a["rows"] and prev_a) or (not b["rows"] and prev_b):
-        print("ERROR: Scraper produced empty rows, but previous tables.json had data. Refusing to overwrite.")
-        print(f"  A rows new={len(a['rows'])} prev={len(prev_a)}")
-        print(f"  B rows new={len(b['rows'])} prev={len(prev_b)}")
+        print("ERROR: Tomme rows, men forrige tables.json hadde data. Skriver ikke over.")
+        print(f"  A new={len(a['rows'])} prev={len(prev_a)}")
+        print(f"  B new={len(b['rows'])} prev={len(prev_b)}")
         sys.exit(1)
 
-    # Hvis begge er tomme og det ikke finnes tidligere data, kan vi fortsatt feile
-    # for å unngå at sitet blir “tomt”.
     if not a["rows"] and not b["rows"]:
-        print("ERROR: Both A and B rows are empty. Refusing to write tables.json.")
+        print("ERROR: Både A og B er tomme. Skriver ikke tables.json.")
         sys.exit(1)
 
     data = {
