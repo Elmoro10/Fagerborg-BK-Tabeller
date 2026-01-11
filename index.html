@@ -7,59 +7,241 @@
 
   <style>
     :root{
-      --bg:#f3f4f6; --card:#fff; --text:#0f172a; --muted:#6b7280;
-      --line:#e5e7eb; --head:#f8fafc; --up:#16a34a; --down:#dc2626;
-      --radius:14px; --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --bg:#f3f4f6;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --head:#f8fafc;
+
+      --up:#16a34a;
+      --down:#dc2626;
+
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
     }
+
     *{box-sizing:border-box}
-    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:var(--text); }
-    .wrap{ max-width:1200px; margin:0 auto; padding:12px 10px; }
-    .grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    @media(max-width:920px){ .grid{ grid-template-columns:1fr; } }
-    .card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; min-width:0; }
-    .card-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; border-bottom:1px solid var(--line); background:var(--head); }
-    .card-title{ font-weight:900; font-size:18px; letter-spacing:-.01em; }
-    .badge{ font-size:12px; color:var(--muted); border:1px solid var(--line); background:#fff; padding:6px 10px; border-radius:999px; white-space:nowrap; }
-    .table-wrap{ width:100%; overflow-x:auto; -webkit-overflow-scrolling: touch; }
-    table{ width:100%; border-collapse:separate; border-spacing:0; font-size:14px; table-layout:fixed; min-width:920px; }
-    thead th{ position:sticky; top:0; z-index:2; background:var(--head); color:var(--muted); font-weight:800; font-size:12px; text-transform:uppercase; letter-spacing:.04em; padding:10px 8px; border-bottom:1px solid var(--line); white-space:nowrap; text-align:center; }
-    tbody td{ padding:11px 8px; border-bottom:1px solid var(--line); background:#fff; vertical-align:middle; text-align:center; }
-    tbody tr:nth-child(even) td{ background:#fbfbfc; }
-    tbody tr{ position:relative; }
-    tbody tr::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:transparent; }
-    tbody tr.up::before{ background:var(--up); }
-    tbody tr.down::before{ background:var(--down); }
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* embed=1 for IdrettenOnline */
+    body.embed{
+      background:transparent;
+    }
+
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:12px 10px;
+    }
+    body.embed .wrap{
+      max-width:none;
+      padding:0;
+      margin:0;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    @media(max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    body.embed .grid{
+      gap:8px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      min-width:0;
+    }
+    body.embed .card{
+      border-radius:10px;
+      box-shadow:none;
+    }
+
+    .card-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-bottom:1px solid var(--line);
+      background:var(--head);
+    }
+
+    .card-title{
+      font-weight:900;
+      font-size:18px;
+      letter-spacing:-.01em;
+    }
+
+    .badge{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--line);
+      background:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+
+    .table-wrap{
+      width:100%;
+      overflow-x:auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      font-size:14px;
+      table-layout:fixed;
+      min-width:980px; /* desktop viser alt, mobil scroller */
+    }
+
+    thead th{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:var(--head);
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      padding:10px 8px;
+      border-bottom:1px solid var(--line);
+      white-space:nowrap;
+      text-align:center;
+    }
+
+    tbody td{
+      padding:11px 8px;
+      border-bottom:1px solid var(--line);
+      background:#fff;
+      vertical-align:middle;
+      text-align:center;
+    }
+
+    tbody tr:nth-child(even) td{
+      background:#fbfbfc;
+    }
+
+    /* PL-ish left bar */
+    tbody tr{
+      position:relative;
+    }
+    tbody tr::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:4px;
+      background:transparent;
+    }
+    tbody tr.up::before{ background: var(--up); }
+    tbody tr.down::before{ background: var(--down); }
+
     th.club, td.club{ text-align:left; }
     td.club{ padding-left:12px; }
-    .teamcell{ display:flex; align-items:center; gap:10px; width:100%; min-width:0; }
-    .logo{ width:22px; height:22px; border-radius:999px; border:1px solid var(--line); background:#fff; object-fit:contain; flex:0 0 auto; }
-    .logo.fallback{ background:#e5e7eb; border:1px solid #d1d5db; }
-    .teamname{ flex:1; min-width:0; font-weight:800; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+    .teamcell{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .logo{
+      width:22px;
+      height:22px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      object-fit:contain;
+      flex:0 0 auto;
+    }
+    .logo.fallback{
+      background:#e5e7eb;
+      border:1px solid #d1d5db;
+    }
+    .teamname{
+      font-weight:800;
+      line-height:1.1;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
     td.pos{ font-weight:900; }
     td.points{ font-weight:900; }
-    .form{ display:flex; justify-content:center; gap:6px; width:100%; }
-    .dot{ width:10px; height:10px; border-radius:999px; background:#d1d5db; box-shadow: inset 0 0 0 1px rgba(15,23,42,.08); flex:0 0 auto; }
-    .dot.w{ background:#16a34a; } .dot.d{ background:#9ca3af; } .dot.l{ background:#dc2626; }
 
-    .loading, .error, .ok{
-      padding:12px; margin:10px; border-radius:12px; font-size:14px; background:#fff;
+    .form{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      width:100%;
     }
-    .loading{ color:var(--muted); border:1px dashed #d1d5db; }
-    .error{ background:#fee2e2; border:1px solid #fecaca; color:#991b1b; white-space:pre-wrap; }
-    .ok{ background:#ecfdf5; border:1px solid #bbf7d0; color:#065f46; white-space:pre-wrap; }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background:#d1d5db;
+      box-shadow: inset 0 0 0 1px rgba(15,23,42,.08);
+      flex:0 0 auto;
+    }
+    .dot.w{ background:#16a34a; }
+    .dot.d{ background:#9ca3af; }
+    .dot.l{ background:#dc2626; }
 
+    .loading, .error{
+      padding:12px;
+      margin:10px;
+      border-radius:12px;
+      font-size:14px;
+      background:#fff;
+    }
+    .loading{
+      color:var(--muted);
+      border:1px dashed #d1d5db;
+    }
+    .error{
+      background:#fee2e2;
+      border:1px solid #fecaca;
+      color:#991b1b;
+      white-space:pre-wrap;
+    }
+
+    /* Legend under B only */
     .legend-row{
-      display:flex; flex-wrap:wrap; gap:8px 14px; padding:10px 12px;
-      border-top:1px solid var(--line); background:#fff; color:var(--muted); font-size:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px 14px;
+      padding:10px 12px;
+      border-top:1px solid var(--line);
+      background:#fff;
+      color:var(--muted);
+      font-size:12px;
     }
-    .legend-item b{ color:var(--text); }
+    .legend-item b{ color: var(--text); }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <section class="grid">
-      <div class="card">
+    <section class="grid" id="grid">
+      <div class="card" id="card-a">
         <div class="card-head">
           <div class="card-title">A-Laget</div>
           <div class="badge">5. divisjon (2026)</div>
@@ -67,14 +249,14 @@
         <div id="a-tabell" class="loading">Laster…</div>
       </div>
 
-      <div class="card">
+      <div class="card" id="card-b">
         <div class="card-head">
           <div class="card-title">B-Laget</div>
           <div class="badge">7. divisjon (2026)</div>
         </div>
         <div id="b-tabell" class="loading">Laster…</div>
 
-        <div class="legend-row">
+        <div class="legend-row" id="legend-b">
           <span class="legend-item"><b>K</b> = Kamper</span>
           <span class="legend-item"><b>S</b> = Seier</span>
           <span class="legend-item"><b>U</b> = Uavgjort</span>
@@ -89,12 +271,30 @@
   </div>
 
   <script>
-    const BASE = "https://elmoro10.github.io/Fagerborg-BK-Tabeller";
-
     function esc(s){
       return String(s ?? "").replace(/[&<>"']/g, m => ({
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
       }[m]));
+    }
+
+    function qs() {
+      return new URLSearchParams(location.search);
+    }
+
+    function repoBaseUrl(){
+      // origin + "/Fagerborg-BK-Tabeller/" (robust selv med ?v= osv)
+      const p = location.pathname;
+      // sørg for trailing slash på repo-root
+      const root = p.endsWith("/") ? p : (p.substring(0, p.lastIndexOf("/") + 1));
+      return location.origin + root;
+    }
+
+    function toAbsMaybe(u){
+      const s = String(u || "").trim();
+      if (!s) return "";
+      if (s.startsWith("http://") || s.startsWith("https://")) return s;
+      // relative -> gjør absolutt fra repo-root
+      return repoBaseUrl() + s.replace(/^\//, "");
     }
 
     function normGoals(goalsStr){
@@ -111,7 +311,7 @@
     }
 
     function logoHTML(row){
-      const url = row.logoUrl;
+      const url = toAbsMaybe(row.logoUrl);
       if (!url){
         return `<span class="logo fallback" aria-hidden="true"></span>`;
       }
@@ -123,10 +323,14 @@
       const arr = Array.isArray(row.form) ? row.form.slice(0,5) : [];
       const filled = arr.map(x => String(x).toUpperCase());
       while (filled.length < 5) filled.push("");
-      return `<div class="form">${filled.map(v=>{
-        const cls = v==="W"?"w":v==="L"?"l":v==="D"?"d":"";
-        return `<span class="dot ${cls}"></span>`;
-      }).join("")}</div>`;
+      return `
+        <div class="form" aria-label="Form">
+          ${filled.map(v => {
+            const cls = v === "W" ? "w" : v === "L" ? "l" : v === "D" ? "d" : "";
+            return `<span class="dot ${cls}" aria-hidden="true"></span>`;
+          }).join("")}
+        </div>
+      `;
     }
 
     function allPosAreZero(rows){
@@ -140,9 +344,10 @@
 
     function renderTable(targetId, data){
       const el = document.getElementById(targetId);
+
       if (!data || !Array.isArray(data.rows) || data.rows.length === 0){
         el.className = "error";
-        el.textContent = "Ingen tabellrader funnet.";
+        el.textContent = "Ingen tabellrader funnet (rows er tom).";
         return;
       }
 
@@ -187,6 +392,7 @@
                 const g = normGoals(r.goals ?? "0-0");
                 const diff = fmtDiff(r.diff ?? (g.mf - g.mm));
 
+                // KUN posisjon (rekkefølge) styrer farge
                 const isUp = idx === 0 || idx === 1;
                 const isDown = idx >= rows.length - 2;
                 const cls = `${isUp ? "up" : ""} ${isDown ? "down" : ""}`.trim();
@@ -225,35 +431,48 @@
       aEl.className = bEl.className = "loading";
       aEl.textContent = bEl.textContent = "Laster…";
 
-      const url = `${BASE}/data/tables.json?ts=${Date.now()}`;
+      const jsonUrl = repoBaseUrl() + "data/tables.json?ts=" + Date.now();
 
       try{
-        const res = await fetch(url, { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const res = await fetch(jsonUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status + " ved " + jsonUrl);
         const json = await res.json();
 
         renderTable("a-tabell", json.a);
         renderTable("b-tabell", json.b);
       } catch (e){
-        const msg = `FEIL: fikk ikke lastet tables.json\nURL: ${url}\n\n${e && e.stack ? e.stack : (e && e.message ? e.message : String(e))}`;
+        const msg = "Feil ved lasting av tables.json:\n" + (e && e.stack ? e.stack : (e && e.message ? e.message : String(e)));
         aEl.className = bEl.className = "error";
         aEl.textContent = msg;
         bEl.textContent = msg;
       }
     }
 
-    window.addEventListener("error", (ev) => {
-      const aEl = document.getElementById("a-tabell");
-      const bEl = document.getElementById("b-tabell");
-      const msg = `JS-FEIL i index.html:\n${ev && ev.message ? ev.message : "Ukjent feil"}`;
-      if (aEl && bEl){
-        aEl.className = bEl.className = "error";
-        aEl.textContent = msg;
-        bEl.textContent = msg;
+    function applyParams(){
+      const p = qs();
+
+      // embed mode
+      if (p.get("embed") === "1") document.body.classList.add("embed");
+
+      // team filter
+      const team = (p.get("team") || "").toLowerCase();
+      const grid = document.getElementById("grid");
+      const cardA = document.getElementById("card-a");
+      const cardB = document.getElementById("card-b");
+      const legendB = document.getElementById("legend-b");
+
+      if (team === "a"){
+        cardB.style.display = "none";
+        grid.style.gridTemplateColumns = "1fr";
+      } else if (team === "b"){
+        cardA.style.display = "none";
+        grid.style.gridTemplateColumns = "1fr";
+        legendB.style.display = "";
       }
-    });
+    }
 
     window.addEventListener("DOMContentLoaded", () => {
+      applyParams();
       loadAndRender();
       setInterval(loadAndRender, 60 * 1000);
     });
