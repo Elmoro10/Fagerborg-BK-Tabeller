@@ -20,11 +20,18 @@
       --radius:14px;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
 
-      --fbg-row:#e6f4ea;
-      --fbg-text:#15803d;
+      --clubw: 260px;
+      --formw: 150px;
+      --numw: 56px;
+      --posw: 56px;
+
+      --minTable: 880px;
+
+      --our-bg: rgba(22,163,74,.12);
+      --our-text: #16a34a;
     }
 
-    *{box-sizing:border-box}
+    *{ box-sizing:border-box; }
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
@@ -32,23 +39,21 @@
       color:var(--text);
     }
 
-    header{ display:none; }
-
     .wrap{
       max-width:1200px;
       margin:0 auto;
-      padding:12px 10px 14px;
+      padding:12px 10px;
     }
 
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:12px;
-      align-items:start;
+      gap:10px;
     }
-    @media(max-width: 980px){
-      .grid{ grid-template-columns: 1fr; }
+    @media(max-width: 920px){
+      .grid{ grid-template-columns:1fr; }
     }
+    .grid.single{ grid-template-columns: 1fr; }
 
     .card{
       background:var(--card);
@@ -64,7 +69,7 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      padding:12px 14px;
+      padding:10px 12px;
       border-bottom:1px solid var(--line);
       background:var(--head);
     }
@@ -91,13 +96,13 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* VIKTIG: IKKE fixed layout -> stabil kolonneplassering */
     table{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      min-width: 760px;
+      min-width: var(--minTable);
+      table-layout: fixed;
     }
 
     thead th{
@@ -115,186 +120,180 @@
       white-space:nowrap;
       text-align:center;
     }
-    thead th.left{ text-align:left; }
 
     tbody td{
-      padding:10px 8px;
+      padding:11px 8px;
       border-bottom:1px solid var(--line);
       background:#fff;
       vertical-align:middle;
-      white-space:nowrap;
       text-align:center;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
     tbody tr:nth-child(even) td{ background:#fbfbfc; }
 
-    tbody tr{
-      position:relative;
+    tbody tr.our td{
+      background: var(--our-bg) !important;
+      border-bottom-color: rgba(22,163,74,.18);
     }
-    tbody tr::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:0;
-      bottom:0;
-      width:4px;
-      background:transparent;
-    }
-    tbody tr.up::before{ background: var(--up); }
-    tbody tr.down::before{ background: var(--down); }
-
-    tbody tr.fagerborg td{
-      background: var(--fbg-row) !important;
-    }
-    tbody tr.fagerborg .teamname{
-      color: var(--fbg-text);
+    tbody tr.our td.c-club .club-name{
+      color: var(--our-text);
+      font-weight: 900;
     }
 
-    /* kolonnebredder (autolayout, men vi gir hint) */
-    th.pos, td.pos{ width:54px; font-weight:900; }
-    th.club, td.club{ text-align:left; width:300px; }
-    th.form, td.form{ width:120px; }
+    tbody tr.up td:first-child{ border-left:4px solid var(--up); }
+    tbody tr.down td:first-child{ border-left:4px solid var(--down); }
+    tbody tr td:first-child{ border-left:4px solid transparent; }
 
+    th.c-pos, td.c-pos{ width: var(--posw); }
+    th.c-club, td.c-club{ width: var(--clubw); text-align:left; }
+    th.c-num, td.c-num{ width: var(--numw); }
+    th.c-form, td.c-form{ width: var(--formw); }
+
+    td.c-club{ padding-left:12px; }
     td.points{ font-weight:900; }
+    td.c-pos{ font-weight:900; }
 
-    .teamcell{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
+    .club-inner{
+      display:block;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
     }
-    .logo{
+    .club-logo{
       width:22px;
       height:22px;
       border-radius:999px;
       border:1px solid var(--line);
       background:#fff;
       object-fit:contain;
-      flex:0 0 auto;
+      vertical-align:middle;
+      margin-right:10px;
     }
-    .logo.fallback{
+    .club-logo.fallback{
       background:#e5e7eb;
       border:1px solid #d1d5db;
     }
-    .teamname{
+    .club-name{
       font-weight:800;
-      line-height:1.1;
+      vertical-align:middle;
+      display:inline-block;
+      max-width: calc(100% - 40px);
       overflow:hidden;
       text-overflow:ellipsis;
       white-space:nowrap;
     }
 
-    .formdots{
-      display:inline-flex;
-      gap:6px;
-      align-items:center;
-      justify-content:center;
-    }
+    .form{ display:inline-block; white-space:nowrap; }
     .dot{
-      width:12px;
-      height:12px;
+      display:inline-block;
+      width:10px; height:10px;
       border-radius:999px;
       background:#d1d5db;
-      border:1px solid #cbd5e1;
-      display:inline-block;
+      box-shadow: inset 0 0 0 1px rgba(15,23,42,.08);
+      margin-left:6px;
+      vertical-align:middle;
     }
-    .dot.w{ background:#16a34a; border-color:#15803d; }
-    .dot.d{ background:#9ca3af; border-color:#94a3b8; }
-    .dot.l{ background:#dc2626; border-color:#b91c1c; }
+    .dot:first-child{ margin-left:0; }
+    .dot.w{ background:#16a34a; }
+    .dot.d{ background:#9ca3af; }
+    .dot.l{ background:#dc2626; }
 
-    .loading, .error{
-      padding:14px;
-      margin:12px;
+    .loading,.error{
+      padding:12px;
+      margin:10px;
       border-radius:12px;
       font-size:14px;
+      background:#fff;
     }
     .loading{
       color:var(--muted);
       border:1px dashed #d1d5db;
-      background:#fff;
     }
     .error{
       background:#fee2e2;
       border:1px solid #fecaca;
       color:#991b1b;
+      white-space:pre-wrap;
     }
 
-    .legend{
-      padding:10px 14px;
+    .legend-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px 14px;
+      padding:10px 12px;
       border-top:1px solid var(--line);
       background:#fff;
       color:var(--muted);
       font-size:12px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 14px;
-      align-items:center;
     }
-    .legend b{ color:var(--text); }
+    .legend-item b{ color:var(--text); }
 
-    .meta{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:#fff;
-      color:var(--muted);
-      font-size:12px;
+    @media (max-width: 980px){
+      :root{
+        --clubw: 230px;
+        --minTable: 760px;
+        --formw: 130px;
+      }
+      th.col-mf, td.col-mf, col.col-mf{ display:none; }
+      th.col-mm, td.col-mm, col.col-mm{ display:none; }
     }
 
-    /* Smal: skjul MF/MM først */
-    @media (max-width: 860px){
-      table{ min-width: 640px; }
-      th.mf, td.mf,
-      th.mm, td.mm{ display:none; }
-      th.club, td.club{ width:260px; }
+    @media (max-width: 760px){
+      :root{
+        --clubw: 210px;
+        --minTable: 720px;
+        --formw: 120px;
+      }
     }
 
-    /* Super smal: skjul FORM */
-    @media (max-width: 540px){
-      th.form, td.form{ display:none; }
-      table{ min-width: 520px; }
-      th.club, td.club{ width:220px; }
+    /* ============================================================
+       ✅ FRONT / COMPACT MODE (view=front)
+       Viser: POS | CLUB | K | +/- | P
+       Ingen horisontal scroll.
+       ============================================================ */
+    body.front .wrap{ max-width: 680px; }
+    body.front .table-wrap{ overflow-x: hidden; }
+    body.front table{
+      min-width: 0 !important;
+      table-layout: fixed;
     }
 
-    /* FRONT VIEW */
-    body.front .wrap{ max-width: 720px; }
-    body.front .grid{ grid-template-columns: 1fr; }
-    body.front .meta{ display:none; }
-
-    body.front .table-wrap{ overflow-x:hidden; }
-    body.front table{ min-width: 0; }
-
-    /* Front: kun K, +/- , P (i tillegg til POS/CLUB) */
-    body.front th.s, body.front td.s,
-    body.front th.u, body.front td.u,
-    body.front th.t, body.front td.t,
-    body.front th.mf, body.front td.mf,
-    body.front th.mm, body.front td.mm,
-    body.front th.form, body.front td.form{
-      display:none;
+    body.front th.hide-front, body.front td.hide-front, body.front col.hide-front{
+      display:none !important;
     }
+
+    body.front{
+      --clubw: 260px;
+      --numw: 58px;
+      --posw: 52px;
+      --minTable: 0px;
+    }
+
+    body.front .legend-row{ display:none; }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <section class="grid">
+    <section class="grid" id="grid">
       <div class="card" id="card-a">
         <div class="card-head">
           <div class="card-title">A-Laget</div>
           <div class="badge">5. divisjon (2026)</div>
         </div>
         <div id="a-tabell" class="loading">Laster…</div>
-        <div class="legend" id="legend-a">
-          <span><b>K</b> = Kamper</span>
-          <span><b>S</b> = Seier</span>
-          <span><b>U</b> = Uavgjort</span>
-          <span><b>T</b> = Tap</span>
-          <span><b>MF</b> = Mål for</span>
-          <span><b>MM</b> = Mål mot</span>
-          <span><b>+/-</b> = Målforskjell</span>
-          <span><b>P</b> = Poeng</span>
+        <div class="legend-row">
+          <span class="legend-item"><b>K</b> = Kamper</span>
+          <span class="legend-item"><b>S</b> = Seier</span>
+          <span class="legend-item"><b>U</b> = Uavgjort</span>
+          <span class="legend-item"><b>T</b> = Tap</span>
+          <span class="legend-item"><b>MF</b> = Mål for</span>
+          <span class="legend-item"><b>MM</b> = Mål mot</span>
+          <span class="legend-item"><b>+/-</b> = Målforskjell</span>
+          <span class="legend-item"><b>P</b> = Poeng</span>
         </div>
       </div>
 
@@ -304,20 +303,18 @@
           <div class="badge">7. divisjon (2026)</div>
         </div>
         <div id="b-tabell" class="loading">Laster…</div>
-        <div class="legend" id="legend-b">
-          <span><b>K</b> = Kamper</span>
-          <span><b>S</b> = Seier</span>
-          <span><b>U</b> = Uavgjort</span>
-          <span><b>T</b> = Tap</span>
-          <span><b>MF</b> = Mål for</span>
-          <span><b>MM</b> = Mål mot</span>
-          <span><b>+/-</b> = Målforskjell</span>
-          <span><b>P</b> = Poeng</span>
+        <div class="legend-row">
+          <span class="legend-item"><b>K</b> = Kamper</span>
+          <span class="legend-item"><b>S</b> = Seier</span>
+          <span class="legend-item"><b>U</b> = Uavgjort</span>
+          <span class="legend-item"><b>T</b> = Tap</span>
+          <span class="legend-item"><b>MF</b> = Mål for</span>
+          <span class="legend-item"><b>MM</b> = Mål mot</span>
+          <span class="legend-item"><b>+/-</b> = Målforskjell</span>
+          <span class="legend-item"><b>P</b> = Poeng</span>
         </div>
       </div>
     </section>
-
-    <div class="meta" id="meta">—</div>
   </div>
 
   <script>
@@ -327,127 +324,169 @@
       }[m]));
     }
 
-    function parseUpdatedAtUTC(s){
-      const m = String(s || "").match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+UTC$/);
-      if (!m) return null;
-      return new Date(Date.UTC(
-        Number(m[1]), Number(m[2]) - 1, Number(m[3]),
-        Number(m[4]), Number(m[5]), 0
-      ));
+    function repoBaseUrl(){
+      const p = location.pathname;
+      const root = p.endsWith("/") ? p : p.substring(0, p.lastIndexOf("/") + 1);
+      return location.origin + root;
     }
 
-    function sortByPos(rows){
-      return [...rows].sort((a,b) => Number(a.pos ?? 0) - Number(b.pos ?? 0));
+    function toAbsMaybe(u){
+      const s = String(u || "").trim();
+      if (!s) return "";
+      if (s.startsWith("http://") || s.startsWith("https://")) return s;
+      return repoBaseUrl() + s.replace(/^\//, "");
     }
 
     function parseGoals(goalsStr){
-      const s = String(goalsStr || "");
-      const m = s.match(/(\d+)\s*[–-]\s*(\d+)/);
-      if (!m) return [0,0];
-      return [parseInt(m[1],10), parseInt(m[2],10)];
+      const s = String(goalsStr || "").trim().replaceAll("−","-").replaceAll("–","-");
+      const m = s.match(/(\d+)\s*-\s*(\d+)/);
+      if (!m) return { mf:0, mm:0 };
+      return { mf: parseInt(m[1],10), mm: parseInt(m[2],10) };
+    }
+
+    function fmtDiff(diffVal){
+      const n = parseInt(String(diffVal ?? "0").trim(), 10);
+      if (Number.isNaN(n)) return "0";
+      return n > 0 ? `+${n}` : `${n}`;
     }
 
     function logoHTML(row){
-      const url = row.logoUrl || row.logo || "";
+      const url = toAbsMaybe(row.logoUrl);
       if (!url){
-        return `<span class="logo fallback" aria-hidden="true"></span>`;
+        return `<span class="club-logo fallback" aria-hidden="true"></span>`;
       }
-      return `<img class="logo" src="${esc(url)}" alt="" loading="lazy"
-        onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo fallback'}))">`;
+      return `<img class="club-logo" src="${esc(url)}" alt="" loading="lazy"
+        onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'club-logo fallback'}))">`;
     }
 
-    function formDotsHTML(formArr){
-      const arr = Array.isArray(formArr) ? formArr.slice(0,5) : [];
-      const norm = (x) => {
-        const v = String(x||"").toUpperCase();
-        if (v === "W" || v === "S") return "w";
-        if (v === "D" || v === "U") return "d";
-        if (v === "L" || v === "T") return "l";
-        return "d";
-      };
-      const dots = [];
-      for (let i=0;i<5;i++){
-        const v = arr[i] ? norm(arr[i]) : "d";
-        dots.push(`<span class="dot ${v}" aria-hidden="true"></span>`);
-      }
-      return `<span class="formdots">${dots.join("")}</span>`;
+    function formHTML(row){
+      const arr = Array.isArray(row.form) ? row.form.slice(0,5) : [];
+      const filled = arr.map(x => String(x).toUpperCase());
+      while (filled.length < 5) filled.push("");
+      return `<span class="form">${
+        filled.map(v=>{
+          const cls = v==="W" ? "w" : v==="L" ? "l" : v==="D" ? "d" : "";
+          return `<span class="dot ${cls}"></span>`;
+        }).join("")
+      }</span>`;
     }
 
-    function isFagerborgRow(teamName){
-      const t = String(teamName || "").toLowerCase().trim();
+    function allPosAreZero(rows){
+      return rows.every(r => Number(String(r.pos ?? "0").trim()) === 0);
+    }
+
+    function sortRows(rows){
+      if (allPosAreZero(rows)) return [...rows];
+      return [...rows].sort((a,b) => Number(a.pos ?? 0) - Number(b.pos ?? 0));
+    }
+
+    function isOurTeam(teamName){
+      const t = String(teamName || "").trim().toLowerCase();
       return t.startsWith("fagerborg");
     }
 
     function renderTable(targetId, data){
       const el = document.getElementById(targetId);
-
       if (!data || !Array.isArray(data.rows) || data.rows.length === 0){
         el.className = "error";
-        el.innerHTML = "Ingen tabellrader funnet.";
+        el.textContent = "Ingen tabellrader funnet.";
         return;
       }
 
-      const rows = sortByPos(data.rows);
+      const rows = sortRows(data.rows);
+      const syntheticPos = allPosAreZero(rows);
 
       el.className = "";
       el.innerHTML = `
         <div class="table-wrap">
           <table>
+            <colgroup>
+              <col style="width:var(--posw)">
+              <col style="width:var(--clubw)">
+              <col style="width:var(--numw)"><!-- K -->
+
+              <col class="hide-front" style="width:var(--numw)"><!-- S -->
+              <col class="hide-front" style="width:var(--numw)"><!-- U -->
+              <col class="hide-front" style="width:var(--numw)"><!-- T -->
+
+              <col class="hide-front col-mf" style="width:var(--numw)"><!-- MF -->
+              <col class="hide-front col-mm" style="width:var(--numw)"><!-- MM -->
+
+              <!-- ✅ DIFF skal vises i front, så IKKE hide-front her -->
+              <col style="width:var(--numw)"><!-- +/- -->
+
+              <col style="width:var(--numw)"><!-- P -->
+              <col class="hide-front" style="width:var(--formw)"><!-- FORM -->
+            </colgroup>
+
             <thead>
               <tr>
-                <th class="pos">POS</th>
-                <th class="club left">CLUB</th>
-                <th class="k">K</th>
-                <th class="s">S</th>
-                <th class="u">U</th>
-                <th class="t">T</th>
-                <th class="mf">MF</th>
-                <th class="mm">MM</th>
-                <th class="diff">+/-</th>
-                <th class="points">P</th>
-                <th class="form">FORM</th>
+                <th class="c-pos">POS</th>
+                <th class="c-club">CLUB</th>
+                <th class="c-num">K</th>
+
+                <th class="c-num hide-front">S</th>
+                <th class="c-num hide-front">U</th>
+                <th class="c-num hide-front">T</th>
+
+                <th class="c-num hide-front col-mf">MF</th>
+                <th class="c-num hide-front col-mm">MM</th>
+
+                <!-- ✅ DIFF skal vises i front -->
+                <th class="c-num">+/-</th>
+
+                <th class="c-num">P</th>
+                <th class="c-form hide-front">FORM</th>
               </tr>
             </thead>
+
             <tbody>
               ${rows.map((r, idx) => {
-                const pos = String(r.pos ?? "");
-                const team = String(r.team ?? "");
-                const k = String(r.played ?? "0");
-                const s = String(r.wins ?? "0");
-                const u = String(r.draws ?? "0");
-                const t = String(r.losses ?? "0");
-                const pts = String(r.points ?? "0");
-                const goals = String(r.goals ?? "0-0");
-                const [mf, mm] = parseGoals(goals);
-                const diff = String((r.diff ?? "").toString().trim() !== "" ? r.diff : (mf - mm));
+                const posShown = syntheticPos ? String(idx + 1) : String(r.pos ?? "");
+                const g = parseGoals(r.goals ?? "0 - 0");
+
+                const K = String(r.played ?? "0");
+                const S = String(r.wins ?? "0");
+                const U = String(r.draws ?? "0");
+                const T = String(r.losses ?? "0");
+
+                const DIFF = fmtDiff(r.diff ?? (g.mf - g.mm));
+                const P = String(r.points ?? "0");
 
                 const isUp = idx === 0 || idx === 1;
                 const isDown = idx >= rows.length - 2;
+                const isOur = isOurTeam(r.team);
 
                 const cls = [
                   isUp ? "up" : "",
                   isDown ? "down" : "",
-                  isFagerborgRow(team) ? "fagerborg" : ""
-                ].filter(Boolean).join(" ");
+                  isOur ? "our" : ""
+                ].join(" ").trim();
 
                 return `
                   <tr class="${cls}">
-                    <td class="pos">${esc(pos)}</td>
-                    <td class="club">
-                      <div class="teamcell">
+                    <td class="c-pos">${esc(posShown)}</td>
+                    <td class="c-club">
+                      <span class="club-inner">
                         ${logoHTML(r)}
-                        <div class="teamname">${esc(team)}</div>
-                      </div>
+                        <span class="club-name">${esc(r.team ?? "")}</span>
+                      </span>
                     </td>
-                    <td class="k">${esc(k)}</td>
-                    <td class="s">${esc(s)}</td>
-                    <td class="u">${esc(u)}</td>
-                    <td class="t">${esc(t)}</td>
-                    <td class="mf">${esc(mf)}</td>
-                    <td class="mm">${esc(mm)}</td>
-                    <td class="diff">${esc(diff)}</td>
-                    <td class="points">${esc(pts)}</td>
-                    <td class="form">${formDotsHTML(r.form)}</td>
+
+                    <td class="c-num">${esc(K)}</td>
+
+                    <td class="c-num hide-front">${esc(S)}</td>
+                    <td class="c-num hide-front">${esc(U)}</td>
+                    <td class="c-num hide-front">${esc(T)}</td>
+
+                    <td class="c-num hide-front col-mf">${esc(String(g.mf))}</td>
+                    <td class="c-num hide-front col-mm">${esc(String(g.mm))}</td>
+
+                    <!-- ✅ DIFF vises også i front -->
+                    <td class="c-num">${esc(DIFF)}</td>
+
+                    <td class="c-num points">${esc(P)}</td>
+                    <td class="c-form hide-front">${formHTML(r)}</td>
                   </tr>
                 `;
               }).join("")}
@@ -457,21 +496,29 @@
       `;
     }
 
-    function applyFromQuery(){
+    function applyTeamMode(){
       const params = new URLSearchParams(location.search);
-      const team = (params.get("team") || "").toLowerCase(); // a/b
-      const view = (params.get("view") || "").toLowerCase(); // front
+      const team = (params.get("team") || "both").toLowerCase();
+      const view = (params.get("view") || "").toLowerCase();
 
-      document.body.classList.toggle("front", view === "front");
+      if (view === "front"){
+        document.body.classList.add("front");
+      } else {
+        document.body.classList.remove("front");
+      }
 
+      const grid = document.getElementById("grid");
       const cardA = document.getElementById("card-a");
       const cardB = document.getElementById("card-b");
 
       if (team === "a"){
+        grid.classList.add("single");
         cardB.style.display = "none";
       } else if (team === "b"){
+        grid.classList.add("single");
         cardA.style.display = "none";
       } else {
+        grid.classList.remove("single");
         cardA.style.display = "";
         cardB.style.display = "";
       }
@@ -480,32 +527,28 @@
     async function loadAndRender(){
       const aEl = document.getElementById("a-tabell");
       const bEl = document.getElementById("b-tabell");
-      const meta = document.getElementById("meta");
 
-      aEl.className = bEl.className = "loading";
-      aEl.textContent = bEl.textContent = "Laster…";
+      if (aEl){ aEl.className = "loading"; aEl.textContent = "Laster…"; }
+      if (bEl){ bEl.className = "loading"; bEl.textContent = "Laster…"; }
+
+      const url = repoBaseUrl() + "data/tables.json?ts=" + Date.now();
 
       try{
-        const res = await fetch("./data/tables.json?ts=" + Date.now(), { cache: "no-store" });
+        const res = await fetch(url, { cache:"no-store" });
         if (!res.ok) throw new Error("HTTP " + res.status);
         const json = await res.json();
 
-        renderTable("a-tabell", json.a);
-        renderTable("b-tabell", json.b);
-
-        const d = parseUpdatedAtUTC(json.updatedAt);
-        meta.textContent = d
-          ? ("🕒 Sist oppdatert: " + d.toLocaleString("no-NO", { dateStyle:"medium", timeStyle:"short" }))
-          : ("🕒 Sist oppdatert: " + (json.updatedAt || "ukjent"));
+        if (aEl) renderTable("a-tabell", json.a);
+        if (bEl) renderTable("b-tabell", json.b);
       } catch (e){
-        aEl.className = bEl.className = "error";
-        aEl.innerHTML = bEl.innerHTML = "Feil ved lasting av tables.json.";
-        meta.textContent = "🕒 Sist oppdatert: (feil)";
+        const msg = "Feil ved lasting av tables.json:\n" + (e.message || String(e));
+        if (aEl){ aEl.className = "error"; aEl.textContent = msg; }
+        if (bEl){ bEl.className = "error"; bEl.textContent = msg; }
       }
     }
 
     window.addEventListener("DOMContentLoaded", () => {
-      applyFromQuery();
+      applyTeamMode();
       loadAndRender();
       setInterval(loadAndRender, 60 * 1000);
     });
