@@ -104,7 +104,7 @@
       border-spacing:0;
       font-size:14px;
       min-width: var(--minTable);
-      table-layout: fixed; /* ✅ gjør at kolonnene alltid får eksakt samme bredde */
+      table-layout: fixed; /* ✅ gjør at alle kolonner får eksakt samme bredde */
     }
 
     thead th{
@@ -130,6 +130,8 @@
       vertical-align:middle;
       text-align:center;
       white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
     tbody tr:nth-child(even) td{ background:#fbfbfc; }
@@ -237,9 +239,9 @@
         --formw: 130px;
       }
 
-      /* skjul MF og MM (både header og celler) */
-      th.col-mf, td.col-mf{ display:none; }
-      th.col-mm, td.col-mm{ display:none; }
+      /* skjul MF og MM (både header, celler, og colgroup) */
+      th.col-mf, td.col-mf, col.col-mf{ display:none; }
+      th.col-mm, td.col-mm, col.col-mm{ display:none; }
     }
 
     @media (max-width: 760px){
@@ -372,6 +374,21 @@
       el.innerHTML = `
         <div class="table-wrap">
           <table>
+            <!-- ✅ colgroup: tvinger identiske kolonne-bredder i A og B -->
+            <colgroup>
+              <col style="width:var(--posw)">
+              <col style="width:var(--clubw)">
+              <col style="width:var(--numw)">
+              <col style="width:var(--numw)">
+              <col style="width:var(--numw)">
+              <col style="width:var(--numw)">
+              <col class="col-mf" style="width:var(--numw)">
+              <col class="col-mm" style="width:var(--numw)">
+              <col style="width:var(--numw)">
+              <col style="width:var(--numw)">
+              <col style="width:var(--formw)">
+            </colgroup>
+
             <thead>
               <tr>
                 <th class="c-pos">POS</th>
@@ -387,6 +404,7 @@
                 <th class="c-form">FORM</th>
               </tr>
             </thead>
+
             <tbody>
               ${rows.map((r, idx) => {
                 const posShown = syntheticPos ? String(idx + 1) : String(r.pos ?? "");
@@ -479,7 +497,7 @@
     window.addEventListener("DOMContentLoaded", () => {
       applyTeamMode();
       loadAndRender();
-      setInterval(loadAndRender, 60 * 1000); // refresher UI hvert minutt (ikke nødvendigvis ny data hvert minutt)
+      setInterval(loadAndRender, 60 * 1000);
     });
   </script>
 </body>
