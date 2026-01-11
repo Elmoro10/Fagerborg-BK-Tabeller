@@ -32,13 +32,13 @@
       color:var(--text);
     }
 
+    header{ display:none; }
+
     .wrap{
       max-width:1200px;
       margin:0 auto;
       padding:12px 10px 14px;
     }
-
-    header{ display:none; }
 
     .grid{
       display:grid;
@@ -85,18 +85,18 @@
       white-space:nowrap;
     }
 
-    .table-wrapper{
+    .table-wrap{
       width:100%;
       overflow-x:auto;
       -webkit-overflow-scrolling: touch;
     }
 
+    /* VIKTIG: IKKE fixed layout -> stabil kolonneplassering */
     table{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      table-layout:fixed;
       min-width: 760px;
     }
 
@@ -110,20 +110,23 @@
       font-size:12px;
       text-transform:uppercase;
       letter-spacing:.04em;
+      padding:10px 8px;
       border-bottom:1px solid var(--line);
       white-space:nowrap;
+      text-align:center;
     }
+    thead th.left{ text-align:left; }
 
     tbody td{
+      padding:10px 8px;
       border-bottom:1px solid var(--line);
       background:#fff;
       vertical-align:middle;
       white-space:nowrap;
+      text-align:center;
     }
 
-    tbody tr:nth-child(even) td{
-      background:#fbfbfc;
-    }
+    tbody tr:nth-child(even) td{ background:#fbfbfc; }
 
     tbody tr{
       position:relative;
@@ -147,17 +150,12 @@
       color: var(--fbg-text);
     }
 
-    th, td{ padding: 10px 8px; }
+    /* kolonnebredder (autolayout, men vi gir hint) */
+    th.pos, td.pos{ width:54px; font-weight:900; }
+    th.club, td.club{ text-align:left; width:300px; }
+    th.form, td.form{ width:120px; }
 
-    th.pos, td.pos{ width:54px; text-align:center; font-weight:900; }
-    th.club, td.club{ width:300px; }
-
-    th.stat, td.stat{ width:48px; text-align:center; font-variant-numeric: tabular-nums; }
-    th.mf, td.mf{ width:52px; text-align:center; font-variant-numeric: tabular-nums; }
-    th.mm, td.mm{ width:52px; text-align:center; font-variant-numeric: tabular-nums; }
-    th.diff, td.diff{ width:56px; text-align:center; font-variant-numeric: tabular-nums; }
-    th.points, td.points{ width:54px; text-align:center; font-weight:900; font-variant-numeric: tabular-nums; }
-    th.form, td.form{ width:120px; text-align:center; }
+    td.points{ font-weight:900; }
 
     .teamcell{
       display:flex;
@@ -244,12 +242,11 @@
       font-size:12px;
     }
 
-    /* Smal/iframe: skjul MF/MM (men behold +/-) */
+    /* Smal: skjul MF/MM først */
     @media (max-width: 860px){
       table{ min-width: 640px; }
       th.mf, td.mf,
       th.mm, td.mm{ display:none; }
-      th, td{ padding: 9px 7px; }
       th.club, td.club{ width:260px; }
     }
 
@@ -260,47 +257,33 @@
       th.club, td.club{ width:220px; }
     }
 
-    /* FRONT VIEW: én tabell, ingen scroll, kun K + +/- + P */
+    /* FRONT VIEW */
     body.front .wrap{ max-width: 720px; }
     body.front .grid{ grid-template-columns: 1fr; }
     body.front .meta{ display:none; }
 
-    body.front .table-wrapper{ overflow-x:hidden; }
-    body.front table{
-      min-width: 0;
-      width:100%;
-    }
+    body.front .table-wrap{ overflow-x:hidden; }
+    body.front table{ min-width: 0; }
 
-    /* Front: skjul alt unntatt POS/CLUB/K/+/-/P */
-    body.front th.mf, body.front td.mf,
-    body.front th.mm, body.front td.mm,
-    body.front th.form, body.front td.form,
+    /* Front: kun K, +/- , P (i tillegg til POS/CLUB) */
     body.front th.s, body.front td.s,
     body.front th.u, body.front td.u,
-    body.front th.t, body.front td.t{
+    body.front th.t, body.front td.t,
+    body.front th.mf, body.front td.mf,
+    body.front th.mm, body.front td.mm,
+    body.front th.form, body.front td.form{
       display:none;
     }
-
-    /* Front: litt andre faste bredder for å presse inn */
-    body.front th.pos, body.front td.pos{ width:48px; }
-    body.front th.club, body.front td.club{ width:auto; }
-    body.front th.stat, body.front td.stat{ width:52px; }
-    body.front th.diff, body.front td.diff{ width:56px; }
-    body.front th.points, body.front td.points{ width:56px; }
-
-    /* Front: enda tighter */
-    body.front th, body.front td{ padding: 9px 6px; }
-    body.front .logo{ width:20px; height:20px; }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <section class="grid" id="grid">
+    <section class="grid">
       <div class="card" id="card-a">
         <div class="card-head">
           <div class="card-title">A-Laget</div>
-          <div class="badge" id="badge-a">—</div>
+          <div class="badge">5. divisjon (2026)</div>
         </div>
         <div id="a-tabell" class="loading">Laster…</div>
         <div class="legend" id="legend-a">
@@ -318,7 +301,7 @@
       <div class="card" id="card-b">
         <div class="card-head">
           <div class="card-title">B-Laget</div>
-          <div class="badge" id="badge-b">—</div>
+          <div class="badge">7. divisjon (2026)</div>
         </div>
         <div id="b-tabell" class="loading">Laster…</div>
         <div class="legend" id="legend-b">
@@ -348,12 +331,8 @@
       const m = String(s || "").match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+UTC$/);
       if (!m) return null;
       return new Date(Date.UTC(
-        Number(m[1]),
-        Number(m[2]) - 1,
-        Number(m[3]),
-        Number(m[4]),
-        Number(m[5]),
-        0
+        Number(m[1]), Number(m[2]) - 1, Number(m[3]),
+        Number(m[4]), Number(m[5]), 0
       ));
     }
 
@@ -412,16 +391,16 @@
 
       el.className = "";
       el.innerHTML = `
-        <div class="table-wrapper">
+        <div class="table-wrap">
           <table>
             <thead>
               <tr>
                 <th class="pos">POS</th>
-                <th class="club">CLUB</th>
-                <th class="stat">K</th>
-                <th class="s stat">S</th>
-                <th class="u stat">U</th>
-                <th class="t stat">T</th>
+                <th class="club left">CLUB</th>
+                <th class="k">K</th>
+                <th class="s">S</th>
+                <th class="u">U</th>
+                <th class="t">T</th>
                 <th class="mf">MF</th>
                 <th class="mm">MM</th>
                 <th class="diff">+/-</th>
@@ -460,10 +439,10 @@
                         <div class="teamname">${esc(team)}</div>
                       </div>
                     </td>
-                    <td class="stat">${esc(k)}</td>
-                    <td class="s stat">${esc(s)}</td>
-                    <td class="u stat">${esc(u)}</td>
-                    <td class="t stat">${esc(t)}</td>
+                    <td class="k">${esc(k)}</td>
+                    <td class="s">${esc(s)}</td>
+                    <td class="u">${esc(u)}</td>
+                    <td class="t">${esc(t)}</td>
                     <td class="mf">${esc(mf)}</td>
                     <td class="mm">${esc(mm)}</td>
                     <td class="diff">${esc(diff)}</td>
@@ -478,17 +457,15 @@
       `;
     }
 
-    function applyViewFromQuery(){
+    function applyFromQuery(){
       const params = new URLSearchParams(location.search);
       const team = (params.get("team") || "").toLowerCase(); // a/b
       const view = (params.get("view") || "").toLowerCase(); // front
 
+      document.body.classList.toggle("front", view === "front");
+
       const cardA = document.getElementById("card-a");
       const cardB = document.getElementById("card-b");
-      const legendA = document.getElementById("legend-a");
-      const legendB = document.getElementById("legend-b");
-
-      document.body.classList.toggle("front", view === "front");
 
       if (team === "a"){
         cardB.style.display = "none";
@@ -498,17 +475,12 @@
         cardA.style.display = "";
         cardB.style.display = "";
       }
-
-      legendA.style.display = (cardA.style.display === "none") ? "none" : "";
-      legendB.style.display = (cardB.style.display === "none") ? "none" : "";
     }
 
     async function loadAndRender(){
       const aEl = document.getElementById("a-tabell");
       const bEl = document.getElementById("b-tabell");
       const meta = document.getElementById("meta");
-      const badgeA = document.getElementById("badge-a");
-      const badgeB = document.getElementById("badge-b");
 
       aEl.className = bEl.className = "loading";
       aEl.textContent = bEl.textContent = "Laster…";
@@ -521,15 +493,10 @@
         renderTable("a-tabell", json.a);
         renderTable("b-tabell", json.b);
 
-        badgeA.textContent = "5. divisjon (2026)";
-        badgeB.textContent = "7. divisjon (2026)";
-
         const d = parseUpdatedAtUTC(json.updatedAt);
-        if (d){
-          meta.textContent = "🕒 Sist oppdatert: " + d.toLocaleString("no-NO", { dateStyle:"medium", timeStyle:"short" });
-        } else {
-          meta.textContent = "🕒 Sist oppdatert: " + (json.updatedAt || "ukjent");
-        }
+        meta.textContent = d
+          ? ("🕒 Sist oppdatert: " + d.toLocaleString("no-NO", { dateStyle:"medium", timeStyle:"short" }))
+          : ("🕒 Sist oppdatert: " + (json.updatedAt || "ukjent"));
       } catch (e){
         aEl.className = bEl.className = "error";
         aEl.innerHTML = bEl.innerHTML = "Feil ved lasting av tables.json.";
@@ -538,7 +505,7 @@
     }
 
     window.addEventListener("DOMContentLoaded", () => {
-      applyViewFromQuery();
+      applyFromQuery();
       loadAndRender();
       setInterval(loadAndRender, 60 * 1000);
     });
