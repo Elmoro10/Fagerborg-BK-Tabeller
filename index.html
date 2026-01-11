@@ -21,8 +21,7 @@
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
     }
 
-    *{ box-sizing:border-box; }
-
+    *{box-sizing:border-box}
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
@@ -30,27 +29,17 @@
       color:var(--text);
     }
 
-    /* embed=1 => bedre i IdrettenOnline */
+    /* embed=1 => penere i IdrettenOnline */
     body.embed{ background:transparent; }
-    .wrap{
-      max-width:1200px;
-      margin:0 auto;
-      padding:12px 10px;
-    }
-    body.embed .wrap{
-      max-width:none;
-      margin:0;
-      padding:0;
-    }
+    .wrap{ max-width:1200px; margin:0 auto; padding:12px 10px; }
+    body.embed .wrap{ max-width:none; margin:0; padding:0; }
 
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:10px;
     }
-    @media(max-width: 920px){
-      .grid{ grid-template-columns:1fr; }
-    }
+    @media(max-width: 920px){ .grid{ grid-template-columns:1fr; } }
 
     .card{
       background:var(--card);
@@ -60,10 +49,7 @@
       overflow:hidden;
       min-width:0;
     }
-    body.embed .card{
-      box-shadow:none;
-      border-radius:10px;
-    }
+    body.embed .card{ box-shadow:none; border-radius:10px; }
 
     .card-head{
       display:flex;
@@ -74,13 +60,7 @@
       border-bottom:1px solid var(--line);
       background:var(--head);
     }
-
-    .card-title{
-      font-weight:900;
-      font-size:18px;
-      letter-spacing:-.01em;
-    }
-
+    .card-title{ font-weight:900; font-size:18px; letter-spacing:-.01em; }
     .badge{
       font-size:12px;
       color:var(--muted);
@@ -91,18 +71,19 @@
       white-space:nowrap;
     }
 
-    /* Scroll container for mobil */
     .table-wrap{
       width:100%;
       overflow-x:auto;
-      -webkit-overflow-scrolling: touch;
+      -webkit-overflow-scrolling:touch;
     }
 
+    /* ✅ ROBUST: fast layout + colgroup => aldri forskyvning */
     table{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
+      table-layout:fixed;
       min-width: 980px; /* mobil scroller */
     }
 
@@ -129,6 +110,8 @@
       vertical-align:middle;
       text-align:center;
       white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
     tbody tr:nth-child(even) td{ background:#fbfbfc; }
 
@@ -143,17 +126,12 @@
       width:4px;
       background:transparent;
     }
-    tbody tr.up::before{ background: var(--up); }
-    tbody tr.down::before{ background: var(--down); }
+    tbody tr.up::before{ background:var(--up); }
+    tbody tr.down::before{ background:var(--down); }
 
-    /* ✅ Viktig: bind bredder med klasser (uten colgroup/fixed) */
-    th.col-pos, td.col-pos{ width:56px; }
-    th.col-club, td.col-club{ width:340px; text-align:left; }
-    th.col-form, td.col-form{ width:150px; }
-
-    th.col-num, td.col-num{ width:56px; }
-
-    td.col-club{ padding-left:12px; }
+    /* CLUB cell */
+    th.club, td.club{ text-align:left; }
+    td.club{ padding-left:12px; }
 
     .teamcell{
       display:flex;
@@ -176,17 +154,16 @@
     }
     .teamname{
       font-weight:800;
-      line-height:1.1;
       min-width:0;
       overflow:hidden;
       text-overflow:ellipsis;
       white-space:nowrap;
     }
 
-    td.col-pos{ font-weight:900; }
+    td.pos{ font-weight:900; }
     td.points{ font-weight:900; }
 
-    /* Form dots */
+    /* FORM dots */
     .form{
       display:flex;
       justify-content:center;
@@ -202,17 +179,14 @@
     .dot.d{ background:#9ca3af; }
     .dot.l{ background:#dc2626; }
 
-    .loading, .error{
+    .loading,.error{
       padding:12px;
       margin:10px;
       border-radius:12px;
       font-size:14px;
       background:#fff;
     }
-    .loading{
-      color:var(--muted);
-      border:1px dashed #d1d5db;
-    }
+    .loading{ color:var(--muted); border:1px dashed #d1d5db; }
     .error{
       background:#fee2e2;
       border:1px solid #fecaca;
@@ -220,7 +194,7 @@
       white-space:pre-wrap;
     }
 
-    /* Legend under each table */
+    /* Legend */
     .legend-row{
       display:flex;
       flex-wrap:wrap;
@@ -291,13 +265,6 @@
       return location.origin + root;
     }
 
-    function toAbsMaybe(u){
-      const s = String(u || "").trim();
-      if (!s) return "";
-      if (s.startsWith("http://") || s.startsWith("https://")) return s;
-      return repoBaseUrl() + s.replace(/^\//, "");
-    }
-
     function parseGoals(goalsStr){
       const s = String(goalsStr || "").trim().replaceAll("−","-").replaceAll("–","-");
       const m = s.match(/(\d+)\s*-\s*(\d+)/);
@@ -311,6 +278,13 @@
       return n > 0 ? `+${n}` : `${n}`;
     }
 
+    function toAbsMaybe(u){
+      const s = String(u || "").trim();
+      if (!s) return "";
+      if (s.startsWith("http://") || s.startsWith("https://")) return s;
+      return repoBaseUrl() + s.replace(/^\//, "");
+    }
+
     function logoHTML(row){
       const url = toAbsMaybe(row.logoUrl);
       if (!url) return `<span class="logo fallback" aria-hidden="true"></span>`;
@@ -322,14 +296,10 @@
       const arr = Array.isArray(row.form) ? row.form.slice(0,5) : [];
       const filled = arr.map(x => String(x).toUpperCase());
       while (filled.length < 5) filled.push("");
-      return `
-        <div class="form" aria-label="Form">
-          ${filled.map(v => {
-            const cls = v==="W" ? "w" : v==="L" ? "l" : v==="D" ? "d" : "";
-            return `<span class="dot ${cls}" aria-hidden="true"></span>`;
-          }).join("")}
-        </div>
-      `;
+      return `<div class="form">${filled.map(v=>{
+        const cls = v==="W" ? "w" : v==="L" ? "l" : v==="D" ? "d" : "";
+        return `<span class="dot ${cls}"></span>`;
+      }).join("")}</div>`;
     }
 
     function allPosAreZero(rows){
@@ -343,7 +313,6 @@
 
     function renderTable(targetId, data){
       const el = document.getElementById(targetId);
-
       if (!data || !Array.isArray(data.rows) || data.rows.length === 0){
         el.className = "error";
         el.textContent = "Ingen tabellrader funnet.";
@@ -353,23 +322,38 @@
       const rows = sortRows(data.rows);
       const syntheticPos = allPosAreZero(rows);
 
+      const COLS = 11; // pos, club, K, S, U, T, MF, MM, DIFF, P, FORM
+
       el.className = "";
       el.innerHTML = `
         <div class="table-wrap">
           <table>
+            <colgroup>
+              <col style="width:56px">
+              <col style="width:340px">
+              <col style="width:56px">
+              <col style="width:56px">
+              <col style="width:56px">
+              <col style="width:56px">
+              <col style="width:56px">
+              <col style="width:56px">
+              <col style="width:56px">
+              <col style="width:56px">
+              <col style="width:150px">
+            </colgroup>
             <thead>
               <tr>
-                <th class="col-pos">POS</th>
-                <th class="col-club">CLUB</th>
-                <th class="col-num">K</th>
-                <th class="col-num">S</th>
-                <th class="col-num">U</th>
-                <th class="col-num">T</th>
-                <th class="col-num">MF</th>
-                <th class="col-num">MM</th>
-                <th class="col-num">+/-</th>
-                <th class="col-num">P</th>
-                <th class="col-form">FORM</th>
+                <th>POS</th>
+                <th class="club">CLUB</th>
+                <th>K</th>
+                <th>S</th>
+                <th>U</th>
+                <th>T</th>
+                <th>MF</th>
+                <th>MM</th>
+                <th>+/-</th>
+                <th>P</th>
+                <th>FORM</th>
               </tr>
             </thead>
             <tbody>
@@ -377,7 +361,6 @@
                 const posShown = syntheticPos ? String(idx + 1) : String(r.pos ?? "");
                 const g = parseGoals(r.goals ?? "0 - 0");
 
-                // K = played (kamper)
                 const K = String(r.played ?? "0");
                 const S = String(r.wins ?? "0");
                 const U = String(r.draws ?? "0");
@@ -391,31 +374,36 @@
                 const isDown = idx >= rows.length - 2;
                 const cls = `${isUp ? "up" : ""} ${isDown ? "down" : ""}`.trim();
 
-                return `
-                  <tr class="${cls}">
-                    <td class="col-pos">${esc(posShown)}</td>
-                    <td class="col-club">
-                      <div class="teamcell">
-                        ${logoHTML(r)}
-                        <div class="teamname">${esc(r.team ?? "")}</div>
-                      </div>
-                    </td>
-                    <td class="col-num">${esc(K)}</td>
-                    <td class="col-num">${esc(S)}</td>
-                    <td class="col-num">${esc(U)}</td>
-                    <td class="col-num">${esc(T)}</td>
-                    <td class="col-num">${esc(MF)}</td>
-                    <td class="col-num">${esc(MM)}</td>
-                    <td class="col-num">${esc(DIFF)}</td>
-                    <td class="col-num points">${esc(P)}</td>
-                    <td class="col-form">${formHTML(r)}</td>
-                  </tr>
-                `;
+                const tds = [
+                  `<td class="pos">${esc(posShown)}</td>`,
+                  `<td class="club"><div class="teamcell">${logoHTML(r)}<div class="teamname">${esc(r.team ?? "")}</div></div></td>`,
+                  `<td>${esc(K)}</td>`,
+                  `<td>${esc(S)}</td>`,
+                  `<td>${esc(U)}</td>`,
+                  `<td>${esc(T)}</td>`,
+                  `<td>${esc(MF)}</td>`,
+                  `<td>${esc(MM)}</td>`,
+                  `<td>${esc(DIFF)}</td>`,
+                  `<td class="points">${esc(P)}</td>`,
+                  `<td>${formHTML(r)}</td>`
+                ];
+
+                // ✅ sikkerhet: hvis noe er galt, fyll med tomme celler
+                while (tds.length < COLS) tds.push(`<td></td>`);
+                if (tds.length > COLS) tds.length = COLS;
+
+                return `<tr class="${cls}" data-cols="${tds.length}">${tds.join("")}</tr>`;
               }).join("")}
             </tbody>
           </table>
         </div>
       `;
+
+      // Debug: sjekk at alle rader har 11 td
+      const bad = el.querySelectorAll('tr[data-cols]:not([data-cols="11"])');
+      if (bad.length){
+        console.warn("Kolonnefeil: noen rader har ikke 11 celler", bad);
+      }
     }
 
     function applyParams(){
