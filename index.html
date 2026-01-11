@@ -20,24 +20,18 @@
       --radius:14px;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
 
-      /* base sizes */
       --clubw: 260px;
       --formw: 150px;
       --numw: 56px;
       --posw: 56px;
 
-      /* min table width (desktop) */
       --minTable: 880px;
 
-      /* our team highlight */
       --our-bg: rgba(22,163,74,.12);
-      --our-bg-even: rgba(22,163,74,.12);
-      --our-border: rgba(22,163,74,.35);
       --our-text: #16a34a;
     }
 
     *{ box-sizing:border-box; }
-
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
@@ -59,7 +53,6 @@
     @media(max-width: 920px){
       .grid{ grid-template-columns:1fr; }
     }
-
     .grid.single{ grid-template-columns: 1fr; }
 
     .card{
@@ -141,7 +134,6 @@
 
     tbody tr:nth-child(even) td{ background:#fbfbfc; }
 
-    /* ✅ Fagerborg highlight (overstyrer zebra) */
     tbody tr.our td{
       background: var(--our-bg) !important;
       border-bottom-color: rgba(22,163,74,.18);
@@ -151,12 +143,10 @@
       font-weight: 900;
     }
 
-    /* left stripe */
     tbody tr.up td:first-child{ border-left:4px solid var(--up); }
     tbody tr.down td:first-child{ border-left:4px solid var(--down); }
     tbody tr td:first-child{ border-left:4px solid transparent; }
 
-    /* column widths */
     th.c-pos, td.c-pos{ width: var(--posw); }
     th.c-club, td.c-club{ width: var(--clubw); text-align:left; }
     th.c-num, td.c-num{ width: var(--numw); }
@@ -247,7 +237,6 @@
         --minTable: 760px;
         --formw: 130px;
       }
-
       th.col-mf, td.col-mf, col.col-mf{ display:none; }
       th.col-mm, td.col-mm, col.col-mm{ display:none; }
     }
@@ -259,6 +248,36 @@
         --formw: 120px;
       }
     }
+
+    /* ============================================================
+       ✅ FRONT / COMPACT MODE (view=front)
+       Viser kun: POS | CLUB | K | P
+       Ingen horisontal scroll.
+       ============================================================ */
+    body.front .wrap{ max-width: 680px; }
+
+    body.front .table-wrap{ overflow-x: hidden; }
+
+    body.front table{
+      min-width: 0 !important;
+      table-layout: fixed;
+    }
+
+    /* Skjul alt unntatt K og P */
+    body.front th.hide-front, body.front td.hide-front, body.front col.hide-front{
+      display:none !important;
+    }
+
+    /* Smalere kolonner i front */
+    body.front{
+      --clubw: 260px;
+      --numw: 58px;
+      --posw: 52px;
+      --minTable: 0px;
+    }
+
+    /* I front: skjul legend (valgfritt) */
+    body.front .legend-row{ display:none; }
   </style>
 </head>
 
@@ -349,7 +368,6 @@
       const arr = Array.isArray(row.form) ? row.form.slice(0,5) : [];
       const filled = arr.map(x => String(x).toUpperCase());
       while (filled.length < 5) filled.push("");
-
       return `<span class="form">${
         filled.map(v=>{
           const cls = v==="W" ? "w" : v==="L" ? "l" : v==="D" ? "d" : "";
@@ -368,7 +386,6 @@
     }
 
     function isOurTeam(teamName){
-      // ✅ Marker både "Fagerborg" og "Fagerborg 2"
       const t = String(teamName || "").trim().toLowerCase();
       return t.startsWith("fagerborg");
     }
@@ -391,15 +408,15 @@
             <colgroup>
               <col style="width:var(--posw)">
               <col style="width:var(--clubw)">
-              <col style="width:var(--numw)">
-              <col style="width:var(--numw)">
-              <col style="width:var(--numw)">
-              <col style="width:var(--numw)">
-              <col class="col-mf" style="width:var(--numw)">
-              <col class="col-mm" style="width:var(--numw)">
-              <col style="width:var(--numw)">
-              <col style="width:var(--numw)">
-              <col style="width:var(--formw)">
+              <col style="width:var(--numw)"><!-- K -->
+              <col class="hide-front" style="width:var(--numw)"><!-- S -->
+              <col class="hide-front" style="width:var(--numw)"><!-- U -->
+              <col class="hide-front" style="width:var(--numw)"><!-- T -->
+              <col class="hide-front col-mf" style="width:var(--numw)"><!-- MF -->
+              <col class="hide-front col-mm" style="width:var(--numw)"><!-- MM -->
+              <col class="hide-front" style="width:var(--numw)"><!-- +/- -->
+              <col style="width:var(--numw)"><!-- P -->
+              <col class="hide-front" style="width:var(--formw)"><!-- FORM -->
             </colgroup>
 
             <thead>
@@ -407,14 +424,14 @@
                 <th class="c-pos">POS</th>
                 <th class="c-club">CLUB</th>
                 <th class="c-num">K</th>
-                <th class="c-num">S</th>
-                <th class="c-num">U</th>
-                <th class="c-num">T</th>
-                <th class="c-num col-mf">MF</th>
-                <th class="c-num col-mm">MM</th>
-                <th class="c-num">+/-</th>
+                <th class="c-num hide-front">S</th>
+                <th class="c-num hide-front">U</th>
+                <th class="c-num hide-front">T</th>
+                <th class="c-num hide-front col-mf">MF</th>
+                <th class="c-num hide-front col-mm">MM</th>
+                <th class="c-num hide-front">+/-</th>
                 <th class="c-num">P</th>
-                <th class="c-form">FORM</th>
+                <th class="c-form hide-front">FORM</th>
               </tr>
             </thead>
 
@@ -451,15 +468,16 @@
                         <span class="club-name">${esc(r.team ?? "")}</span>
                       </span>
                     </td>
+
                     <td class="c-num">${esc(K)}</td>
-                    <td class="c-num">${esc(S)}</td>
-                    <td class="c-num">${esc(U)}</td>
-                    <td class="c-num">${esc(T)}</td>
-                    <td class="c-num col-mf">${esc(MF)}</td>
-                    <td class="c-num col-mm">${esc(MM)}</td>
-                    <td class="c-num">${esc(DIFF)}</td>
+                    <td class="c-num hide-front">${esc(S)}</td>
+                    <td class="c-num hide-front">${esc(U)}</td>
+                    <td class="c-num hide-front">${esc(T)}</td>
+                    <td class="c-num hide-front col-mf">${esc(MF)}</td>
+                    <td class="c-num hide-front col-mm">${esc(MM)}</td>
+                    <td class="c-num hide-front">${esc(DIFF)}</td>
                     <td class="c-num points">${esc(P)}</td>
-                    <td class="c-form">${formHTML(r)}</td>
+                    <td class="c-form hide-front">${formHTML(r)}</td>
                   </tr>
                 `;
               }).join("")}
@@ -472,6 +490,13 @@
     function applyTeamMode(){
       const params = new URLSearchParams(location.search);
       const team = (params.get("team") || "both").toLowerCase();
+      const view = (params.get("view") || "").toLowerCase();
+
+      if (view === "front"){
+        document.body.classList.add("front");
+      } else {
+        document.body.classList.remove("front");
+      }
 
       const grid = document.getElementById("grid");
       const cardA = document.getElementById("card-a");
