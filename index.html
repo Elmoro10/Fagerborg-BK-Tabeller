@@ -80,7 +80,7 @@
       white-space:nowrap;
     }
 
-    /* Scroll på små skjermer (og hvis iframe blir smal) */
+    /* Scroll på små skjermer */
     .table-wrap{
       width:100%;
       overflow-x:auto;
@@ -92,8 +92,8 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      table-layout:fixed;     /* stabil alignment */
-      min-width: 880px;       /* gjør at mobil scroller i stedet for å kræsje layout */
+      table-layout:fixed;      /* stabilt */
+      min-width: 920px;        /* så vi får scroll på mobil i stedet for at layout knuses */
     }
 
     thead th{
@@ -124,7 +124,7 @@
       background:#fbfbfc;
     }
 
-    /* PL-ish left bar */
+    /* PL-ish stripe */
     tbody tr{ position:relative; }
     tbody tr::before{
       content:"";
@@ -138,19 +138,18 @@
     tbody tr.up::before{ background: var(--up); }
     tbody tr.down::before{ background: var(--down); }
 
-    /* Låser kolonnebreddene 100% (dette fikser “en kolonne off”) */
-    col.c-pos   { width:56px; }
-    col.c-club  { width:330px; }
-    col.c-num   { width:54px; }
-    col.c-form  { width:140px; }
-
-    th.club, td.club{ text-align:left; }
+    /* CLUB kolonne */
+    th.club, td.club{
+      text-align:left;
+    }
+    td.club{ padding-left:12px; }
 
     .teamcell{
       display:flex;
       align-items:center;
       gap:10px;
-      min-width:0;
+      width:100%;        /* VIKTIG: fyller hele cella */
+      min-width:0;       /* VIKTIG: lar ellipsis funke */
     }
 
     .logo{
@@ -168,11 +167,12 @@
     }
 
     .teamname{
+      flex:1;            /* VIKTIG: tar plassen, ikke klem til 1 bokstav */
+      min-width:0;       /* VIKTIG: ellipsis */
       font-weight:800;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      min-width:0;
     }
 
     td.pos{ font-weight:900; }
@@ -211,7 +211,7 @@
       color:#991b1b;
     }
 
-    /* Legend: vannrett, kun under B */
+    /* Legend under B */
     .legend-row{
       display:flex;
       flex-wrap:wrap;
@@ -224,22 +224,11 @@
     }
     .legend-item b{ color: var(--text); }
 
-    /* EMBED MODE for IdrettenOnline */
-    body.embed{
-      background: transparent;
-    }
-    body.embed .wrap{
-      max-width: 100%;
-      padding: 0;
-    }
-    body.embed .card{
-      border-radius: 0;
-      box-shadow: none;
-      border: 0;
-    }
-    body.embed .card-head{
-      border-radius: 0;
-    }
+    /* EMBED */
+    body.embed{ background:transparent; }
+    body.embed .wrap{ max-width:100%; padding:0; }
+    body.embed .card{ border-radius:0; box-shadow:none; border:0; }
+    body.embed .card-head{ border-radius:0; }
   </style>
 </head>
 
@@ -278,6 +267,12 @@
   <script>
     const BASE_PAGES_URL = "https://elmoro10.github.io/Fagerborg-BK-Tabeller";
 
+    function esc(s){
+      return String(s ?? "").replace(/[&<>"']/g, m => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+     _toggle = esc));
+      // ↑ (ingenting fancy, bare safe-escape)
+    }
     function esc(s){
       return String(s ?? "").replace(/[&<>"']/g, m => ({
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
@@ -383,13 +378,21 @@
       el.innerHTML = `
         <div class="table-wrap">
           <table>
+            <!-- INLINE widths: dette er super-stabilt -->
             <colgroup>
-              <col class="c-pos">
-              <col class="c-club">
-              <col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num">
-              <col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num">
-              <col class="c-form">
+              <col style="width:56px">
+              <col style="width:330px">
+              <col style="width:54px">
+              <col style="width:54px">
+              <col style="width:54px">
+              <col style="width:54px">
+              <col style="width:54px">
+              <col style="width:54px">
+              <col style="width:54px">
+              <col style="width:54px">
+              <col style="width:140px">
             </colgroup>
+
             <thead>
               <tr>
                 <th>POS</th>
@@ -405,6 +408,7 @@
                 <th>FORM</th>
               </tr>
             </thead>
+
             <tbody>
               ${rows.map((r, idx) => {
                 const shownPos = syntheticPos ? String(idx + 1) : String(r.pos ?? "");
