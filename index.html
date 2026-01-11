@@ -44,7 +44,7 @@
     @media(max-width: 920px){
       .grid{ grid-template-columns: 1fr; }
     }
-    .grid.single{ grid-template-columns:1fr; }
+    .grid.single{ grid-template-columns: 1fr; }
 
     .card{
       background:var(--card);
@@ -92,7 +92,7 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      min-width: 0; /* <-- viktig: ikke tving super-bred på PC */
+      min-width:0;
     }
 
     thead th{
@@ -201,32 +201,32 @@
       color:#991b1b;
     }
 
-    .meta, .legend{
-      margin-top:12px;
+    /* Legende: vannrett */
+    .legend-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 18px;
       padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
+      border-top:1px solid var(--line);
       background:#fff;
       color:var(--muted);
       font-size:12px;
     }
-    .legend{ line-height:1.55; }
-    .legend b{ color:var(--text); }
+    .legend-item b{ color: var(--text); }
 
     /* Mobil: skjul noen kolonner for å være smalere */
     @media (max-width: 640px){
       .col-mf, .col-mm, .col-form { display:none; }
-      /* om du vil: la tabellen kunne scrolle litt likevel */
       table{ min-width: 720px; }
     }
 
-    /* EMBED MODE: fjerner “kutt” i IdrettenOnline seksjon */
+    /* EMBED MODE for IdrettenOnline */
     body.embed{
       background: transparent;
     }
     body.embed .wrap{
       max-width: 100%;
-      padding: 0; /* <-- ingen innvendig padding i iframe */
+      padding: 0;
     }
     body.embed .card{
       border-radius: 0;
@@ -235,10 +235,6 @@
     }
     body.embed .card-head{
       border-radius: 0;
-    }
-    body.embed .meta,
-    body.embed .legend{
-      display:none;
     }
   </style>
 </head>
@@ -260,37 +256,29 @@
           <div class="badge">7. divisjon (2026)</div>
         </div>
         <div id="b-tabell" class="loading">Laster…</div>
+
+        <!-- Legend kun under B-laget -->
+        <div class="legend-row" id="legend-b">
+          <span class="legend-item"><b>K</b> = Kamper</span>
+          <span class="legend-item"><b>S</b> = Seier</span>
+          <span class="legend-item"><b>U</b> = Uavgjort</span>
+          <span class="legend-item"><b>T</b> = Tap</span>
+          <span class="legend-item"><b>MF</b> = Mål for</span>
+          <span class="legend-item"><b>MM</b> = Mål mot</span>
+          <span class="legend-item"><b>+/-</b> = Målforskjell</span>
+          <span class="legend-item"><b>P</b> = Poeng</span>
+        </div>
       </div>
     </section>
-
-    <div class="meta" id="meta">—</div>
-
-    <div class="legend" id="legend">
-      <b>K</b> = Kamper<br>
-      <b>S</b> = Seier<br>
-      <b>U</b> = Uavgjort<br>
-      <b>T</b> = Tap<br>
-      <b>MF</b> = Mål for<br>
-      <b>MM</b> = Mål mot<br>
-      <b>+/-</b> = Målforskjell<br>
-      <b>P</b> = Poeng
-    </div>
   </div>
 
   <script>
+    const BASE_PAGES_URL = "https://elmoro10.github.io/Fagerborg-BK-Tabeller";
+
     function esc(s){
       return String(s ?? "").replace(/[&<>"']/g, m => ({
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
       }[m]));
-    }
-
-    function parseUpdatedAtUTC(s){
-      const m = String(s || "").match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+UTC$/);
-      if (!m) return null;
-      return new Date(Date.UTC(
-        Number(m[1]), Number(m[2]) - 1, Number(m[3]),
-        Number(m[4]), Number(m[5]), 0
-      ));
     }
 
     function normGoals(goalsStr){
@@ -356,8 +344,7 @@
       const grid = document.getElementById("grid");
       const cardA = document.getElementById("card-a");
       const cardB = document.getElementById("card-b");
-      const meta = document.getElementById("meta");
-      const legend = document.getElementById("legend");
+      const legendB = document.getElementById("legend-b");
 
       if (isEmbed()){
         document.body.classList.add("embed");
@@ -366,19 +353,20 @@
       if (filter === "a"){
         cardB.style.display = "none";
         grid.classList.add("single");
-        meta.style.display = "none";
-        legend.style.display = "none";
       } else if (filter === "b"){
         cardA.style.display = "none";
         grid.classList.add("single");
-        meta.style.display = "none";
-        legend.style.display = "none";
       } else {
         cardA.style.display = "";
         cardB.style.display = "";
         grid.classList.remove("single");
-        meta.style.display = "";
-        legend.style.display = "";
+      }
+
+      // Legend kun under B, men hvis vi viser bare A, skjul den
+      if (filter === "a"){
+        legendB.style.display = "none";
+      } else {
+        legendB.style.display = "";
       }
     }
 
@@ -464,27 +452,22 @@
     async function loadAndRender(){
       const aEl = document.getElementById("a-tabell");
       const bEl = document.getElementById("b-tabell");
-      const meta = document.getElementById("meta");
 
       aEl.className = bEl.className = "loading";
       aEl.textContent = bEl.textContent = "Laster…";
 
       try{
-        const res = await fetch("./data/tables.json?ts=" + Date.now(), { cache: "no-store" });
+        // ABSOLUTT URL (viktig i IdrettenOnline)
+        const url = BASE_PAGES_URL + "/data/tables.json?ts=" + Date.now();
+        const res = await fetch(url, { cache: "no-store" });
         if (!res.ok) throw new Error("HTTP " + res.status);
         const json = await res.json();
 
         renderTable("a-tabell", json.a);
         renderTable("b-tabell", json.b);
-
-        const d = parseUpdatedAtUTC(json.updatedAt);
-        meta.textContent = "🕒 Sist oppdatert: " + (d
-          ? d.toLocaleString("no-NO", { dateStyle:"medium", timeStyle:"short" })
-          : (json.updatedAt || "ukjent"));
       } catch (e){
         aEl.className = bEl.className = "error";
-        aEl.innerHTML = bEl.innerHTML = "Feil ved lasting av tables.json: " + esc(e.message);
-        meta.textContent = "🕒 Sist oppdatert: (feil)";
+        aEl.innerHTML = bEl.innerHTML = "Feil ved lasting av data: " + esc(e.message);
       }
     }
 
