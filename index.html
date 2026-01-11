@@ -80,7 +80,6 @@
       white-space:nowrap;
     }
 
-    /* Scroll på små skjermer */
     .table-wrap{
       width:100%;
       overflow-x:auto;
@@ -92,8 +91,8 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      table-layout:fixed;      /* stabilt */
-      min-width: 920px;        /* så vi får scroll på mobil i stedet for at layout knuses */
+      table-layout:fixed;
+      min-width: 920px; /* scroll på mobil */
     }
 
     thead th{
@@ -120,36 +119,28 @@
       text-align:center;
     }
 
-    tbody tr:nth-child(even) td{
-      background:#fbfbfc;
-    }
+    tbody tr:nth-child(even) td{ background:#fbfbfc; }
 
-    /* PL-ish stripe */
     tbody tr{ position:relative; }
     tbody tr::before{
       content:"";
       position:absolute;
-      left:0;
-      top:0;
-      bottom:0;
+      left:0; top:0; bottom:0;
       width:4px;
       background:transparent;
     }
     tbody tr.up::before{ background: var(--up); }
     tbody tr.down::before{ background: var(--down); }
 
-    /* CLUB kolonne */
-    th.club, td.club{
-      text-align:left;
-    }
+    th.club, td.club{ text-align:left; }
     td.club{ padding-left:12px; }
 
     .teamcell{
       display:flex;
       align-items:center;
       gap:10px;
-      width:100%;        /* VIKTIG: fyller hele cella */
-      min-width:0;       /* VIKTIG: lar ellipsis funke */
+      width:100%;
+      min-width:0;
     }
 
     .logo{
@@ -167,8 +158,8 @@
     }
 
     .teamname{
-      flex:1;            /* VIKTIG: tar plassen, ikke klem til 1 bokstav */
-      min-width:0;       /* VIKTIG: ellipsis */
+      flex:1;
+      min-width:0;
       font-weight:800;
       white-space:nowrap;
       overflow:hidden;
@@ -209,9 +200,9 @@
       background:#fee2e2;
       border:1px solid #fecaca;
       color:#991b1b;
+      white-space:pre-wrap;
     }
 
-    /* Legend under B */
     .legend-row{
       display:flex;
       flex-wrap:wrap;
@@ -224,7 +215,6 @@
     }
     .legend-item b{ color: var(--text); }
 
-    /* EMBED */
     body.embed{ background:transparent; }
     body.embed .wrap{ max-width:100%; padding:0; }
     body.embed .card{ border-radius:0; box-shadow:none; border:0; }
@@ -265,14 +255,8 @@
   </div>
 
   <script>
-    const BASE_PAGES_URL = "https://elmoro10.github.io/Fagerborg-BK-Tabeller";
+    const BASE = "https://elmoro10.github.io/Fagerborg-BK-Tabeller";
 
-    function esc(s){
-      return String(s ?? "").replace(/[&<>"']/g, m => ({
-        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-     _toggle = esc));
-      // ↑ (ingenting fancy, bare safe-escape)
-    }
     function esc(s){
       return String(s ?? "").replace(/[&<>"']/g, m => ({
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
@@ -367,7 +351,7 @@
 
       if (!data || !Array.isArray(data.rows) || data.rows.length === 0){
         el.className = "error";
-        el.innerHTML = "Ingen tabellrader funnet.";
+        el.textContent = "Ingen tabellrader funnet.";
         return;
       }
 
@@ -378,7 +362,6 @@
       el.innerHTML = `
         <div class="table-wrap">
           <table>
-            <!-- INLINE widths: dette er super-stabilt -->
             <colgroup>
               <col style="width:56px">
               <col style="width:330px">
@@ -392,7 +375,6 @@
               <col style="width:54px">
               <col style="width:140px">
             </colgroup>
-
             <thead>
               <tr>
                 <th>POS</th>
@@ -408,7 +390,6 @@
                 <th>FORM</th>
               </tr>
             </thead>
-
             <tbody>
               ${rows.map((r, idx) => {
                 const shownPos = syntheticPos ? String(idx + 1) : String(r.pos ?? "");
@@ -465,7 +446,7 @@
       aEl.textContent = bEl.textContent = "Laster…";
 
       try{
-        const url = BASE_PAGES_URL + "/data/tables.json?ts=" + Date.now();
+        const url = BASE + "/data/tables.json?ts=" + Date.now();
         const res = await fetch(url, { cache: "no-store" });
         if (!res.ok) throw new Error("HTTP " + res.status);
         const json = await res.json();
@@ -473,10 +454,26 @@
         renderTable("a-tabell", json.a);
         renderTable("b-tabell", json.b);
       } catch (e){
+        const msg = "Kunne ikke hente tables.json.\n\n" +
+                    "Feil: " + (e && e.message ? e.message : String(e)) + "\n" +
+                    "URL: " + (BASE + "/data/tables.json");
         aEl.className = bEl.className = "error";
-        aEl.innerHTML = bEl.innerHTML = "Feil ved lasting av data: " + esc(e.message);
+        aEl.textContent = msg;
+        bEl.textContent = msg;
       }
     }
+
+    // Viktig: vis JS-feil direkte på siden
+    window.addEventListener("error", (ev) => {
+      const aEl = document.getElementById("a-tabell");
+      const bEl = document.getElementById("b-tabell");
+      const msg = "JS-feil i index.html:\n\n" + (ev && ev.message ? ev.message : "Ukjent feil");
+      if (aEl && bEl){
+        aEl.className = bEl.className = "error";
+        aEl.textContent = msg;
+        bEl.textContent = msg;
+      }
+    });
 
     window.addEventListener("DOMContentLoaded", () => {
       applyModeUI();
