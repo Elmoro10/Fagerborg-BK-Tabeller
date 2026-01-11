@@ -20,12 +20,14 @@
       --radius:14px;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
 
-      /* ✅ TUNE HER */
-      --clubw: 260px; /* var 340px */
+      /* base sizes */
+      --clubw: 260px;
       --formw: 150px;
       --numw: 56px;
       --posw: 56px;
-      --minTable: 880px; /* var 980px */
+
+      /* min table width (desktop) */
+      --minTable: 880px;
     }
 
     *{ box-sizing:border-box; }
@@ -51,6 +53,9 @@
     @media(max-width: 920px){
       .grid{ grid-template-columns:1fr; }
     }
+
+    /* When single team mode, make it one column always */
+    .grid.single{ grid-template-columns: 1fr; }
 
     .card{
       background:var(--card);
@@ -128,23 +133,22 @@
 
     tbody tr:nth-child(even) td{ background:#fbfbfc; }
 
-    /* Venstrestrek */
+    /* left stripe */
     tbody tr.up td:first-child{ border-left:4px solid var(--up); }
     tbody tr.down td:first-child{ border-left:4px solid var(--down); }
     tbody tr td:first-child{ border-left:4px solid transparent; }
 
-    /* ✅ Kolonnebredder */
+    /* column widths */
     th.c-pos, td.c-pos{ width: var(--posw); }
     th.c-club, td.c-club{ width: var(--clubw); text-align:left; }
     th.c-num, td.c-num{ width: var(--numw); }
     th.c-form, td.c-form{ width: var(--formw); }
 
     td.c-club{ padding-left:12px; }
-
     td.points{ font-weight:900; }
     td.c-pos{ font-weight:900; }
 
-    /* CLUB cell */
+    /* club cell */
     .club-inner{
       display:block;
       overflow:hidden;
@@ -175,11 +179,8 @@
       white-space:nowrap;
     }
 
-    /* FORM dots */
-    .form{
-      display:inline-block;
-      white-space:nowrap;
-    }
+    /* form dots */
+    .form{ display:inline-block; white-space:nowrap; }
     .dot{
       display:inline-block;
       width:10px; height:10px;
@@ -224,17 +225,27 @@
     }
     .legend-item b{ color:var(--text); }
 
-    /* ✅ Gjør klubb-kolonnen enda smalere på små flater (IdrettenOnline/iframe) */
-    @media (max-width: 1100px){
+    /* ====== SMART COMPACT MODE ======
+       Når flaten er smal (typisk iframe/IdrettenOnline), skjul MF og MM,
+       og gjør tabellen litt smalere => mindre horisontal scroll.
+    */
+    @media (max-width: 980px){
       :root{
-        --clubw: 240px;
-        --minTable: 860px;
+        --clubw: 230px;
+        --minTable: 760px;
+        --formw: 130px;
       }
+
+      /* skjul MF og MM (både header og celler) */
+      th.col-mf, td.col-mf{ display:none; }
+      th.col-mm, td.col-mm{ display:none; }
     }
+
     @media (max-width: 760px){
       :root{
-        --clubw: 220px;
-        --minTable: 820px;
+        --clubw: 210px;
+        --minTable: 720px;
+        --formw: 120px;
       }
     }
   </style>
@@ -243,7 +254,7 @@
 <body>
   <div class="wrap">
     <section class="grid" id="grid">
-      <div class="card">
+      <div class="card" id="card-a">
         <div class="card-head">
           <div class="card-title">A-Laget</div>
           <div class="badge">5. divisjon (2026)</div>
@@ -261,7 +272,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id="card-b">
         <div class="card-head">
           <div class="card-title">B-Laget</div>
           <div class="badge">7. divisjon (2026)</div>
@@ -368,8 +379,8 @@
                 <th class="c-num">S</th>
                 <th class="c-num">U</th>
                 <th class="c-num">T</th>
-                <th class="c-num">MF</th>
-                <th class="c-num">MM</th>
+                <th class="c-num col-mf">MF</th>
+                <th class="c-num col-mm">MM</th>
                 <th class="c-num">+/-</th>
                 <th class="c-num">P</th>
                 <th class="c-form">FORM</th>
@@ -406,8 +417,8 @@
                     <td class="c-num">${esc(S)}</td>
                     <td class="c-num">${esc(U)}</td>
                     <td class="c-num">${esc(T)}</td>
-                    <td class="c-num">${esc(MF)}</td>
-                    <td class="c-num">${esc(MM)}</td>
+                    <td class="c-num col-mf">${esc(MF)}</td>
+                    <td class="c-num col-mm">${esc(MM)}</td>
                     <td class="c-num">${esc(DIFF)}</td>
                     <td class="c-num points">${esc(P)}</td>
                     <td class="c-form">${formHTML(r)}</td>
@@ -420,12 +431,33 @@
       `;
     }
 
+    function applyTeamMode(){
+      const params = new URLSearchParams(location.search);
+      const team = (params.get("team") || "both").toLowerCase();
+
+      const grid = document.getElementById("grid");
+      const cardA = document.getElementById("card-a");
+      const cardB = document.getElementById("card-b");
+
+      if (team === "a"){
+        grid.classList.add("single");
+        cardB.style.display = "none";
+      } else if (team === "b"){
+        grid.classList.add("single");
+        cardA.style.display = "none";
+      } else {
+        grid.classList.remove("single");
+        cardA.style.display = "";
+        cardB.style.display = "";
+      }
+    }
+
     async function loadAndRender(){
       const aEl = document.getElementById("a-tabell");
       const bEl = document.getElementById("b-tabell");
 
-      aEl.className = bEl.className = "loading";
-      aEl.textContent = bEl.textContent = "Laster…";
+      if (aEl){ aEl.className = "loading"; aEl.textContent = "Laster…"; }
+      if (bEl){ bEl.className = "loading"; bEl.textContent = "Laster…"; }
 
       const url = repoBaseUrl() + "data/tables.json?ts=" + Date.now();
 
@@ -434,19 +466,19 @@
         if (!res.ok) throw new Error("HTTP " + res.status);
         const json = await res.json();
 
-        renderTable("a-tabell", json.a);
-        renderTable("b-tabell", json.b);
+        if (aEl) renderTable("a-tabell", json.a);
+        if (bEl) renderTable("b-tabell", json.b);
       } catch (e){
         const msg = "Feil ved lasting av tables.json:\n" + (e.message || String(e));
-        aEl.className = bEl.className = "error";
-        aEl.textContent = msg;
-        bEl.textContent = msg;
+        if (aEl){ aEl.className = "error"; aEl.textContent = msg; }
+        if (bEl){ bEl.className = "error"; bEl.textContent = msg; }
       }
     }
 
     window.addEventListener("DOMContentLoaded", () => {
+      applyTeamMode();
       loadAndRender();
-      setInterval(loadAndRender, 60 * 1000);
+      setInterval(loadAndRender, 60 * 1000); // refresher UI hvert minutt (ikke nødvendigvis ny data hvert minutt)
     });
   </script>
 </body>
