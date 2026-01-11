@@ -13,10 +13,8 @@
       --muted:#6b7280;
       --line:#e5e7eb;
       --head:#f8fafc;
-
       --up:#16a34a;
       --down:#dc2626;
-
       --radius:14px;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
     }
@@ -92,7 +90,7 @@
       border-spacing:0;
       font-size:14px;
       table-layout:fixed;
-      min-width: 920px; /* scroll på mobil */
+      min-width:920px;
     }
 
     thead th{
@@ -214,11 +212,6 @@
       font-size:12px;
     }
     .legend-item b{ color: var(--text); }
-
-    body.embed{ background:transparent; }
-    body.embed .wrap{ max-width:100%; padding:0; }
-    body.embed .card{ border-radius:0; box-shadow:none; border:0; }
-    body.embed .card-head{ border-radius:0; }
   </style>
 </head>
 
@@ -240,7 +233,7 @@
         </div>
         <div id="b-tabell" class="loading">Laster…</div>
 
-        <div class="legend-row" id="legend-b">
+        <div class="legend-row">
           <span class="legend-item"><b>K</b> = Kamper</span>
           <span class="legend-item"><b>S</b> = Seier</span>
           <span class="legend-item"><b>U</b> = Uavgjort</span>
@@ -255,8 +248,6 @@
   </div>
 
   <script>
-    const BASE = "https://elmoro10.github.io/Fagerborg-BK-Tabeller";
-
     function esc(s){
       return String(s ?? "").replace(/[&<>"']/g, m => ({
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
@@ -306,44 +297,6 @@
     function sortRows(rows){
       if (allPosAreZero(rows)) return [...rows];
       return [...rows].sort((a,b) => Number(a.pos ?? 0) - Number(b.pos ?? 0));
-    }
-
-    function getTeamFilter(){
-      const params = new URLSearchParams(location.search);
-      const t = (params.get("team") || "").trim().toLowerCase();
-      if (t === "a" || t === "b") return t;
-      return "all";
-    }
-
-    function isEmbed(){
-      const params = new URLSearchParams(location.search);
-      const v = (params.get("embed") || "").trim();
-      return v === "1" || v.toLowerCase() === "true";
-    }
-
-    function applyModeUI(){
-      const filter = getTeamFilter();
-      const grid = document.getElementById("grid");
-      const cardA = document.getElementById("card-a");
-      const cardB = document.getElementById("card-b");
-      const legendB = document.getElementById("legend-b");
-
-      if (isEmbed()) document.body.classList.add("embed");
-
-      if (filter === "a"){
-        cardB.style.display = "none";
-        grid.classList.add("single");
-        legendB.style.display = "none";
-      } else if (filter === "b"){
-        cardA.style.display = "none";
-        grid.classList.add("single");
-        legendB.style.display = "";
-      } else {
-        cardA.style.display = "";
-        cardB.style.display = "";
-        grid.classList.remove("single");
-        legendB.style.display = "";
-      }
     }
 
     function renderTable(targetId, data){
@@ -446,37 +399,21 @@
       aEl.textContent = bEl.textContent = "Laster…";
 
       try{
-        const url = BASE + "/data/tables.json?ts=" + Date.now();
-        const res = await fetch(url, { cache: "no-store" });
+        const res = await fetch("./data/tables.json?ts=" + Date.now(), { cache: "no-store" });
         if (!res.ok) throw new Error("HTTP " + res.status);
         const json = await res.json();
 
         renderTable("a-tabell", json.a);
         renderTable("b-tabell", json.b);
       } catch (e){
-        const msg = "Kunne ikke hente tables.json.\n\n" +
-                    "Feil: " + (e && e.message ? e.message : String(e)) + "\n" +
-                    "URL: " + (BASE + "/data/tables.json");
+        const msg = "Kunne ikke hente tables.json: " + (e && e.message ? e.message : String(e));
         aEl.className = bEl.className = "error";
         aEl.textContent = msg;
         bEl.textContent = msg;
       }
     }
 
-    // Viktig: vis JS-feil direkte på siden
-    window.addEventListener("error", (ev) => {
-      const aEl = document.getElementById("a-tabell");
-      const bEl = document.getElementById("b-tabell");
-      const msg = "JS-feil i index.html:\n\n" + (ev && ev.message ? ev.message : "Ukjent feil");
-      if (aEl && bEl){
-        aEl.className = bEl.className = "error";
-        aEl.textContent = msg;
-        bEl.textContent = msg;
-      }
-    });
-
     window.addEventListener("DOMContentLoaded", () => {
-      applyModeUI();
       loadAndRender();
       setInterval(loadAndRender, 60 * 1000);
     });
