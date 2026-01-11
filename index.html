@@ -19,6 +19,13 @@
 
       --radius:14px;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+
+      /* ✅ TUNE HER */
+      --clubw: 260px; /* var 340px */
+      --formw: 150px;
+      --numw: 56px;
+      --posw: 56px;
+      --minTable: 880px; /* var 980px */
     }
 
     *{ box-sizing:border-box; }
@@ -86,13 +93,12 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* ✅ IKKE fixed layout: det var dette som skapte forskyvning hos deg */
     table{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      min-width: 980px; /* mobil scroller */
+      min-width: var(--minTable);
     }
 
     thead th{
@@ -122,23 +128,23 @@
 
     tbody tr:nth-child(even) td{ background:#fbfbfc; }
 
-    /* ✅ Venstrestrek uten pseudo-element (pseudo + layout kan krangle) */
+    /* Venstrestrek */
     tbody tr.up td:first-child{ border-left:4px solid var(--up); }
     tbody tr.down td:first-child{ border-left:4px solid var(--down); }
     tbody tr td:first-child{ border-left:4px solid transparent; }
 
-    /* ✅ Kolonnebredder (hindrer K i å “ta alt”) */
-    th.c-pos, td.c-pos{ width:56px; }
-    th.c-club, td.c-club{ width:340px; text-align:left; }
-    th.c-num, td.c-num{ width:56px; }
-    th.c-form, td.c-form{ width:150px; }
+    /* ✅ Kolonnebredder */
+    th.c-pos, td.c-pos{ width: var(--posw); }
+    th.c-club, td.c-club{ width: var(--clubw); text-align:left; }
+    th.c-num, td.c-num{ width: var(--numw); }
+    th.c-form, td.c-form{ width: var(--formw); }
 
     td.c-club{ padding-left:12px; }
 
     td.points{ font-weight:900; }
     td.c-pos{ font-weight:900; }
 
-    /* ✅ CLUB cell: ingen flex. 100% stabilt. */
+    /* CLUB cell */
     .club-inner{
       display:block;
       overflow:hidden;
@@ -217,6 +223,20 @@
       font-size:12px;
     }
     .legend-item b{ color:var(--text); }
+
+    /* ✅ Gjør klubb-kolonnen enda smalere på små flater (IdrettenOnline/iframe) */
+    @media (max-width: 1100px){
+      :root{
+        --clubw: 240px;
+        --minTable: 860px;
+      }
+    }
+    @media (max-width: 760px){
+      :root{
+        --clubw: 220px;
+        --minTable: 820px;
+      }
+    }
   </style>
 </head>
 
@@ -375,7 +395,7 @@
 
                 return `
                   <tr class="${cls}">
-                    <td class="c-pos c-pos">${esc(posShown)}</td>
+                    <td class="c-pos">${esc(posShown)}</td>
                     <td class="c-club">
                       <span class="club-inner">
                         ${logoHTML(r)}
