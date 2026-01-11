@@ -32,13 +32,13 @@
     .wrap{
       max-width:1200px;
       margin:0 auto;
-      padding:12px 10px 12px;
+      padding:12px 10px;
     }
 
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:8px;
+      gap:10px;
     }
     @media(max-width: 920px){
       .grid{ grid-template-columns: 1fr; }
@@ -80,6 +80,7 @@
       white-space:nowrap;
     }
 
+    /* Scroll på små skjermer (og hvis iframe blir smal) */
     .table-wrap{
       width:100%;
       overflow-x:auto;
@@ -91,7 +92,8 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      table-layout:fixed; /* viktig sammen med colgroup */
+      table-layout:fixed;     /* stabil alignment */
+      min-width: 880px;       /* gjør at mobil scroller i stedet for å kræsje layout */
     }
 
     thead th{
@@ -122,6 +124,7 @@
       background:#fbfbfc;
     }
 
+    /* PL-ish left bar */
     tbody tr{ position:relative; }
     tbody tr::before{
       content:"";
@@ -135,10 +138,13 @@
     tbody tr.up::before{ background: var(--up); }
     tbody tr.down::before{ background: var(--down); }
 
-    /* CLUB cell */
-    td.col-club, th.col-club{
-      text-align:left;
-    }
+    /* Låser kolonnebreddene 100% (dette fikser “en kolonne off”) */
+    col.c-pos   { width:56px; }
+    col.c-club  { width:330px; }
+    col.c-num   { width:54px; }
+    col.c-form  { width:140px; }
+
+    th.club, td.club{ text-align:left; }
 
     .teamcell{
       display:flex;
@@ -146,6 +152,7 @@
       gap:10px;
       min-width:0;
     }
+
     .logo{
       width:22px;
       height:22px;
@@ -159,19 +166,17 @@
       background:#e5e7eb;
       border:1px solid #d1d5db;
     }
+
     .teamname{
       font-weight:800;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
+      min-width:0;
     }
 
-    td.col-pos{
-      font-weight:900;
-    }
-    td.col-points{
-      font-weight:900;
-    }
+    td.pos{ font-weight:900; }
+    td.points{ font-weight:900; }
 
     .form{
       display:flex;
@@ -206,7 +211,7 @@
       color:#991b1b;
     }
 
-    /* Legend kun under B */
+    /* Legend: vannrett, kun under B */
     .legend-row{
       display:flex;
       flex-wrap:wrap;
@@ -219,13 +224,7 @@
     }
     .legend-item b{ color: var(--text); }
 
-    /* Mobil: skjul MF/MM/FORM */
-    @media (max-width: 640px){
-      .hide-mobile{ display:none; }
-      table{ min-width: 780px; }
-    }
-
-    /* EMBED MODE */
+    /* EMBED MODE for IdrettenOnline */
     body.embed{
       background: transparent;
     }
@@ -384,37 +383,28 @@
       el.innerHTML = `
         <div class="table-wrap">
           <table>
-            <!-- LÅSER KOLONNENE 100% (fikser “en kolonne off”) -->
             <colgroup>
-              <col style="width:56px">
-              <col style="width:320px">
-              <col style="width:54px">
-              <col style="width:54px">
-              <col style="width:54px">
-              <col style="width:54px">
-              <col class="hide-mobile" style="width:54px">
-              <col class="hide-mobile" style="width:54px">
-              <col style="width:54px">
-              <col style="width:54px">
-              <col class="hide-mobile" style="width:140px">
+              <col class="c-pos">
+              <col class="c-club">
+              <col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num">
+              <col class="c-num"><col class="c-num"><col class="c-num"><col class="c-num">
+              <col class="c-form">
             </colgroup>
-
             <thead>
               <tr>
-                <th class="col-pos">POS</th>
-                <th class="col-club col-club">CLUB</th>
+                <th>POS</th>
+                <th class="club">CLUB</th>
                 <th>K</th>
                 <th>S</th>
                 <th>U</th>
                 <th>T</th>
-                <th class="hide-mobile">MF</th>
-                <th class="hide-mobile">MM</th>
+                <th>MF</th>
+                <th>MM</th>
                 <th>+/-</th>
                 <th>P</th>
-                <th class="hide-mobile">FORM</th>
+                <th>FORM</th>
               </tr>
             </thead>
-
             <tbody>
               ${rows.map((r, idx) => {
                 const shownPos = syntheticPos ? String(idx + 1) : String(r.pos ?? "");
@@ -438,8 +428,8 @@
 
                 return `
                   <tr class="${cls}">
-                    <td class="col-pos col-pos">${esc(shownPos)}</td>
-                    <td class="col-club">
+                    <td class="pos">${esc(shownPos)}</td>
+                    <td class="club">
                       <div class="teamcell">
                         ${logoHTML(r)}
                         <div class="teamname">${esc(team)}</div>
@@ -449,11 +439,11 @@
                     <td>${esc(s)}</td>
                     <td>${esc(u)}</td>
                     <td>${esc(t)}</td>
-                    <td class="hide-mobile">${esc(mf)}</td>
-                    <td class="hide-mobile">${esc(mm)}</td>
+                    <td>${esc(mf)}</td>
+                    <td>${esc(mm)}</td>
                     <td>${esc(diff)}</td>
-                    <td class="col-points">${esc(p)}</td>
-                    <td class="hide-mobile">${formHTML(r)}</td>
+                    <td class="points">${esc(p)}</td>
+                    <td>${formHTML(r)}</td>
                   </tr>
                 `;
               }).join("")}
