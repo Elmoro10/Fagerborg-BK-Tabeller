@@ -22,6 +22,7 @@
     }
 
     *{box-sizing:border-box}
+    html, body{ height:100%; }
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
@@ -35,7 +36,6 @@
       padding:16px 12px 24px;
     }
 
-    /* Grid: begge tabeller side om side på stor skjerm */
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -44,11 +44,7 @@
     @media(max-width: 920px){
       .grid{ grid-template-columns: 1fr; }
     }
-
-    /* Single-visning (team=a/b): IKKE gjør den smalere på PC */
-    .grid.single{
-      grid-template-columns: 1fr;
-    }
+    .grid.single{ grid-template-columns:1fr; }
 
     .card{
       background:var(--card);
@@ -85,7 +81,6 @@
       white-space:nowrap;
     }
 
-    /* Scroll-container: på mobil kan man scrolle horisontalt */
     .table-wrap{
       width:100%;
       overflow-x:auto;
@@ -97,8 +92,7 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      /* På PC skal den få plass, men vi lar den scrolle hvis det blir trangt */
-      min-width: 980px;
+      min-width: 0; /* <-- viktig: ikke tving super-bred på PC */
     }
 
     thead th{
@@ -111,14 +105,14 @@
       font-size:12px;
       text-transform:uppercase;
       letter-spacing:.04em;
-      padding:12px 12px;
+      padding:12px 10px;
       border-bottom:1px solid var(--line);
       white-space:nowrap;
       text-align:center;
     }
 
     tbody td{
-      padding:14px 12px;
+      padding:14px 10px;
       border-bottom:1px solid var(--line);
       background:#fff;
       vertical-align:middle;
@@ -129,7 +123,6 @@
       background:#fbfbfc;
     }
 
-    /* PL-ish left bar */
     tbody tr{ position:relative; }
     tbody tr::before{
       content:"";
@@ -147,7 +140,7 @@
       display:flex;
       align-items:center;
       gap:10px;
-      min-width:260px;
+      min-width:240px;
       justify-content:flex-start;
       text-align:left;
     }
@@ -171,31 +164,18 @@
       white-space:nowrap;
     }
 
-    .pos{
-      font-weight:900;
-      width:56px;
-    }
+    .pos{ font-weight:900; width:52px; }
+    .num{ font-variant-numeric: tabular-nums; width:48px; }
+    .points{ font-weight:900; }
 
-    .num{
-      font-variant-numeric: tabular-nums;
-      width:64px;
-    }
-
-    .points{
-      font-weight:900;
-    }
-
-    /* FORM dots */
     .form{
       display:flex;
       justify-content:center;
       gap:6px;
-      min-width:120px;
+      min-width:110px;
     }
     .dot{
-      width:10px;
-      height:10px;
-      border-radius:999px;
+      width:10px; height:10px; border-radius:999px;
       background:#d1d5db;
       box-shadow: inset 0 0 0 1px rgba(15,23,42,.08);
       flex:0 0 auto;
@@ -230,20 +210,35 @@
       color:var(--muted);
       font-size:12px;
     }
+    .legend{ line-height:1.55; }
+    .legend b{ color:var(--text); }
 
-    .legend{
-      line-height:1.55;
-    }
-    .legend b{
-      color:var(--text);
-    }
-
-    /* Mobil: gjør det smalere ved å skjule noen kolonner */
+    /* Mobil: skjul noen kolonner for å være smalere */
     @media (max-width: 640px){
-      table{ min-width: 720px; }
-
-      /* Skjul MF og MM og FORM på mobil for å gjøre det smalere */
       .col-mf, .col-mm, .col-form { display:none; }
+      /* om du vil: la tabellen kunne scrolle litt likevel */
+      table{ min-width: 720px; }
+    }
+
+    /* EMBED MODE: fjerner “kutt” i IdrettenOnline seksjon */
+    body.embed{
+      background: transparent;
+    }
+    body.embed .wrap{
+      max-width: 100%;
+      padding: 0; /* <-- ingen innvendig padding i iframe */
+    }
+    body.embed .card{
+      border-radius: 0;
+      box-shadow: none;
+      border: 0;
+    }
+    body.embed .card-head{
+      border-radius: 0;
+    }
+    body.embed .meta,
+    body.embed .legend{
+      display:none;
     }
   </style>
 </head>
@@ -270,7 +265,6 @@
 
     <div class="meta" id="meta">—</div>
 
-    <!-- Forklaring nederst -->
     <div class="legend" id="legend">
       <b>K</b> = Kamper<br>
       <b>S</b> = Seier<br>
@@ -300,199 +294,6 @@
     }
 
     function normGoals(goalsStr){
-      // "0 - 0" / "0–0" / "0-0" -> {mf, mm}
       const s = String(goalsStr || "").trim().replace("−","-").replace("–","-");
       const m = s.match(/(\d+)\s*-\s*(\d+)/);
-      if (!m) return { mf: 0, mm: 0 };
-      return { mf: parseInt(m[1],10), mm: parseInt(m[2],10) };
-    }
-
-    function fmtDiff(diffVal){
-      const n = parseInt(String(diffVal ?? "0").trim(), 10);
-      if (Number.isNaN(n)) return "0";
-      return n > 0 ? `+${n}` : `${n}`;
-    }
-
-    function logoHTML(row){
-      const url = row.logoUrl;
-      if (!url){
-        return `<span class="logo fallback" aria-hidden="true"></span>`;
-      }
-      return `<img class="logo" src="${esc(url)}" alt="" loading="lazy"
-        onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo fallback'}))">`;
-    }
-
-    function formHTML(row){
-      const arr = Array.isArray(row.form) ? row.form.slice(0,5) : [];
-      const filled = arr.map(x => String(x).toUpperCase());
-      while (filled.length < 5) filled.push("");
-      return `
-        <div class="form" aria-label="Form">
-          ${filled.map(v => {
-            const cls = v === "W" ? "w" : v === "L" ? "l" : v === "D" ? "d" : "";
-            return `<span class="dot ${cls}" aria-hidden="true"></span>`;
-          }).join("")}
-        </div>
-      `;
-    }
-
-    function allPosAreZero(rows){
-      return rows.every(r => Number(String(r.pos ?? "0").trim()) === 0);
-    }
-
-    function sortRows(rows){
-      if (allPosAreZero(rows)) return [...rows];
-      return [...rows].sort((a,b) => Number(a.pos ?? 0) - Number(b.pos ?? 0));
-    }
-
-    function getTeamFilter(){
-      const params = new URLSearchParams(location.search);
-      const t = (params.get("team") || "").trim().toLowerCase();
-      if (t === "a" || t === "b") return t;
-      return "all";
-    }
-
-    function applyTeamFilterUI(){
-      const filter = getTeamFilter();
-      const grid = document.getElementById("grid");
-      const cardA = document.getElementById("card-a");
-      const cardB = document.getElementById("card-b");
-      const meta = document.getElementById("meta");
-      const legend = document.getElementById("legend");
-
-      if (filter === "a"){
-        cardB.style.display = "none";
-        cardA.style.display = "";
-        grid.classList.add("single");
-        meta.style.display = "none";   // skjul meta når du embedder A/B hver for seg
-        legend.style.display = "none"; // skjul forklaring i single-visning (ellers blir det dobbelt på siden)
-      } else if (filter === "b"){
-        cardA.style.display = "none";
-        cardB.style.display = "";
-        grid.classList.add("single");
-        meta.style.display = "none";
-        legend.style.display = "none";
-      } else {
-        cardA.style.display = "";
-        cardB.style.display = "";
-        grid.classList.remove("single");
-        meta.style.display = "";
-        legend.style.display = "";
-      }
-    }
-
-    function renderTable(targetId, data){
-      const el = document.getElementById(targetId);
-
-      if (!data || !Array.isArray(data.rows) || data.rows.length === 0){
-        el.className = "error";
-        el.innerHTML = "Ingen tabellrader funnet.";
-        return;
-      }
-
-      const rows = sortRows(data.rows);
-      const syntheticPos = allPosAreZero(rows);
-
-      el.className = "";
-      el.innerHTML = `
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th class="pos">POS</th>
-                <th style="text-align:left">CLUB</th>
-                <th class="num">K</th>
-                <th class="num">S</th>
-                <th class="num">U</th>
-                <th class="num">T</th>
-                <th class="num col-mf">MF</th>
-                <th class="num col-mm">MM</th>
-                <th class="num">+/-</th>
-                <th class="num points">P</th>
-                <th class="num col-form">FORM</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${rows.map((r, idx) => {
-                const shownPos = syntheticPos ? String(idx + 1) : String(r.pos ?? "");
-                const team = String(r.team ?? "");
-
-                const k = String(r.played ?? "0");
-                const s = String(r.wins ?? "0");
-                const u = String(r.draws ?? "0");
-                const t = String(r.losses ?? "0");
-
-                const g = normGoals(r.goals ?? "0-0");
-                const mf = String(g.mf);
-                const mm = String(g.mm);
-
-                const diff = fmtDiff(r.diff ?? (g.mf - g.mm));
-                const p = String(r.points ?? "0");
-
-                // kun posisjon styrer farge
-                const isUp = idx === 0 || idx === 1;
-                const isDown = idx >= rows.length - 2;
-                const cls = `${isUp ? "up" : ""} ${isDown ? "down" : ""}`.trim();
-
-                return `
-                  <tr class="${cls}">
-                    <td class="pos">${esc(shownPos)}</td>
-                    <td style="text-align:left">
-                      <div class="teamcell">
-                        ${logoHTML(r)}
-                        <div class="teamname">${esc(team)}</div>
-                      </div>
-                    </td>
-                    <td class="num">${esc(k)}</td>
-                    <td class="num">${esc(s)}</td>
-                    <td class="num">${esc(u)}</td>
-                    <td class="num">${esc(t)}</td>
-                    <td class="num col-mf">${esc(mf)}</td>
-                    <td class="num col-mm">${esc(mm)}</td>
-                    <td class="num">${esc(diff)}</td>
-                    <td class="num points">${esc(p)}</td>
-                    <td class="num col-form">${formHTML(r)}</td>
-                  </tr>
-                `;
-              }).join("")}
-            </tbody>
-          </table>
-        </div>
-      `;
-    }
-
-    async function loadAndRender(){
-      const aEl = document.getElementById("a-tabell");
-      const bEl = document.getElementById("b-tabell");
-      const meta = document.getElementById("meta");
-
-      aEl.className = bEl.className = "loading";
-      aEl.textContent = bEl.textContent = "Laster…";
-
-      try{
-        const res = await fetch("./data/tables.json?ts=" + Date.now(), { cache: "no-store" });
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        const json = await res.json();
-
-        renderTable("a-tabell", json.a);
-        renderTable("b-tabell", json.b);
-
-        const d = parseUpdatedAtUTC(json.updatedAt);
-        meta.textContent = "🕒 Sist oppdatert: " + (d
-          ? d.toLocaleString("no-NO", { dateStyle:"medium", timeStyle:"short" })
-          : (json.updatedAt || "ukjent"));
-      } catch (e){
-        aEl.className = bEl.className = "error";
-        aEl.innerHTML = bEl.innerHTML = "Feil ved lasting av tables.json: " + esc(e.message);
-        meta.textContent = "🕒 Sist oppdatert: (feil)";
-      }
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      applyTeamFilterUI();
-      loadAndRender();
-      setInterval(loadAndRender, 60 * 1000);
-    });
-  </script>
-</body>
-</html>
+      if (!m) return { mf
