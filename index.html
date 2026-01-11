@@ -20,7 +20,7 @@
       --radius:14px;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
 
-      --fbg-row:#e6f4ea; /* grønn highlight-rad */
+      --fbg-row:#e6f4ea;
       --fbg-text:#15803d;
     }
 
@@ -32,7 +32,6 @@
       color:var(--text);
     }
 
-    /* Dette gjør at det ikke "mister" tabellen i IdrettenOnline (tighter padding) */
     .wrap{
       max-width:1200px;
       margin:0 auto;
@@ -41,7 +40,6 @@
 
     header{ display:none; }
 
-    /* Default: 2 kolonner på desktop, 1 på mobil */
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -87,7 +85,6 @@
       white-space:nowrap;
     }
 
-    /* Mobilvennlig scroll-container */
     .table-wrapper{
       width:100%;
       overflow-x:auto;
@@ -99,9 +96,8 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:14px;
-      /* Viktig: samme layout i begge tabeller => kolonner aligner */
       table-layout:fixed;
-      min-width: 760px; /* desktop viser alt uten scroll i normal bredde */
+      min-width: 760px;
     }
 
     thead th{
@@ -129,7 +125,6 @@
       background:#fbfbfc;
     }
 
-    /* Premier League-ish left bar */
     tbody tr{
       position:relative;
     }
@@ -145,7 +140,6 @@
     tbody tr.up::before{ background: var(--up); }
     tbody tr.down::before{ background: var(--down); }
 
-    /* Highlight Fagerborg-rad */
     tbody tr.fagerborg td{
       background: var(--fbg-row) !important;
     }
@@ -153,14 +147,11 @@
       color: var(--fbg-text);
     }
 
-    /* --- KOMPAKT KOLONNE-PADDING (det du ba om) --- */
-    th, td{
-      padding: 10px 8px; /* tighter */
-    }
+    th, td{ padding: 10px 8px; }
 
-    /* Kolonnebredder: låst for perfekt alignment */
     th.pos, td.pos{ width:54px; text-align:center; font-weight:900; }
     th.club, td.club{ width:300px; }
+
     th.stat, td.stat{ width:48px; text-align:center; font-variant-numeric: tabular-nums; }
     th.mf, td.mf{ width:52px; text-align:center; font-variant-numeric: tabular-nums; }
     th.mm, td.mm{ width:52px; text-align:center; font-variant-numeric: tabular-nums; }
@@ -168,7 +159,6 @@
     th.points, td.points{ width:54px; text-align:center; font-weight:900; font-variant-numeric: tabular-nums; }
     th.form, td.form{ width:120px; text-align:center; }
 
-    /* Logo + navn */
     .teamcell{
       display:flex;
       align-items:center;
@@ -196,7 +186,6 @@
       white-space:nowrap;
     }
 
-    /* FORM dots */
     .formdots{
       display:inline-flex;
       gap:6px;
@@ -232,7 +221,6 @@
       color:#991b1b;
     }
 
-    /* Legend (horisontal) */
     .legend{
       padding:10px 14px;
       border-top:1px solid var(--line);
@@ -256,35 +244,53 @@
       font-size:12px;
     }
 
-    /* --- Smart iframe/smal: skjul MF/MM, behold +/- --- */
+    /* Smal/iframe: skjul MF/MM (men behold +/-) */
     @media (max-width: 860px){
       table{ min-width: 640px; }
       th.mf, td.mf,
       th.mm, td.mm{ display:none; }
-      /* litt ekstra kompakt */
       th, td{ padding: 9px 7px; }
       th.club, td.club{ width:260px; }
     }
 
-    /* --- Super smal: skjul FORM for å unngå scroll --- */
+    /* Super smal: skjul FORM */
     @media (max-width: 540px){
       th.form, td.form{ display:none; }
       table{ min-width: 520px; }
       th.club, td.club{ width:220px; }
     }
 
-    /* --- FRONT VIEW: halv bredde / forsiden --- */
+    /* FRONT VIEW: én tabell, ingen scroll, kun K + +/- + P */
     body.front .wrap{ max-width: 720px; }
     body.front .grid{ grid-template-columns: 1fr; }
     body.front .meta{ display:none; }
 
-    /* I front-view: drop MF/MM/FORM alltid */
+    body.front .table-wrapper{ overflow-x:hidden; }
+    body.front table{
+      min-width: 0;
+      width:100%;
+    }
+
+    /* Front: skjul alt unntatt POS/CLUB/K/+/-/P */
     body.front th.mf, body.front td.mf,
     body.front th.mm, body.front td.mm,
-    body.front th.form, body.front td.form{ display:none; }
+    body.front th.form, body.front td.form,
+    body.front th.s, body.front td.s,
+    body.front th.u, body.front td.u,
+    body.front th.t, body.front td.t{
+      display:none;
+    }
 
-    /* I front-view: litt mindre bord for å passe smalt */
-    body.front table{ min-width: 520px; }
+    /* Front: litt andre faste bredder for å presse inn */
+    body.front th.pos, body.front td.pos{ width:48px; }
+    body.front th.club, body.front td.club{ width:auto; }
+    body.front th.stat, body.front td.stat{ width:52px; }
+    body.front th.diff, body.front td.diff{ width:56px; }
+    body.front th.points, body.front td.points{ width:56px; }
+
+    /* Front: enda tighter */
+    body.front th, body.front td{ padding: 9px 6px; }
+    body.front .logo{ width:20px; height:20px; }
   </style>
 </head>
 
@@ -297,7 +303,7 @@
           <div class="badge" id="badge-a">—</div>
         </div>
         <div id="a-tabell" class="loading">Laster…</div>
-        <div class="legend" id="legend-a" aria-hidden="false">
+        <div class="legend" id="legend-a">
           <span><b>K</b> = Kamper</span>
           <span><b>S</b> = Seier</span>
           <span><b>U</b> = Uavgjort</span>
@@ -315,7 +321,7 @@
           <div class="badge" id="badge-b">—</div>
         </div>
         <div id="b-tabell" class="loading">Laster…</div>
-        <div class="legend" id="legend-b" aria-hidden="false">
+        <div class="legend" id="legend-b">
           <span><b>K</b> = Kamper</span>
           <span><b>S</b> = Seier</span>
           <span><b>U</b> = Uavgjort</span>
@@ -341,20 +347,18 @@
     function parseUpdatedAtUTC(s){
       const m = String(s || "").match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+UTC$/);
       if (!m) return null;
-      const y = Number(m[1]);
-      const mo = Number(m[2]) - 1;
-      const d = Number(m[3]);
-      const h = Number(m[4]);
-      const mi = Number(m[5]);
-      return new Date(Date.UTC(y, mo, d, h, mi, 0));
+      return new Date(Date.UTC(
+        Number(m[1]),
+        Number(m[2]) - 1,
+        Number(m[3]),
+        Number(m[4]),
+        Number(m[5]),
+        0
+      ));
     }
 
     function sortByPos(rows){
-      return [...rows].sort((a,b) => {
-        const pa = Number(a.pos ?? 0);
-        const pb = Number(b.pos ?? 0);
-        return pa - pb;
-      });
+      return [...rows].sort((a,b) => Number(a.pos ?? 0) - Number(b.pos ?? 0));
     }
 
     function parseGoals(goalsStr){
@@ -375,13 +379,12 @@
 
     function formDotsHTML(formArr){
       const arr = Array.isArray(formArr) ? formArr.slice(0,5) : [];
-      // Normalize: accept "W/D/L" or "S/U/T" etc.
       const norm = (x) => {
         const v = String(x||"").toUpperCase();
         if (v === "W" || v === "S") return "w";
         if (v === "D" || v === "U") return "d";
         if (v === "L" || v === "T") return "l";
-        return "d"; // default grey
+        return "d";
       };
       const dots = [];
       for (let i=0;i<5;i++){
@@ -393,13 +396,11 @@
 
     function isFagerborgRow(teamName){
       const t = String(teamName || "").toLowerCase().trim();
-      // Fagerborg, Fagerborg 2 osv
       return t.startsWith("fagerborg");
     }
 
-    function renderTable(targetId, data, options){
+    function renderTable(targetId, data){
       const el = document.getElementById(targetId);
-      const front = !!options?.front;
 
       if (!data || !Array.isArray(data.rows) || data.rows.length === 0){
         el.className = "error";
@@ -418,9 +419,9 @@
                 <th class="pos">POS</th>
                 <th class="club">CLUB</th>
                 <th class="stat">K</th>
-                <th class="stat">S</th>
-                <th class="stat">U</th>
-                <th class="stat">T</th>
+                <th class="s stat">S</th>
+                <th class="u stat">U</th>
+                <th class="t stat">T</th>
                 <th class="mf">MF</th>
                 <th class="mm">MM</th>
                 <th class="diff">+/-</th>
@@ -432,16 +433,15 @@
               ${rows.map((r, idx) => {
                 const pos = String(r.pos ?? "");
                 const team = String(r.team ?? "");
-                const k = String(r.played ?? "0");     // Kamper
-                const s = String(r.wins ?? "0");       // Seier
-                const u = String(r.draws ?? "0");      // Uavgjort
-                const t = String(r.losses ?? "0");     // Tap
-                const pts = String(r.points ?? "0");   // Poeng
+                const k = String(r.played ?? "0");
+                const s = String(r.wins ?? "0");
+                const u = String(r.draws ?? "0");
+                const t = String(r.losses ?? "0");
+                const pts = String(r.points ?? "0");
                 const goals = String(r.goals ?? "0-0");
                 const [mf, mm] = parseGoals(goals);
                 const diff = String((r.diff ?? "").toString().trim() !== "" ? r.diff : (mf - mm));
 
-                // Kun pos styrer farge (ikke poeng)
                 const isUp = idx === 0 || idx === 1;
                 const isDown = idx >= rows.length - 2;
 
@@ -451,7 +451,6 @@
                   isFagerborgRow(team) ? "fagerborg" : ""
                 ].filter(Boolean).join(" ");
 
-                // Front-view: vi dropper MF/MM/FORM via CSS + fortsatt renderer dem trygt
                 return `
                   <tr class="${cls}">
                     <td class="pos">${esc(pos)}</td>
@@ -462,9 +461,9 @@
                       </div>
                     </td>
                     <td class="stat">${esc(k)}</td>
-                    <td class="stat">${esc(s)}</td>
-                    <td class="stat">${esc(u)}</td>
-                    <td class="stat">${esc(t)}</td>
+                    <td class="s stat">${esc(s)}</td>
+                    <td class="u stat">${esc(u)}</td>
+                    <td class="t stat">${esc(t)}</td>
                     <td class="mf">${esc(mf)}</td>
                     <td class="mm">${esc(mm)}</td>
                     <td class="diff">${esc(diff)}</td>
@@ -489,10 +488,8 @@
       const legendA = document.getElementById("legend-a");
       const legendB = document.getElementById("legend-b");
 
-      const front = view === "front";
-      document.body.classList.toggle("front", front);
+      document.body.classList.toggle("front", view === "front");
 
-      // team filter
       if (team === "a"){
         cardB.style.display = "none";
       } else if (team === "b"){
@@ -502,8 +499,6 @@
         cardB.style.display = "";
       }
 
-      // Front-view: fortsatt legend under det som vises (men MF/MM/FORM skjules via CSS)
-      // Default: legend under begge.
       legendA.style.display = (cardA.style.display === "none") ? "none" : "";
       legendB.style.display = (cardB.style.display === "none") ? "none" : "";
     }
@@ -523,13 +518,9 @@
         if (!res.ok) throw new Error("HTTP " + res.status);
         const json = await res.json();
 
-        const params = new URLSearchParams(location.search);
-        const front = (params.get("view") || "").toLowerCase() === "front";
+        renderTable("a-tabell", json.a);
+        renderTable("b-tabell", json.b);
 
-        renderTable("a-tabell", json.a, { front });
-        renderTable("b-tabell", json.b, { front });
-
-        // Badges (du kan hardcode hvis du vil)
         badgeA.textContent = "5. divisjon (2026)";
         badgeB.textContent = "7. divisjon (2026)";
 
@@ -549,8 +540,6 @@
     window.addEventListener("DOMContentLoaded", () => {
       applyViewFromQuery();
       loadAndRender();
-
-      // IdrettenOnline cacher iframes – refresher data jevnlig på klienten.
       setInterval(loadAndRender, 60 * 1000);
     });
   </script>
