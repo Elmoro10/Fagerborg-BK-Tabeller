@@ -253,6 +253,7 @@
        ✅ FRONT / COMPACT MODE (view=front)
        Viser: POS | CLUB | K | +/- | P
        Ingen horisontal scroll.
+       + gjør den trangere (mindre “gap” mellom klubb og stats)
        ============================================================ */
     body.front .wrap{ max-width: 680px; }
     body.front .table-wrap{ overflow-x: hidden; }
@@ -265,11 +266,35 @@
       display:none !important;
     }
 
+    /* ✅ FRONT TIGHT: gjør klubb-kolonnen og tallkolonnene smalere */
     body.front{
-      --clubw: 260px;
-      --numw: 58px;
-      --posw: 52px;
+      --clubw: 200px;    /* var 260px */
+      --numw: 52px;      /* var 58px */
+      --posw: 46px;      /* var 52px */
       --minTable: 0px;
+    }
+
+    /* ✅ FRONT TIGHT: mindre padding i celler så alt “flytter seg inn” */
+    body.front thead th{
+      padding: 8px 6px;
+      font-size: 11px;
+    }
+    body.front tbody td{
+      padding: 10px 6px;
+      font-size: 13px;
+    }
+    body.front td.c-club{
+      padding-left:10px; /* var 12px */
+    }
+
+    /* ✅ FRONT TIGHT: litt mindre logo og mindre margin */
+    body.front .club-logo{
+      width:18px;
+      height:18px;
+      margin-right:8px;
+    }
+    body.front .club-name{
+      max-width: calc(100% - 34px);
     }
 
     body.front .legend-row{ display:none; }
@@ -412,9 +437,7 @@
               <col class="hide-front col-mf" style="width:var(--numw)"><!-- MF -->
               <col class="hide-front col-mm" style="width:var(--numw)"><!-- MM -->
 
-              <!-- ✅ DIFF skal vises i front, så IKKE hide-front her -->
               <col style="width:var(--numw)"><!-- +/- -->
-
               <col style="width:var(--numw)"><!-- P -->
               <col class="hide-front" style="width:var(--formw)"><!-- FORM -->
             </colgroup>
@@ -432,9 +455,7 @@
                 <th class="c-num hide-front col-mf">MF</th>
                 <th class="c-num hide-front col-mm">MM</th>
 
-                <!-- ✅ DIFF skal vises i front -->
                 <th class="c-num">+/-</th>
-
                 <th class="c-num">P</th>
                 <th class="c-form hide-front">FORM</th>
               </tr>
@@ -482,7 +503,6 @@
                     <td class="c-num hide-front col-mf">${esc(String(g.mf))}</td>
                     <td class="c-num hide-front col-mm">${esc(String(g.mm))}</td>
 
-                    <!-- ✅ DIFF vises også i front -->
                     <td class="c-num">${esc(DIFF)}</td>
 
                     <td class="c-num points">${esc(P)}</td>
