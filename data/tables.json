@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-08 21:04 UTC",
+  "updatedAt": "2026-04-08 21:54 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -44,6 +44,19 @@
       },
       {
         "pos": "4",
+        "team": "Jusstudentenes",
+        "logoUrl": "data/logos/2081.png",
+        "played": "1",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "5",
         "team": "HSIL",
         "logoUrl": "data/logos/182.png",
         "played": "1",
@@ -56,7 +69,7 @@
         "form": []
       },
       {
-        "pos": "5",
+        "pos": "6",
         "team": "Furuset",
         "logoUrl": "data/logos/239.png",
         "played": "1",
@@ -69,7 +82,7 @@
         "form": []
       },
       {
-        "pos": "5",
+        "pos": "6",
         "team": "Oslo City",
         "logoUrl": "data/logos/235.png",
         "played": "1",
@@ -82,33 +95,7 @@
         "form": []
       },
       {
-        "pos": "7",
-        "team": "Jusstudentenes",
-        "logoUrl": "data/logos/2081.png",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "7",
-        "team": "Majorstuen",
-        "logoUrl": "data/logos/3092.png",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "9",
+        "pos": "8",
         "team": "Wam-Kam",
         "logoUrl": "data/logos/1897.png",
         "played": "1",
@@ -116,6 +103,19 @@
         "draws": "0",
         "losses": "1",
         "goals": "3 - 4",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "9",
+        "team": "Majorstuen",
+        "logoUrl": "data/logos/3092.png",
+        "played": "1",
+        "wins": "0",
+        "draws": "0",
+        "losses": "1",
+        "goals": "2 - 3",
         "diff": "0",
         "points": "0",
         "form": []
