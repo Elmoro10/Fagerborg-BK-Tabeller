@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-15 20:32 UTC",
+  "updatedAt": "2026-04-15 21:27 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -18,6 +18,32 @@
       },
       {
         "pos": "2",
+        "team": "Korsvoll 2",
+        "logoUrl": "data/logos/187.png",
+        "played": "2",
+        "wins": "1",
+        "draws": "0",
+        "losses": "0",
+        "goals": "2 - 0",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "3",
+        "team": "HSIL",
+        "logoUrl": "data/logos/182.png",
+        "played": "2",
+        "wins": "1",
+        "draws": "0",
+        "losses": "0",
+        "goals": "3 - 2",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "4",
         "team": "Furuset",
         "logoUrl": "data/logos/239.png",
         "played": "2",
@@ -30,7 +56,7 @@
         "form": []
       },
       {
-        "pos": "3",
+        "pos": "5",
         "team": "Majorstuen",
         "logoUrl": "data/logos/3092.png",
         "played": "2",
@@ -43,10 +69,23 @@
         "form": []
       },
       {
-        "pos": "4",
+        "pos": "6",
+        "team": "Oldenborg",
+        "logoUrl": "data/logos/1685.png",
+        "played": "2",
+        "wins": "0",
+        "draws": "0",
+        "losses": "1",
+        "goals": "1 - 2",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "7",
         "team": "Frigg 2",
         "logoUrl": "data/logos/173.png",
-        "played": "1",
+        "played": "2",
         "wins": "1",
         "draws": "0",
         "losses": "0",
@@ -56,66 +95,27 @@
         "form": []
       },
       {
-        "pos": "5",
-        "team": "Korsvoll 2",
-        "logoUrl": "data/logos/187.png",
-        "played": "1",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "1",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "6",
+        "pos": "8",
         "team": "Jusstudentenes",
         "logoUrl": "data/logos/2081.png",
-        "played": "1",
+        "played": "2",
         "wins": "0",
         "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
+        "losses": "1",
+        "goals": "2 - 5",
         "diff": "1",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "7",
-        "team": "HSIL",
-        "logoUrl": "data/logos/182.png",
-        "played": "1",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "1",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "8",
-        "team": "Oslo City",
-        "logoUrl": "data/logos/235.png",
-        "played": "1",
-        "wins": "0",
-        "draws": "1",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "0",
         "points": "0",
         "form": []
       },
       {
         "pos": "9",
-        "team": "Oldenborg",
-        "logoUrl": "data/logos/1685.png",
-        "played": "1",
+        "team": "Oslo City",
+        "logoUrl": "data/logos/235.png",
+        "played": "2",
         "wins": "0",
-        "draws": "0",
-        "losses": "1",
-        "goals": "1 - 2",
+        "draws": "1",
+        "losses": "0",
+        "goals": "0 - 0",
         "diff": "0",
         "points": "0",
         "form": []
