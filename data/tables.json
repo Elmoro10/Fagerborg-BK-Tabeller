@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-20 17:41 UTC",
+  "updatedAt": "2026-04-20 20:24 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -165,20 +165,20 @@
     "fiksId": 205410,
     "rows": [
       {
-        "pos": "0",
+        "pos": "1",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
-        "played": "0",
+        "played": "1",
         "wins": "0",
         "draws": "0",
         "losses": "0",
         "goals": "0 - 0",
-        "diff": "0",
+        "diff": "1",
         "points": "0",
         "form": []
       },
       {
-        "pos": "0",
+        "pos": "2",
         "team": "Frisk Asker",
         "logoUrl": "data/logos/104.png",
         "played": "0",
@@ -191,7 +191,7 @@
         "form": []
       },
       {
-        "pos": "0",
+        "pos": "2",
         "team": "Furuset 2",
         "logoUrl": "data/logos/239.png",
         "played": "0",
@@ -204,7 +204,7 @@
         "form": []
       },
       {
-        "pos": "0",
+        "pos": "2",
         "team": "Jutul",
         "logoUrl": "data/logos/96.png",
         "played": "0",
@@ -217,7 +217,7 @@
         "form": []
       },
       {
-        "pos": "0",
+        "pos": "2",
         "team": "Lille Tøyen",
         "logoUrl": "data/logos/226.png",
         "played": "0",
@@ -230,7 +230,7 @@
         "form": []
       },
       {
-        "pos": "0",
+        "pos": "2",
         "team": "Monolitten Idrettslag",
         "logoUrl": "data/logos/167.png",
         "played": "0",
@@ -243,7 +243,7 @@
         "form": []
       },
       {
-        "pos": "0",
+        "pos": "2",
         "team": "Oppegård",
         "logoUrl": "data/logos/87.png",
         "played": "0",
@@ -256,7 +256,7 @@
         "form": []
       },
       {
-        "pos": "0",
+        "pos": "2",
         "team": "Sagene 2",
         "logoUrl": "data/logos/205.png",
         "played": "0",
@@ -269,7 +269,7 @@
         "form": []
       },
       {
-        "pos": "0",
+        "pos": "2",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
         "played": "0",
@@ -282,14 +282,14 @@
         "form": []
       },
       {
-        "pos": "0",
+        "pos": "10",
         "team": "Veitvet",
         "logoUrl": "data/logos/200.png",
-        "played": "0",
+        "played": "1",
         "wins": "0",
         "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
+        "losses": "1",
+        "goals": "0 - 4",
         "diff": "0",
         "points": "0",
         "form": []
