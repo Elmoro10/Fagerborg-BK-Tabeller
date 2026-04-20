@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-20 20:24 UTC",
+  "updatedAt": "2026-04-20 21:56 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -166,6 +166,19 @@
     "rows": [
       {
         "pos": "1",
+        "team": "Sagene 2",
+        "logoUrl": "data/logos/205.png",
+        "played": "1",
+        "wins": "1",
+        "draws": "0",
+        "losses": "0",
+        "goals": "11 - 5",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "2",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
         "played": "1",
@@ -178,20 +191,46 @@
         "form": []
       },
       {
-        "pos": "2",
-        "team": "Frisk Asker",
-        "logoUrl": "data/logos/104.png",
-        "played": "0",
+        "pos": "3",
+        "team": "Jutul",
+        "logoUrl": "data/logos/96.png",
+        "played": "1",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "4",
+        "team": "Monolitten Idrettslag",
+        "logoUrl": "data/logos/167.png",
+        "played": "1",
         "wins": "0",
         "draws": "0",
         "losses": "0",
         "goals": "0 - 0",
         "diff": "0",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "5",
+        "team": "Lille Tøyen",
+        "logoUrl": "data/logos/226.png",
+        "played": "1",
+        "wins": "0",
+        "draws": "1",
+        "losses": "0",
+        "goals": "3 - 3",
+        "diff": "0",
         "points": "0",
         "form": []
       },
       {
-        "pos": "2",
+        "pos": "6",
         "team": "Furuset 2",
         "logoUrl": "data/logos/239.png",
         "played": "0",
@@ -204,72 +243,7 @@
         "form": []
       },
       {
-        "pos": "2",
-        "team": "Jutul",
-        "logoUrl": "data/logos/96.png",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "2",
-        "team": "Lille Tøyen",
-        "logoUrl": "data/logos/226.png",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "2",
-        "team": "Monolitten Idrettslag",
-        "logoUrl": "data/logos/167.png",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "2",
-        "team": "Oppegård",
-        "logoUrl": "data/logos/87.png",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "2",
-        "team": "Sagene 2",
-        "logoUrl": "data/logos/205.png",
-        "played": "0",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "2",
+        "pos": "6",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
         "played": "0",
@@ -282,7 +256,20 @@
         "form": []
       },
       {
-        "pos": "10",
+        "pos": "8",
+        "team": "Oppegård",
+        "logoUrl": "data/logos/87.png",
+        "played": "1",
+        "wins": "0",
+        "draws": "0",
+        "losses": "1",
+        "goals": "3 - 4",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "9",
         "team": "Veitvet",
         "logoUrl": "data/logos/200.png",
         "played": "1",
@@ -290,6 +277,19 @@
         "draws": "0",
         "losses": "1",
         "goals": "0 - 4",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "10",
+        "team": "Frisk Asker",
+        "logoUrl": "data/logos/104.png",
+        "played": "1",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
         "diff": "0",
         "points": "0",
         "form": []
