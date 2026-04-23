@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23 08:12 UTC",
+  "updatedAt": "2026-04-23 09:55 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -44,6 +44,19 @@
       },
       {
         "pos": "4",
+        "team": "Oldenborg",
+        "logoUrl": "data/logos/1685.png",
+        "played": "3",
+        "wins": "1",
+        "draws": "0",
+        "losses": "1",
+        "goals": "4 - 3",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "5",
         "team": "Fagerborg",
         "logoUrl": "data/logos/171.png",
         "played": "3",
@@ -56,7 +69,7 @@
         "form": []
       },
       {
-        "pos": "5",
+        "pos": "6",
         "team": "Jusstudentenes",
         "logoUrl": "data/logos/2081.png",
         "played": "3",
@@ -69,7 +82,7 @@
         "form": []
       },
       {
-        "pos": "6",
+        "pos": "7",
         "team": "Majorstuen",
         "logoUrl": "data/logos/3092.png",
         "played": "3",
@@ -77,19 +90,6 @@
         "draws": "0",
         "losses": "2",
         "goals": "2 - 5",
-        "diff": "1",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "7",
-        "team": "Oldenborg",
-        "logoUrl": "data/logos/1685.png",
-        "played": "2",
-        "wins": "0",
-        "draws": "0",
-        "losses": "1",
-        "goals": "1 - 2",
         "diff": "1",
         "points": "0",
         "form": []
@@ -137,7 +137,7 @@
         "pos": "11",
         "team": "Klemetsrud",
         "logoUrl": "data/logos/185.png",
-        "played": "2",
+        "played": "3",
         "wins": "0",
         "draws": "0",
         "losses": "1",
