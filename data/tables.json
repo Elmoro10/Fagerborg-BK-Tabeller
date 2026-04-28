@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-28 04:46 UTC",
+  "updatedAt": "2026-04-28 07:17 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -166,13 +166,13 @@
     "rows": [
       {
         "pos": "1",
-        "team": "Sagene 2",
-        "logoUrl": "data/logos/205.png",
+        "team": "Jutul",
+        "logoUrl": "data/logos/96.png",
         "played": "2",
         "wins": "1",
         "draws": "0",
         "losses": "0",
-        "goals": "11 - 5",
+        "goals": "3 - 1",
         "diff": "1",
         "points": "0",
         "form": []
@@ -192,6 +192,19 @@
       },
       {
         "pos": "3",
+        "team": "Sagene 2",
+        "logoUrl": "data/logos/205.png",
+        "played": "2",
+        "wins": "1",
+        "draws": "0",
+        "losses": "0",
+        "goals": "11 - 5",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "4",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
         "played": "1",
@@ -204,7 +217,7 @@
         "form": []
       },
       {
-        "pos": "3",
+        "pos": "4",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
         "played": "1",
@@ -217,7 +230,7 @@
         "form": []
       },
       {
-        "pos": "5",
+        "pos": "6",
         "team": "Frisk Asker",
         "logoUrl": "data/logos/104.png",
         "played": "2",
@@ -226,19 +239,6 @@
         "losses": "0",
         "goals": "8 - 0",
         "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "6",
-        "team": "Jutul",
-        "logoUrl": "data/logos/96.png",
-        "played": "2",
-        "wins": "0",
-        "draws": "0",
-        "losses": "1",
-        "goals": "1 - 3",
-        "diff": "1",
         "points": "0",
         "form": []
       },
