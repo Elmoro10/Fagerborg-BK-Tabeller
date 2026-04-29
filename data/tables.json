@@ -1,10 +1,23 @@
 {
-  "updatedAt": "2026-04-29 20:45 UTC",
+  "updatedAt": "2026-04-29 21:44 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
       {
         "pos": "1",
+        "team": "Furuset",
+        "logoUrl": "data/logos/239.png",
+        "played": "4",
+        "wins": "2",
+        "draws": "0",
+        "losses": "0",
+        "goals": "14 - 1",
+        "diff": "1",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "2",
         "team": "HSIL",
         "logoUrl": "data/logos/182.png",
         "played": "4",
@@ -17,7 +30,7 @@
         "form": []
       },
       {
-        "pos": "2",
+        "pos": "3",
         "team": "Oldenborg",
         "logoUrl": "data/logos/1685.png",
         "played": "4",
@@ -30,7 +43,7 @@
         "form": []
       },
       {
-        "pos": "3",
+        "pos": "4",
         "team": "Korsvoll 2",
         "logoUrl": "data/logos/187.png",
         "played": "4",
@@ -40,19 +53,6 @@
         "goals": "2 - 1",
         "diff": "2",
         "points": "0",
-        "form": []
-      },
-      {
-        "pos": "4",
-        "team": "Furuset",
-        "logoUrl": "data/logos/239.png",
-        "played": "3",
-        "wins": "1",
-        "draws": "0",
-        "losses": "0",
-        "goals": "8 - 1",
-        "diff": "1",
-        "points": "1",
         "form": []
       },
       {
@@ -70,6 +70,32 @@
       },
       {
         "pos": "6",
+        "team": "Jusstudentenes",
+        "logoUrl": "data/logos/2081.png",
+        "played": "4",
+        "wins": "1",
+        "draws": "0",
+        "losses": "1",
+        "goals": "7 - 6",
+        "diff": "1",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "7",
+        "team": "Frigg 2",
+        "logoUrl": "data/logos/173.png",
+        "played": "4",
+        "wins": "2",
+        "draws": "0",
+        "losses": "0",
+        "goals": "7 - 4",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "8",
         "team": "Oslo City",
         "logoUrl": "data/logos/235.png",
         "played": "4",
@@ -82,23 +108,10 @@
         "form": []
       },
       {
-        "pos": "7",
-        "team": "Jusstudentenes",
-        "logoUrl": "data/logos/2081.png",
-        "played": "3",
-        "wins": "0",
-        "draws": "0",
-        "losses": "1",
-        "goals": "2 - 5",
-        "diff": "1",
-        "points": "1",
-        "form": []
-      },
-      {
-        "pos": "8",
+        "pos": "9",
         "team": "Majorstuen",
         "logoUrl": "data/logos/3092.png",
-        "played": "3",
+        "played": "4",
         "wins": "0",
         "draws": "0",
         "losses": "2",
@@ -108,10 +121,10 @@
         "form": []
       },
       {
-        "pos": "9",
+        "pos": "10",
         "team": "Wam-Kam",
         "logoUrl": "data/logos/1897.png",
-        "played": "3",
+        "played": "4",
         "wins": "1",
         "draws": "0",
         "losses": "1",
@@ -121,33 +134,7 @@
         "form": []
       },
       {
-        "pos": "10",
-        "team": "Frigg 2",
-        "logoUrl": "data/logos/173.png",
-        "played": "3",
-        "wins": "1",
-        "draws": "0",
-        "losses": "0",
-        "goals": "4 - 2",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
         "pos": "11",
-        "team": "Bækkelaget",
-        "logoUrl": "data/logos/168.png",
-        "played": "3",
-        "wins": "0",
-        "draws": "0",
-        "losses": "2",
-        "goals": "4 - 7",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "12",
         "team": "Klemetsrud",
         "logoUrl": "data/logos/185.png",
         "played": "4",
@@ -155,6 +142,19 @@
         "draws": "0",
         "losses": "2",
         "goals": "3 - 11",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "12",
+        "team": "Bækkelaget",
+        "logoUrl": "data/logos/168.png",
+        "played": "4",
+        "wins": "0",
+        "draws": "0",
+        "losses": "2",
+        "goals": "4 - 7",
         "diff": "0",
         "points": "0",
         "form": []
