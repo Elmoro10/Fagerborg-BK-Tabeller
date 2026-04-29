@@ -1,28 +1,15 @@
 {
-  "updatedAt": "2026-04-29 19:50 UTC",
+  "updatedAt": "2026-04-29 20:45 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
       {
         "pos": "1",
-        "team": "Korsvoll 2",
-        "logoUrl": "data/logos/187.png",
-        "played": "3",
-        "wins": "1",
-        "draws": "0",
-        "losses": "0",
-        "goals": "2 - 0",
-        "diff": "2",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "2",
         "team": "HSIL",
         "logoUrl": "data/logos/182.png",
-        "played": "3",
+        "played": "4",
         "wins": "1",
-        "draws": "0",
+        "draws": "1",
         "losses": "0",
         "goals": "3 - 2",
         "diff": "2",
@@ -30,7 +17,33 @@
         "form": []
       },
       {
+        "pos": "2",
+        "team": "Oldenborg",
+        "logoUrl": "data/logos/1685.png",
+        "played": "4",
+        "wins": "1",
+        "draws": "0",
+        "losses": "1",
+        "goals": "4 - 3",
+        "diff": "2",
+        "points": "0",
+        "form": []
+      },
+      {
         "pos": "3",
+        "team": "Korsvoll 2",
+        "logoUrl": "data/logos/187.png",
+        "played": "4",
+        "wins": "1",
+        "draws": "0",
+        "losses": "1",
+        "goals": "2 - 1",
+        "diff": "2",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "4",
         "team": "Furuset",
         "logoUrl": "data/logos/239.png",
         "played": "3",
@@ -43,33 +56,33 @@
         "form": []
       },
       {
-        "pos": "4",
-        "team": "Oldenborg",
-        "logoUrl": "data/logos/1685.png",
-        "played": "3",
-        "wins": "1",
-        "draws": "0",
-        "losses": "1",
-        "goals": "4 - 3",
-        "diff": "1",
-        "points": "0",
-        "form": []
-      },
-      {
         "pos": "5",
         "team": "Fagerborg",
         "logoUrl": "data/logos/171.png",
-        "played": "3",
+        "played": "4",
         "wins": "1",
         "draws": "0",
         "losses": "1",
         "goals": "5 - 4",
         "diff": "1",
-        "points": "0",
+        "points": "1",
         "form": []
       },
       {
         "pos": "6",
+        "team": "Oslo City",
+        "logoUrl": "data/logos/235.png",
+        "played": "4",
+        "wins": "0",
+        "draws": "2",
+        "losses": "0",
+        "goals": "2 - 2",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "7",
         "team": "Jusstudentenes",
         "logoUrl": "data/logos/2081.png",
         "played": "3",
@@ -82,7 +95,7 @@
         "form": []
       },
       {
-        "pos": "7",
+        "pos": "8",
         "team": "Majorstuen",
         "logoUrl": "data/logos/3092.png",
         "played": "3",
@@ -95,7 +108,7 @@
         "form": []
       },
       {
-        "pos": "8",
+        "pos": "9",
         "team": "Wam-Kam",
         "logoUrl": "data/logos/1897.png",
         "played": "3",
@@ -108,7 +121,7 @@
         "form": []
       },
       {
-        "pos": "9",
+        "pos": "10",
         "team": "Frigg 2",
         "logoUrl": "data/logos/173.png",
         "played": "3",
@@ -121,33 +134,7 @@
         "form": []
       },
       {
-        "pos": "10",
-        "team": "Oslo City",
-        "logoUrl": "data/logos/235.png",
-        "played": "3",
-        "wins": "0",
-        "draws": "2",
-        "losses": "0",
-        "goals": "2 - 2",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
         "pos": "11",
-        "team": "Klemetsrud",
-        "logoUrl": "data/logos/185.png",
-        "played": "3",
-        "wins": "0",
-        "draws": "0",
-        "losses": "1",
-        "goals": "1 - 6",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "12",
         "team": "Bækkelaget",
         "logoUrl": "data/logos/168.png",
         "played": "3",
@@ -155,6 +142,19 @@
         "draws": "0",
         "losses": "2",
         "goals": "4 - 7",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "12",
+        "team": "Klemetsrud",
+        "logoUrl": "data/logos/185.png",
+        "played": "4",
+        "wins": "0",
+        "draws": "0",
+        "losses": "2",
+        "goals": "3 - 11",
         "diff": "0",
         "points": "0",
         "form": []
@@ -166,6 +166,19 @@
     "rows": [
       {
         "pos": "1",
+        "team": "Sterling",
+        "logoUrl": "data/logos/215.png",
+        "played": "2",
+        "wins": "2",
+        "draws": "0",
+        "losses": "0",
+        "goals": "10 - 0",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "2",
         "team": "Jutul",
         "logoUrl": "data/logos/96.png",
         "played": "2",
@@ -178,7 +191,7 @@
         "form": []
       },
       {
-        "pos": "2",
+        "pos": "3",
         "team": "Lille Tøyen",
         "logoUrl": "data/logos/226.png",
         "played": "2",
@@ -191,7 +204,7 @@
         "form": []
       },
       {
-        "pos": "3",
+        "pos": "4",
         "team": "Sagene 2",
         "logoUrl": "data/logos/205.png",
         "played": "2",
@@ -204,33 +217,7 @@
         "form": []
       },
       {
-        "pos": "4",
-        "team": "Fagerborg 2",
-        "logoUrl": "data/logos/171.png",
-        "played": "1",
-        "wins": "0",
-        "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
-        "diff": "1",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "4",
-        "team": "Sterling",
-        "logoUrl": "data/logos/215.png",
-        "played": "1",
-        "wins": "1",
-        "draws": "0",
-        "losses": "0",
-        "goals": "4 - 0",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "6",
+        "pos": "5",
         "team": "Frisk Asker",
         "logoUrl": "data/logos/104.png",
         "played": "2",
@@ -239,6 +226,19 @@
         "losses": "0",
         "goals": "8 - 0",
         "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "6",
+        "team": "Fagerborg 2",
+        "logoUrl": "data/logos/171.png",
+        "played": "2",
+        "wins": "0",
+        "draws": "0",
+        "losses": "0",
+        "goals": "0 - 0",
+        "diff": "1",
         "points": "0",
         "form": []
       },
