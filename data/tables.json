@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-04 21:58 UTC",
+  "updatedAt": "2026-05-04 22:54 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -181,12 +181,12 @@
         "pos": "2",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
-        "played": "2",
+        "played": "3",
         "wins": "2",
         "draws": "0",
         "losses": "0",
         "goals": "10 - 0",
-        "diff": "0",
+        "diff": "1",
         "points": "0",
         "form": []
       },
@@ -259,11 +259,11 @@
         "pos": "8",
         "team": "Monolitten Idrettslag",
         "logoUrl": "data/logos/167.png",
-        "played": "2",
+        "played": "3",
         "wins": "0",
         "draws": "0",
-        "losses": "0",
-        "goals": "0 - 0",
+        "losses": "1",
+        "goals": "1 - 5",
         "diff": "0",
         "points": "1",
         "form": []
