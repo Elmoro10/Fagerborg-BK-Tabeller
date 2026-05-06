@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-06 20:44 UTC",
+  "updatedAt": "2026-05-06 21:44 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -31,6 +31,19 @@
       },
       {
         "pos": "3",
+        "team": "Korsvoll 2",
+        "logoUrl": "data/logos/187.png",
+        "played": "5",
+        "wins": "1",
+        "draws": "0",
+        "losses": "1",
+        "goals": "2 - 1",
+        "diff": "3",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "4",
         "team": "Fagerborg",
         "logoUrl": "data/logos/171.png",
         "played": "5",
@@ -43,7 +56,7 @@
         "form": []
       },
       {
-        "pos": "4",
+        "pos": "5",
         "team": "HSIL",
         "logoUrl": "data/logos/182.png",
         "played": "5",
@@ -51,19 +64,6 @@
         "draws": "1",
         "losses": "0",
         "goals": "3 - 2",
-        "diff": "2",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "5",
-        "team": "Korsvoll 2",
-        "logoUrl": "data/logos/187.png",
-        "played": "4",
-        "wins": "1",
-        "draws": "0",
-        "losses": "1",
-        "goals": "2 - 1",
         "diff": "2",
         "points": "0",
         "form": []
@@ -83,6 +83,19 @@
       },
       {
         "pos": "7",
+        "team": "Wam-Kam",
+        "logoUrl": "data/logos/1897.png",
+        "played": "5",
+        "wins": "2",
+        "draws": "0",
+        "losses": "1",
+        "goals": "10 - 6",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "8",
         "team": "Frigg 2",
         "logoUrl": "data/logos/173.png",
         "played": "5",
@@ -95,23 +108,23 @@
         "form": []
       },
       {
-        "pos": "8",
+        "pos": "9",
         "team": "Oslo City",
         "logoUrl": "data/logos/235.png",
-        "played": "4",
+        "played": "5",
         "wins": "0",
         "draws": "2",
-        "losses": "0",
-        "goals": "2 - 2",
+        "losses": "1",
+        "goals": "3 - 5",
         "diff": "1",
         "points": "0",
         "form": []
       },
       {
-        "pos": "9",
+        "pos": "10",
         "team": "Majorstuen",
         "logoUrl": "data/logos/3092.png",
-        "played": "4",
+        "played": "5",
         "wins": "0",
         "draws": "0",
         "losses": "2",
@@ -121,40 +134,27 @@
         "form": []
       },
       {
-        "pos": "10",
-        "team": "Wam-Kam",
-        "logoUrl": "data/logos/1897.png",
-        "played": "4",
-        "wins": "1",
-        "draws": "0",
-        "losses": "1",
-        "goals": "6 - 5",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
         "pos": "11",
         "team": "Klemetsrud",
         "logoUrl": "data/logos/185.png",
-        "played": "4",
+        "played": "5",
         "wins": "0",
         "draws": "0",
         "losses": "2",
         "goals": "3 - 11",
         "diff": "0",
-        "points": "0",
+        "points": "1",
         "form": []
       },
       {
         "pos": "12",
         "team": "Bækkelaget",
         "logoUrl": "data/logos/168.png",
-        "played": "4",
+        "played": "5",
         "wins": "0",
-        "draws": "0",
+        "draws": "1",
         "losses": "2",
-        "goals": "4 - 7",
+        "goals": "7 - 10",
         "diff": "0",
         "points": "0",
         "form": []
