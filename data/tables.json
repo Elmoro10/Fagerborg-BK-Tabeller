@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-13 20:54 UTC",
+  "updatedAt": "2026-05-13 22:00 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -20,7 +20,7 @@
         "pos": "2",
         "team": "Furuset",
         "logoUrl": "data/logos/239.png",
-        "played": "5",
+        "played": "6",
         "wins": "3",
         "draws": "0",
         "losses": "0",
@@ -31,6 +31,19 @@
       },
       {
         "pos": "3",
+        "team": "Fagerborg",
+        "logoUrl": "data/logos/171.png",
+        "played": "6",
+        "wins": "2",
+        "draws": "0",
+        "losses": "1",
+        "goals": "8 - 6",
+        "diff": "2",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "4",
         "team": "HSIL",
         "logoUrl": "data/logos/182.png",
         "played": "6",
@@ -43,7 +56,7 @@
         "form": []
       },
       {
-        "pos": "4",
+        "pos": "5",
         "team": "Oldenborg",
         "logoUrl": "data/logos/1685.png",
         "played": "5",
@@ -56,27 +69,14 @@
         "form": []
       },
       {
-        "pos": "5",
-        "team": "Fagerborg",
-        "logoUrl": "data/logos/171.png",
-        "played": "5",
-        "wins": "2",
-        "draws": "0",
-        "losses": "1",
-        "goals": "8 - 6",
-        "diff": "1",
-        "points": "1",
-        "form": []
-      },
-      {
         "pos": "6",
         "team": "Jusstudentenes",
         "logoUrl": "data/logos/2081.png",
-        "played": "5",
-        "wins": "1",
+        "played": "6",
+        "wins": "2",
         "draws": "0",
         "losses": "1",
-        "goals": "7 - 6",
+        "goals": "10 - 7",
         "diff": "1",
         "points": "1",
         "form": []
@@ -137,11 +137,11 @@
         "pos": "11",
         "team": "Klemetsrud",
         "logoUrl": "data/logos/185.png",
-        "played": "5",
+        "played": "6",
         "wins": "0",
         "draws": "0",
-        "losses": "2",
-        "goals": "3 - 11",
+        "losses": "3",
+        "goals": "4 - 13",
         "diff": "0",
         "points": "1",
         "form": []
