@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-14 09:23 UTC",
+  "updatedAt": "2026-05-14 11:23 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -31,6 +31,19 @@
       },
       {
         "pos": "3",
+        "team": "Oldenborg",
+        "logoUrl": "data/logos/1685.png",
+        "played": "6",
+        "wins": "2",
+        "draws": "0",
+        "losses": "1",
+        "goals": "11 - 4",
+        "diff": "2",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "4",
         "team": "Fagerborg",
         "logoUrl": "data/logos/171.png",
         "played": "6",
@@ -43,7 +56,7 @@
         "form": []
       },
       {
-        "pos": "4",
+        "pos": "5",
         "team": "HSIL",
         "logoUrl": "data/logos/182.png",
         "played": "6",
@@ -51,19 +64,6 @@
         "draws": "1",
         "losses": "0",
         "goals": "8 - 5",
-        "diff": "2",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "5",
-        "team": "Oldenborg",
-        "logoUrl": "data/logos/1685.png",
-        "played": "5",
-        "wins": "2",
-        "draws": "0",
-        "losses": "1",
-        "goals": "11 - 4",
         "diff": "2",
         "points": "0",
         "form": []
@@ -124,11 +124,11 @@
         "pos": "10",
         "team": "Majorstuen",
         "logoUrl": "data/logos/3092.png",
-        "played": "5",
+        "played": "6",
         "wins": "0",
-        "draws": "0",
+        "draws": "1",
         "losses": "2",
-        "goals": "2 - 5",
+        "goals": "3 - 6",
         "diff": "1",
         "points": "0",
         "form": []
