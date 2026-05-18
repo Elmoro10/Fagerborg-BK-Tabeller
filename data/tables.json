@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-18 18:12 UTC",
+  "updatedAt": "2026-05-18 19:59 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -181,7 +181,7 @@
         "pos": "2",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
-        "played": "4",
+        "played": "5",
         "wins": "2",
         "draws": "0",
         "losses": "0",
@@ -257,6 +257,19 @@
       },
       {
         "pos": "8",
+        "team": "Oppegård",
+        "logoUrl": "data/logos/87.png",
+        "played": "5",
+        "wins": "1",
+        "draws": "0",
+        "losses": "2",
+        "goals": "6 - 7",
+        "diff": "0",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "9",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
         "played": "4",
@@ -265,19 +278,6 @@
         "losses": "1",
         "goals": "2 - 3",
         "diff": "1",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "9",
-        "team": "Oppegård",
-        "logoUrl": "data/logos/87.png",
-        "played": "4",
-        "wins": "0",
-        "draws": "0",
-        "losses": "2",
-        "goals": "4 - 6",
-        "diff": "0",
         "points": "0",
         "form": []
       },
