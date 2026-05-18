@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-18 19:59 UTC",
+  "updatedAt": "2026-05-18 21:09 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -179,6 +179,32 @@
       },
       {
         "pos": "2",
+        "team": "Sagene 2",
+        "logoUrl": "data/logos/205.png",
+        "played": "5",
+        "wins": "3",
+        "draws": "0",
+        "losses": "0",
+        "goals": "21 - 8",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "3",
+        "team": "Lille Tøyen",
+        "logoUrl": "data/logos/226.png",
+        "played": "5",
+        "wins": "2",
+        "draws": "1",
+        "losses": "0",
+        "goals": "15 - 5",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "4",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
         "played": "5",
@@ -191,20 +217,7 @@
         "form": []
       },
       {
-        "pos": "3",
-        "team": "Sagene 2",
-        "logoUrl": "data/logos/205.png",
-        "played": "4",
-        "wins": "2",
-        "draws": "0",
-        "losses": "0",
-        "goals": "15 - 7",
-        "diff": "1",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "4",
+        "pos": "5",
         "team": "Frisk Asker",
         "logoUrl": "data/logos/104.png",
         "played": "4",
@@ -217,28 +230,15 @@
         "form": []
       },
       {
-        "pos": "5",
-        "team": "Lille Tøyen",
-        "logoUrl": "data/logos/226.png",
-        "played": "4",
-        "wins": "2",
-        "draws": "1",
-        "losses": "0",
-        "goals": "15 - 5",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
         "pos": "6",
         "team": "Furuset 2",
         "logoUrl": "data/logos/239.png",
-        "played": "4",
+        "played": "5",
         "wins": "1",
         "draws": "0",
         "losses": "1",
         "goals": "4 - 4",
-        "diff": "1",
+        "diff": "2",
         "points": "0",
         "form": []
       },
@@ -246,7 +246,7 @@
         "pos": "7",
         "team": "Monolitten Idrettslag",
         "logoUrl": "data/logos/167.png",
-        "played": "4",
+        "played": "5",
         "wins": "1",
         "draws": "0",
         "losses": "1",
@@ -272,11 +272,11 @@
         "pos": "9",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
-        "played": "4",
+        "played": "5",
         "wins": "0",
         "draws": "0",
-        "losses": "1",
-        "goals": "2 - 3",
+        "losses": "2",
+        "goals": "3 - 8",
         "diff": "1",
         "points": "0",
         "form": []
@@ -285,11 +285,11 @@
         "pos": "10",
         "team": "Veitvet",
         "logoUrl": "data/logos/200.png",
-        "played": "4",
+        "played": "5",
         "wins": "0",
         "draws": "0",
-        "losses": "2",
-        "goals": "0 - 15",
+        "losses": "3",
+        "goals": "2 - 19",
         "diff": "0",
         "points": "0",
         "form": []
