@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-19 08:03 UTC",
+  "updatedAt": "2026-05-19 11:28 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -168,12 +168,12 @@
         "pos": "1",
         "team": "Jutul",
         "logoUrl": "data/logos/96.png",
-        "played": "4",
+        "played": "5",
         "wins": "2",
         "draws": "0",
         "losses": "0",
         "goals": "12 - 1",
-        "diff": "2",
+        "diff": "3",
         "points": "0",
         "form": []
       },
@@ -220,11 +220,11 @@
         "pos": "5",
         "team": "Frisk Asker",
         "logoUrl": "data/logos/104.png",
-        "played": "4",
+        "played": "5",
         "wins": "2",
         "draws": "0",
-        "losses": "0",
-        "goals": "11 - 2",
+        "losses": "1",
+        "goals": "12 - 6",
         "diff": "1",
         "points": "0",
         "form": []
