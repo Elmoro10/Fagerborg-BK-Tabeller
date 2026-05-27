@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-27 21:06 UTC",
+  "updatedAt": "2026-05-27 22:47 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -96,6 +96,19 @@
       },
       {
         "pos": "8",
+        "team": "Majorstuen",
+        "logoUrl": "data/logos/3092.png",
+        "played": "8",
+        "wins": "1",
+        "draws": "1",
+        "losses": "2",
+        "goals": "6 - 6",
+        "diff": "1",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "9",
         "team": "Oslo City",
         "logoUrl": "data/logos/235.png",
         "played": "8",
@@ -108,7 +121,7 @@
         "form": []
       },
       {
-        "pos": "9",
+        "pos": "10",
         "team": "Wam-Kam",
         "logoUrl": "data/logos/1897.png",
         "played": "8",
@@ -121,23 +134,10 @@
         "form": []
       },
       {
-        "pos": "10",
-        "team": "Majorstuen",
-        "logoUrl": "data/logos/3092.png",
-        "played": "7",
-        "wins": "0",
-        "draws": "1",
-        "losses": "2",
-        "goals": "3 - 6",
-        "diff": "1",
-        "points": "1",
-        "form": []
-      },
-      {
         "pos": "11",
         "team": "Bækkelaget",
         "logoUrl": "data/logos/168.png",
-        "played": "7",
+        "played": "8",
         "wins": "0",
         "draws": "1",
         "losses": "3",
