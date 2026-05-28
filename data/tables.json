@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-28 05:38 UTC",
+  "updatedAt": "2026-05-28 09:01 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -72,7 +72,7 @@
         "pos": "6",
         "team": "Fagerborg",
         "logoUrl": "data/logos/171.png",
-        "played": "7",
+        "played": "8",
         "wins": "2",
         "draws": "0",
         "losses": "2",
@@ -85,11 +85,11 @@
         "pos": "7",
         "team": "Frigg 2",
         "logoUrl": "data/logos/173.png",
-        "played": "7",
-        "wins": "2",
+        "played": "8",
+        "wins": "3",
         "draws": "1",
         "losses": "0",
-        "goals": "10 - 7",
+        "goals": "14 - 9",
         "diff": "1",
         "points": "0",
         "form": []
