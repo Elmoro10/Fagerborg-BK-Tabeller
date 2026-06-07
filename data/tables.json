@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-07 12:09 UTC",
+  "updatedAt": "2026-06-07 14:16 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -20,17 +20,30 @@
         "pos": "2",
         "team": "Oldenborg",
         "logoUrl": "data/logos/1685.png",
-        "played": "9",
+        "played": "10",
         "wins": "3",
         "draws": "0",
         "losses": "1",
         "goals": "18 - 5",
         "diff": "3",
-        "points": "2",
+        "points": "3",
         "form": []
       },
       {
         "pos": "3",
+        "team": "Furuset",
+        "logoUrl": "data/logos/239.png",
+        "played": "10",
+        "wins": "5",
+        "draws": "1",
+        "losses": "0",
+        "goals": "26 - 4",
+        "diff": "1",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "4",
         "team": "HSIL",
         "logoUrl": "data/logos/182.png",
         "played": "9",
@@ -40,19 +53,6 @@
         "goals": "10 - 6",
         "diff": "3",
         "points": "0",
-        "form": []
-      },
-      {
-        "pos": "4",
-        "team": "Furuset",
-        "logoUrl": "data/logos/239.png",
-        "played": "9",
-        "wins": "5",
-        "draws": "0",
-        "losses": "0",
-        "goals": "24 - 2",
-        "diff": "1",
-        "points": "1",
         "form": []
       },
       {
