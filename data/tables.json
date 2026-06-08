@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08 17:41 UTC",
+  "updatedAt": "2026-06-08 21:28 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -205,6 +205,32 @@
       },
       {
         "pos": "4",
+        "team": "Furuset 2",
+        "logoUrl": "data/logos/239.png",
+        "played": "7",
+        "wins": "1",
+        "draws": "0",
+        "losses": "2",
+        "goals": "8 - 10",
+        "diff": "3",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "5",
+        "team": "Monolitten Idrettslag",
+        "logoUrl": "data/logos/167.png",
+        "played": "7",
+        "wins": "2",
+        "draws": "0",
+        "losses": "1",
+        "goals": "17 - 5",
+        "diff": "1",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "6",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
         "played": "6",
@@ -217,53 +243,27 @@
         "form": []
       },
       {
-        "pos": "5",
-        "team": "Furuset 2",
-        "logoUrl": "data/logos/239.png",
-        "played": "6",
-        "wins": "1",
-        "draws": "0",
-        "losses": "2",
-        "goals": "8 - 10",
-        "diff": "2",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "6",
+        "pos": "7",
         "team": "Frisk Asker",
         "logoUrl": "data/logos/104.png",
-        "played": "6",
+        "played": "7",
         "wins": "2",
         "draws": "0",
-        "losses": "1",
-        "goals": "12 - 6",
+        "losses": "2",
+        "goals": "17 - 14",
         "diff": "1",
         "points": "0",
-        "form": []
-      },
-      {
-        "pos": "7",
-        "team": "Monolitten Idrettslag",
-        "logoUrl": "data/logos/167.png",
-        "played": "6",
-        "wins": "2",
-        "draws": "0",
-        "losses": "1",
-        "goals": "17 - 5",
-        "diff": "0",
-        "points": "1",
         "form": []
       },
       {
         "pos": "8",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
-        "played": "6",
+        "played": "7",
         "wins": "0",
         "draws": "0",
-        "losses": "2",
-        "goals": "3 - 8",
+        "losses": "3",
+        "goals": "3 - 9",
         "diff": "2",
         "points": "0",
         "form": []
