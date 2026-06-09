@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-09 05:53 UTC",
+  "updatedAt": "2026-06-09 08:52 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -168,11 +168,11 @@
         "pos": "1",
         "team": "Jutul",
         "logoUrl": "data/logos/96.png",
-        "played": "6",
-        "wins": "2",
+        "played": "7",
+        "wins": "3",
         "draws": "0",
         "losses": "0",
-        "goals": "12 - 1",
+        "goals": "17 - 1",
         "diff": "4",
         "points": "0",
         "form": []
@@ -194,7 +194,7 @@
         "pos": "3",
         "team": "Lille Tøyen",
         "logoUrl": "data/logos/226.png",
-        "played": "6",
+        "played": "7",
         "wins": "3",
         "draws": "1",
         "losses": "0",
