@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-09 08:52 UTC",
+  "updatedAt": "2026-06-09 11:48 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -257,6 +257,19 @@
       },
       {
         "pos": "8",
+        "team": "Oppegård",
+        "logoUrl": "data/logos/87.png",
+        "played": "7",
+        "wins": "1",
+        "draws": "0",
+        "losses": "3",
+        "goals": "9 - 11",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "9",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
         "played": "7",
@@ -269,27 +282,14 @@
         "form": []
       },
       {
-        "pos": "9",
-        "team": "Oppegård",
-        "logoUrl": "data/logos/87.png",
-        "played": "6",
-        "wins": "1",
-        "draws": "0",
-        "losses": "3",
-        "goals": "9 - 11",
-        "diff": "0",
-        "points": "0",
-        "form": []
-      },
-      {
         "pos": "10",
         "team": "Veitvet",
         "logoUrl": "data/logos/200.png",
-        "played": "6",
+        "played": "7",
         "wins": "0",
         "draws": "0",
-        "losses": "3",
-        "goals": "2 - 19",
+        "losses": "4",
+        "goals": "3 - 24",
         "diff": "0",
         "points": "0",
         "form": []
