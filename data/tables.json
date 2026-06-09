@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-09 18:34 UTC",
+  "updatedAt": "2026-06-09 20:31 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -181,12 +181,12 @@
         "pos": "2",
         "team": "Sagene 2",
         "logoUrl": "data/logos/205.png",
-        "played": "6",
+        "played": "7",
         "wins": "3",
         "draws": "0",
         "losses": "0",
         "goals": "21 - 8",
-        "diff": "2",
+        "diff": "3",
         "points": "0",
         "form": []
       },
@@ -233,11 +233,11 @@
         "pos": "6",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
-        "played": "6",
+        "played": "7",
         "wins": "2",
         "draws": "0",
-        "losses": "1",
-        "goals": "10 - 6",
+        "losses": "2",
+        "goals": "13 - 11",
         "diff": "1",
         "points": "0",
         "form": []
