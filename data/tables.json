@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10 21:31 UTC",
+  "updatedAt": "2026-06-10 23:08 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -124,17 +124,30 @@
         "pos": "10",
         "team": "Oslo City",
         "logoUrl": "data/logos/235.png",
-        "played": "9",
+        "played": "10",
         "wins": "0",
         "draws": "3",
-        "losses": "1",
-        "goals": "4 - 6",
+        "losses": "2",
+        "goals": "5 - 11",
         "diff": "1",
         "points": "2",
         "form": []
       },
       {
         "pos": "11",
+        "team": "Bækkelaget",
+        "logoUrl": "data/logos/168.png",
+        "played": "10",
+        "wins": "0",
+        "draws": "1",
+        "losses": "4",
+        "goals": "8 - 18",
+        "diff": "1",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "12",
         "team": "Klemetsrud",
         "logoUrl": "data/logos/185.png",
         "played": "10",
@@ -144,19 +157,6 @@
         "goals": "5 - 18",
         "diff": "0",
         "points": "2",
-        "form": []
-      },
-      {
-        "pos": "12",
-        "team": "Bækkelaget",
-        "logoUrl": "data/logos/168.png",
-        "played": "9",
-        "wins": "0",
-        "draws": "1",
-        "losses": "4",
-        "goals": "8 - 18",
-        "diff": "0",
-        "points": "0",
         "form": []
       }
     ]
