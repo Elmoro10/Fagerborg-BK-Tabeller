@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-23 18:21 UTC",
+  "updatedAt": "2026-06-23 20:26 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -205,6 +205,19 @@
       },
       {
         "pos": "4",
+        "team": "Sterling",
+        "logoUrl": "data/logos/215.png",
+        "played": "9",
+        "wins": "3",
+        "draws": "0",
+        "losses": "2",
+        "goals": "19 - 11",
+        "diff": "1",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "5",
         "team": "Monolitten Idrettslag",
         "logoUrl": "data/logos/167.png",
         "played": "9",
@@ -217,7 +230,7 @@
         "form": []
       },
       {
-        "pos": "5",
+        "pos": "6",
         "team": "Furuset 2",
         "logoUrl": "data/logos/239.png",
         "played": "9",
@@ -230,7 +243,7 @@
         "form": []
       },
       {
-        "pos": "6",
+        "pos": "7",
         "team": "Frisk Asker",
         "logoUrl": "data/logos/104.png",
         "played": "9",
@@ -240,19 +253,6 @@
         "goals": "21 - 16",
         "diff": "1",
         "points": "0",
-        "form": []
-      },
-      {
-        "pos": "7",
-        "team": "Sterling",
-        "logoUrl": "data/logos/215.png",
-        "played": "8",
-        "wins": "2",
-        "draws": "0",
-        "losses": "2",
-        "goals": "13 - 11",
-        "diff": "1",
-        "points": "1",
         "form": []
       },
       {
@@ -285,7 +285,7 @@
         "pos": "10",
         "team": "Veitvet",
         "logoUrl": "data/logos/200.png",
-        "played": "8",
+        "played": "9",
         "wins": "0",
         "draws": "0",
         "losses": "4",
