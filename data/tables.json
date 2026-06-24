@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-23 23:43 UTC",
+  "updatedAt": "2026-06-24 01:30 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -181,13 +181,13 @@
         "pos": "2",
         "team": "Sagene 2",
         "logoUrl": "data/logos/205.png",
-        "played": "8",
+        "played": "9",
         "wins": "4",
         "draws": "0",
         "losses": "0",
         "goals": "36 - 8",
         "diff": "3",
-        "points": "0",
+        "points": "1",
         "form": []
       },
       {
@@ -272,11 +272,11 @@
         "pos": "9",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
-        "played": "8",
+        "played": "9",
         "wins": "0",
-        "draws": "0",
+        "draws": "1",
         "losses": "3",
-        "goals": "3 - 9",
+        "goals": "7 - 13",
         "diff": "2",
         "points": "0",
         "form": []
