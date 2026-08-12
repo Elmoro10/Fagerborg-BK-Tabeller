@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12 21:32 UTC",
+  "updatedAt": "2026-08-12 22:18 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -44,6 +44,19 @@
       },
       {
         "pos": "4",
+        "team": "Jusstudentenes",
+        "logoUrl": "data/logos/2081.png",
+        "played": "12",
+        "wins": "6",
+        "draws": "0",
+        "losses": "1",
+        "goals": "26 - 11",
+        "diff": "1",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "5",
         "team": "Furuset",
         "logoUrl": "data/logos/239.png",
         "played": "11",
@@ -56,23 +69,10 @@
         "form": []
       },
       {
-        "pos": "5",
-        "team": "Jusstudentenes",
-        "logoUrl": "data/logos/2081.png",
-        "played": "11",
-        "wins": "5",
-        "draws": "0",
-        "losses": "1",
-        "goals": "22 - 8",
-        "diff": "1",
-        "points": "1",
-        "form": []
-      },
-      {
         "pos": "6",
         "team": "Majorstuen",
         "logoUrl": "data/logos/3092.png",
-        "played": "11",
+        "played": "12",
         "wins": "2",
         "draws": "1",
         "losses": "2",
