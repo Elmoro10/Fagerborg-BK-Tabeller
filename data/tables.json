@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12 19:17 UTC",
+  "updatedAt": "2026-08-12 20:04 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -7,11 +7,11 @@
         "pos": "1",
         "team": "Korsvoll 2",
         "logoUrl": "data/logos/187.png",
-        "played": "11",
-        "wins": "4",
+        "played": "12",
+        "wins": "5",
         "draws": "0",
         "losses": "1",
-        "goals": "9 - 2",
+        "goals": "14 - 3",
         "diff": "5",
         "points": "1",
         "form": []
@@ -111,7 +111,7 @@
         "pos": "9",
         "team": "Wam-Kam",
         "logoUrl": "data/logos/1897.png",
-        "played": "11",
+        "played": "12",
         "wins": "2",
         "draws": "3",
         "losses": "1",
