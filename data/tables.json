@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12 20:04 UTC",
+  "updatedAt": "2026-08-12 20:55 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -18,28 +18,28 @@
       },
       {
         "pos": "2",
+        "team": "HSIL",
+        "logoUrl": "data/logos/182.png",
+        "played": "12",
+        "wins": "4",
+        "draws": "2",
+        "losses": "1",
+        "goals": "12 - 8",
+        "diff": "4",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "3",
         "team": "Oldenborg",
         "logoUrl": "data/logos/1685.png",
-        "played": "11",
+        "played": "12",
         "wins": "4",
         "draws": "0",
         "losses": "1",
         "goals": "22 - 7",
         "diff": "3",
         "points": "3",
-        "form": []
-      },
-      {
-        "pos": "3",
-        "team": "HSIL",
-        "logoUrl": "data/logos/182.png",
-        "played": "11",
-        "wins": "3",
-        "draws": "2",
-        "losses": "1",
-        "goals": "10 - 7",
-        "diff": "4",
-        "points": "0",
         "form": []
       },
       {
