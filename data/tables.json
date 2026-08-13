@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-13 05:02 UTC",
+  "updatedAt": "2026-08-13 06:19 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -70,6 +70,19 @@
       },
       {
         "pos": "6",
+        "team": "Fagerborg",
+        "logoUrl": "data/logos/171.png",
+        "played": "12",
+        "wins": "3",
+        "draws": "1",
+        "losses": "3",
+        "goals": "24 - 17",
+        "diff": "2",
+        "points": "1",
+        "form": []
+      },
+      {
+        "pos": "7",
         "team": "Majorstuen",
         "logoUrl": "data/logos/3092.png",
         "played": "12",
@@ -78,19 +91,6 @@
         "losses": "2",
         "goals": "8 - 7",
         "diff": "3",
-        "points": "1",
-        "form": []
-      },
-      {
-        "pos": "7",
-        "team": "Fagerborg",
-        "logoUrl": "data/logos/171.png",
-        "played": "11",
-        "wins": "3",
-        "draws": "0",
-        "losses": "3",
-        "goals": "20 - 13",
-        "diff": "2",
         "points": "1",
         "form": []
       },
@@ -137,13 +137,13 @@
         "pos": "11",
         "team": "Bækkelaget",
         "logoUrl": "data/logos/168.png",
-        "played": "11",
+        "played": "12",
         "wins": "0",
         "draws": "2",
         "losses": "4",
         "goals": "12 - 22",
         "diff": "1",
-        "points": "0",
+        "points": "1",
         "form": []
       },
       {
