@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-17 20:10 UTC",
+  "updatedAt": "2026-08-17 20:39 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -168,11 +168,11 @@
         "pos": "1",
         "team": "Jutul",
         "logoUrl": "data/logos/96.png",
-        "played": "9",
-        "wins": "4",
+        "played": "10",
+        "wins": "5",
         "draws": "0",
         "losses": "0",
-        "goals": "23 - 2",
+        "goals": "27 - 3",
         "diff": "5",
         "points": "0",
         "form": []
@@ -259,7 +259,7 @@
         "pos": "8",
         "team": "Oppegård",
         "logoUrl": "data/logos/87.png",
-        "played": "9",
+        "played": "10",
         "wins": "2",
         "draws": "0",
         "losses": "3",
@@ -272,11 +272,11 @@
         "pos": "9",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
-        "played": "9",
+        "played": "10",
         "wins": "0",
         "draws": "1",
-        "losses": "3",
-        "goals": "7 - 13",
+        "losses": "4",
+        "goals": "8 - 15",
         "diff": "2",
         "points": "0",
         "form": []
@@ -285,12 +285,12 @@
         "pos": "10",
         "team": "Veitvet",
         "logoUrl": "data/logos/200.png",
-        "played": "9",
+        "played": "10",
         "wins": "0",
         "draws": "0",
         "losses": "4",
         "goals": "3 - 24",
-        "diff": "0",
+        "diff": "1",
         "points": "0",
         "form": []
       }
