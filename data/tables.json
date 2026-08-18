@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-18 08:23 UTC",
+  "updatedAt": "2026-08-18 08:57 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -181,12 +181,12 @@
         "pos": "2",
         "team": "Sagene 2",
         "logoUrl": "data/logos/205.png",
-        "played": "9",
+        "played": "10",
         "wins": "4",
         "draws": "0",
         "losses": "0",
         "goals": "36 - 8",
-        "diff": "3",
+        "diff": "4",
         "points": "1",
         "form": []
       },
@@ -231,19 +231,6 @@
       },
       {
         "pos": "6",
-        "team": "Frisk Asker",
-        "logoUrl": "data/logos/104.png",
-        "played": "9",
-        "wins": "3",
-        "draws": "0",
-        "losses": "2",
-        "goals": "21 - 16",
-        "diff": "1",
-        "points": "0",
-        "form": []
-      },
-      {
-        "pos": "7",
         "team": "Furuset 2",
         "logoUrl": "data/logos/239.png",
         "played": "10",
@@ -252,6 +239,19 @@
         "losses": "4",
         "goals": "11 - 17",
         "diff": "3",
+        "points": "0",
+        "form": []
+      },
+      {
+        "pos": "7",
+        "team": "Frisk Asker",
+        "logoUrl": "data/logos/104.png",
+        "played": "10",
+        "wins": "3",
+        "draws": "0",
+        "losses": "3",
+        "goals": "24 - 27",
+        "diff": "1",
         "points": "0",
         "form": []
       },
