@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24 20:44 UTC",
+  "updatedAt": "2026-08-24 21:04 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -220,11 +220,11 @@
         "pos": "5",
         "team": "Monolitten Idrettslag",
         "logoUrl": "data/logos/167.png",
-        "played": "10",
-        "wins": "3",
+        "played": "11",
+        "wins": "4",
         "draws": "0",
         "losses": "2",
-        "goals": "24 - 11",
+        "goals": "30 - 13",
         "diff": "1",
         "points": "1",
         "form": []
@@ -233,7 +233,7 @@
         "pos": "6",
         "team": "Furuset 2",
         "logoUrl": "data/logos/239.png",
-        "played": "10",
+        "played": "11",
         "wins": "1",
         "draws": "0",
         "losses": "4",
