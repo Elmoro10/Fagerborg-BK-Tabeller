@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24 18:59 UTC",
+  "updatedAt": "2026-08-24 19:25 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -207,12 +207,12 @@
         "pos": "4",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
-        "played": "10",
+        "played": "11",
         "wins": "3",
         "draws": "0",
         "losses": "2",
         "goals": "19 - 11",
-        "diff": "2",
+        "diff": "3",
         "points": "1",
         "form": []
       },
@@ -272,11 +272,11 @@
         "pos": "9",
         "team": "Fagerborg 2",
         "logoUrl": "data/logos/171.png",
-        "played": "10",
+        "played": "11",
         "wins": "0",
         "draws": "1",
-        "losses": "4",
-        "goals": "8 - 15",
+        "losses": "5",
+        "goals": "8 - 18",
         "diff": "2",
         "points": "0",
         "form": []
