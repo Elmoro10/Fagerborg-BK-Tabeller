@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-25 06:17 UTC",
+  "updatedAt": "2026-08-25 07:09 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -194,12 +194,12 @@
         "pos": "3",
         "team": "Lille Tøyen",
         "logoUrl": "data/logos/226.png",
-        "played": "10",
+        "played": "11",
         "wins": "4",
         "draws": "2",
         "losses": "0",
         "goals": "33 - 12",
-        "diff": "2",
+        "diff": "3",
         "points": "0",
         "form": []
       },
@@ -259,11 +259,11 @@
         "pos": "8",
         "team": "Oppegård",
         "logoUrl": "data/logos/87.png",
-        "played": "10",
+        "played": "11",
         "wins": "2",
         "draws": "0",
-        "losses": "3",
-        "goals": "11 - 12",
+        "losses": "4",
+        "goals": "13 - 15",
         "diff": "1",
         "points": "0",
         "form": []
