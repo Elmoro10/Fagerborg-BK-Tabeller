@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-25 09:03 UTC",
+  "updatedAt": "2026-08-25 09:43 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -168,12 +168,12 @@
         "pos": "1",
         "team": "Jutul",
         "logoUrl": "data/logos/96.png",
-        "played": "10",
+        "played": "11",
         "wins": "5",
         "draws": "0",
         "losses": "0",
         "goals": "27 - 3",
-        "diff": "5",
+        "diff": "6",
         "points": "0",
         "form": []
       },
@@ -181,11 +181,11 @@
         "pos": "2",
         "team": "Sagene 2",
         "logoUrl": "data/logos/205.png",
-        "played": "10",
+        "played": "11",
         "wins": "4",
         "draws": "0",
-        "losses": "0",
-        "goals": "36 - 8",
+        "losses": "1",
+        "goals": "37 - 13",
         "diff": "4",
         "points": "1",
         "form": []
