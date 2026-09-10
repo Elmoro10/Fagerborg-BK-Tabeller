@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-10 14:57 UTC",
+  "updatedAt": "2026-09-10 17:58 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -46,11 +46,11 @@
         "pos": "4",
         "team": "Jusstudentenes",
         "logoUrl": "data/logos/2081.png",
-        "played": "15",
+        "played": "16",
         "wins": "7",
-        "draws": "0",
+        "draws": "1",
         "losses": "1",
-        "goals": "30 - 12",
+        "goals": "33 - 15",
         "diff": "2",
         "points": "1",
         "form": []
@@ -72,13 +72,13 @@
         "pos": "6",
         "team": "Fagerborg",
         "logoUrl": "data/logos/171.png",
-        "played": "15",
+        "played": "16",
         "wins": "4",
         "draws": "1",
         "losses": "3",
         "goals": "27 - 18",
         "diff": "3",
-        "points": "1",
+        "points": "2",
         "form": []
       },
       {
