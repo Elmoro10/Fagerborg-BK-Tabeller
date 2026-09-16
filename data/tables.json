@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16 20:58 UTC",
+  "updatedAt": "2026-09-16 23:36 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -98,7 +98,7 @@
         "pos": "8",
         "team": "Frigg 2",
         "logoUrl": "data/logos/173.png",
-        "played": "16",
+        "played": "17",
         "wins": "4",
         "draws": "2",
         "losses": "2",
@@ -109,6 +109,19 @@
       },
       {
         "pos": "9",
+        "team": "Oslo City",
+        "logoUrl": "data/logos/235.png",
+        "played": "15",
+        "wins": "1",
+        "draws": "3",
+        "losses": "4",
+        "goals": "8 - 20",
+        "diff": "1",
+        "points": "2",
+        "form": []
+      },
+      {
+        "pos": "10",
         "team": "Klemetsrud",
         "logoUrl": "data/logos/185.png",
         "played": "17",
@@ -121,7 +134,7 @@
         "form": []
       },
       {
-        "pos": "10",
+        "pos": "11",
         "team": "Wam-Kam",
         "logoUrl": "data/logos/1897.png",
         "played": "17",
@@ -134,7 +147,7 @@
         "form": []
       },
       {
-        "pos": "11",
+        "pos": "12",
         "team": "Bækkelaget",
         "logoUrl": "data/logos/168.png",
         "played": "17",
@@ -144,19 +157,6 @@
         "goals": "16 - 27",
         "diff": "1",
         "points": "1",
-        "form": []
-      },
-      {
-        "pos": "12",
-        "team": "Oslo City",
-        "logoUrl": "data/logos/235.png",
-        "played": "14",
-        "wins": "0",
-        "draws": "3",
-        "losses": "4",
-        "goals": "5 - 19",
-        "diff": "1",
-        "points": "2",
         "form": []
       }
     ]
@@ -207,11 +207,11 @@
         "pos": "4",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
-        "played": "13",
+        "played": "14",
         "wins": "5",
-        "draws": "0",
+        "draws": "1",
         "losses": "2",
-        "goals": "35 - 13",
+        "goals": "37 - 15",
         "diff": "3",
         "points": "1",
         "form": []
@@ -246,13 +246,13 @@
         "pos": "7",
         "team": "Oppegård",
         "logoUrl": "data/logos/87.png",
-        "played": "13",
+        "played": "14",
         "wins": "3",
         "draws": "0",
         "losses": "4",
         "goals": "16 - 17",
         "diff": "2",
-        "points": "0",
+        "points": "1",
         "form": []
       },
       {
