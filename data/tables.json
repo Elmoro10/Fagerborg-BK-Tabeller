@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-13 02:31 UTC",
+  "updatedAt": "2026-10-13 10:12 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -168,11 +168,11 @@
         "pos": "1",
         "team": "Jutul",
         "logoUrl": "data/logos/96.png",
-        "played": "15",
-        "wins": "7",
+        "played": "16",
+        "wins": "8",
         "draws": "0",
         "losses": "0",
-        "goals": "37 - 5",
+        "goals": "39 - 5",
         "diff": "7",
         "points": "1",
         "form": []
@@ -246,7 +246,7 @@
         "pos": "7",
         "team": "Furuset 2",
         "logoUrl": "data/logos/239.png",
-        "played": "16",
+        "played": "17",
         "wins": "3",
         "draws": "0",
         "losses": "5",
