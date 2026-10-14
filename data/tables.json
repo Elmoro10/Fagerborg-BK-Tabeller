@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-14 00:10 UTC",
+  "updatedAt": "2026-10-14 08:27 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -194,12 +194,12 @@
         "pos": "3",
         "team": "Lille Tøyen",
         "logoUrl": "data/logos/226.png",
-        "played": "16",
+        "played": "17",
         "wins": "5",
         "draws": "3",
         "losses": "1",
         "goals": "45 - 21",
-        "diff": "5",
+        "diff": "6",
         "points": "0",
         "form": []
       },
@@ -207,11 +207,11 @@
         "pos": "4",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
-        "played": "15",
+        "played": "16",
         "wins": "5",
         "draws": "1",
-        "losses": "2",
-        "goals": "37 - 15",
+        "losses": "3",
+        "goals": "38 - 19",
         "diff": "3",
         "points": "1",
         "form": []
