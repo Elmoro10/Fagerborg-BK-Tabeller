@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15 10:58 UTC",
+  "updatedAt": "2026-10-15 16:27 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -168,11 +168,11 @@
         "pos": "1",
         "team": "Jutul",
         "logoUrl": "data/logos/96.png",
-        "played": "16",
-        "wins": "8",
+        "played": "17",
+        "wins": "9",
         "draws": "0",
         "losses": "0",
-        "goals": "39 - 5",
+        "goals": "42 - 5",
         "diff": "7",
         "points": "1",
         "form": []
@@ -207,7 +207,7 @@
         "pos": "4",
         "team": "Sterling",
         "logoUrl": "data/logos/215.png",
-        "played": "16",
+        "played": "17",
         "wins": "5",
         "draws": "1",
         "losses": "3",
