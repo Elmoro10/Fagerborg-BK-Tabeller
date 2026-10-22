@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-10-22 03:38 UTC",
+  "updatedAt": "2026-10-22 11:18 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
       {
         "pos": "1",
         "team": "HSIL",
-        "logoUrl": null,
+        "logoUrl": "data/logos/182.png",
         "played": "21",
         "wins": "7",
         "draws": "3",
@@ -19,7 +19,7 @@
       {
         "pos": "2",
         "team": "Oldenborg",
-        "logoUrl": null,
+        "logoUrl": "data/logos/1685.png",
         "played": "20",
         "wins": "8",
         "draws": "0",
@@ -32,7 +32,7 @@
       {
         "pos": "3",
         "team": "Furuset",
-        "logoUrl": null,
+        "logoUrl": "data/logos/239.png",
         "played": "20",
         "wins": "8",
         "draws": "2",
@@ -45,7 +45,7 @@
       {
         "pos": "4",
         "team": "Korsvoll 2",
-        "logoUrl": null,
+        "logoUrl": "data/logos/187.png",
         "played": "21",
         "wins": "6",
         "draws": "1",
@@ -58,7 +58,7 @@
       {
         "pos": "5",
         "team": "Fagerborg",
-        "logoUrl": null,
+        "logoUrl": "data/logos/171.png",
         "played": "20",
         "wins": "5",
         "draws": "1",
@@ -71,7 +71,7 @@
       {
         "pos": "6",
         "team": "Jusstudentenes",
-        "logoUrl": null,
+        "logoUrl": "data/logos/2081.png",
         "played": "21",
         "wins": "7",
         "draws": "2",
@@ -84,7 +84,7 @@
       {
         "pos": "7",
         "team": "Frigg 2",
-        "logoUrl": null,
+        "logoUrl": "data/logos/173.png",
         "played": "21",
         "wins": "5",
         "draws": "2",
@@ -97,7 +97,7 @@
       {
         "pos": "8",
         "team": "Majorstuen",
-        "logoUrl": null,
+        "logoUrl": "data/logos/3092.png",
         "played": "21",
         "wins": "4",
         "draws": "1",
@@ -110,7 +110,7 @@
       {
         "pos": "9",
         "team": "Oslo City",
-        "logoUrl": null,
+        "logoUrl": "data/logos/235.png",
         "played": "20",
         "wins": "3",
         "draws": "3",
@@ -123,7 +123,7 @@
       {
         "pos": "10",
         "team": "Bækkelaget",
-        "logoUrl": null,
+        "logoUrl": "data/logos/168.png",
         "played": "21",
         "wins": "3",
         "draws": "2",
@@ -136,7 +136,7 @@
       {
         "pos": "11",
         "team": "Klemetsrud",
-        "logoUrl": null,
+        "logoUrl": "data/logos/185.png",
         "played": "21",
         "wins": "3",
         "draws": "0",
@@ -149,7 +149,7 @@
       {
         "pos": "12",
         "team": "Wam-Kam",
-        "logoUrl": null,
+        "logoUrl": "data/logos/1897.png",
         "played": "21",
         "wins": "3",
         "draws": "3",
