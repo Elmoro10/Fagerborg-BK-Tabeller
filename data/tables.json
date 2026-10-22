@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22 16:45 UTC",
+  "updatedAt": "2026-10-22 21:16 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -20,12 +20,12 @@
         "pos": "2",
         "team": "Oldenborg",
         "logoUrl": "data/logos/1685.png",
-        "played": "20",
+        "played": "21",
         "wins": "8",
         "draws": "0",
         "losses": "2",
         "goals": "32 - 12",
-        "diff": "5",
+        "diff": "6",
         "points": "3",
         "form": []
       },
@@ -59,11 +59,11 @@
         "pos": "5",
         "team": "Fagerborg",
         "logoUrl": "data/logos/171.png",
-        "played": "20",
+        "played": "21",
         "wins": "5",
         "draws": "1",
-        "losses": "4",
-        "goals": "35 - 23",
+        "losses": "5",
+        "goals": "38 - 29",
         "diff": "5",
         "points": "2",
         "form": []
