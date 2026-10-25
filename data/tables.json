@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25 20:29 UTC",
+  "updatedAt": "2026-10-25 23:02 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
@@ -33,11 +33,11 @@
         "pos": "3",
         "team": "Furuset",
         "logoUrl": "data/logos/239.png",
-        "played": "20",
-        "wins": "8",
+        "played": "21",
+        "wins": "9",
         "draws": "2",
         "losses": "0",
-        "goals": "42 - 8",
+        "goals": "52 - 8",
         "diff": "4",
         "points": "2",
         "form": []
@@ -111,7 +111,7 @@
         "pos": "9",
         "team": "Oslo City",
         "logoUrl": "data/logos/235.png",
-        "played": "20",
+        "played": "21",
         "wins": "3",
         "draws": "3",
         "losses": "4",
