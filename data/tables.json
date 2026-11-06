@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-11-06 10:28 UTC",
+  "updatedAt": "2026-11-06 18:58 UTC",
   "a": {
     "fiksId": 205403,
     "rows": [
       {
         "pos": "1",
         "team": "HSIL",
-        "logoUrl": "data/logos/182.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "7",
         "draws": "3",
@@ -19,7 +19,7 @@
       {
         "pos": "2",
         "team": "Furuset",
-        "logoUrl": "data/logos/239.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "9",
         "draws": "2",
@@ -32,7 +32,7 @@
       {
         "pos": "3",
         "team": "Oldenborg",
-        "logoUrl": "data/logos/1685.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "8",
         "draws": "0",
@@ -45,7 +45,7 @@
       {
         "pos": "4",
         "team": "Korsvoll 2",
-        "logoUrl": "data/logos/187.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "7",
         "draws": "1",
@@ -58,7 +58,7 @@
       {
         "pos": "5",
         "team": "Fagerborg",
-        "logoUrl": "data/logos/171.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "5",
         "draws": "1",
@@ -71,7 +71,7 @@
       {
         "pos": "6",
         "team": "Jusstudentenes",
-        "logoUrl": "data/logos/2081.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "7",
         "draws": "2",
@@ -84,7 +84,7 @@
       {
         "pos": "7",
         "team": "Frigg 2",
-        "logoUrl": "data/logos/173.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "5",
         "draws": "2",
@@ -97,7 +97,7 @@
       {
         "pos": "8",
         "team": "Majorstuen",
-        "logoUrl": "data/logos/3092.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "4",
         "draws": "1",
@@ -110,7 +110,7 @@
       {
         "pos": "9",
         "team": "Bækkelaget",
-        "logoUrl": "data/logos/168.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "3",
         "draws": "2",
@@ -123,7 +123,7 @@
       {
         "pos": "10",
         "team": "Oslo City",
-        "logoUrl": "data/logos/235.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "3",
         "draws": "3",
@@ -136,7 +136,7 @@
       {
         "pos": "11",
         "team": "Klemetsrud",
-        "logoUrl": "data/logos/185.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "3",
         "draws": "0",
@@ -149,7 +149,7 @@
       {
         "pos": "12",
         "team": "Wam-Kam",
-        "logoUrl": "data/logos/1897.png",
+        "logoUrl": null,
         "played": "22",
         "wins": "3",
         "draws": "3",
@@ -167,7 +167,7 @@
       {
         "pos": "1",
         "team": "Jutul",
-        "logoUrl": "data/logos/96.png",
+        "logoUrl": null,
         "played": "18",
         "wins": "9",
         "draws": "0",
@@ -180,7 +180,7 @@
       {
         "pos": "2",
         "team": "Sagene 2",
-        "logoUrl": "data/logos/205.png",
+        "logoUrl": null,
         "played": "18",
         "wins": "8",
         "draws": "0",
@@ -193,7 +193,7 @@
       {
         "pos": "3",
         "team": "Lille Tøyen",
-        "logoUrl": "data/logos/226.png",
+        "logoUrl": null,
         "played": "18",
         "wins": "5",
         "draws": "3",
@@ -206,7 +206,7 @@
       {
         "pos": "4",
         "team": "Sterling",
-        "logoUrl": "data/logos/215.png",
+        "logoUrl": null,
         "played": "18",
         "wins": "5",
         "draws": "1",
@@ -219,7 +219,7 @@
       {
         "pos": "5",
         "team": "Oppegård",
-        "logoUrl": "data/logos/87.png",
+        "logoUrl": null,
         "played": "18",
         "wins": "5",
         "draws": "0",
@@ -232,7 +232,7 @@
       {
         "pos": "6",
         "team": "Monolitten Idrettslag",
-        "logoUrl": "data/logos/167.png",
+        "logoUrl": null,
         "played": "17",
         "wins": "5",
         "draws": "0",
@@ -245,7 +245,7 @@
       {
         "pos": "7",
         "team": "Furuset 2",
-        "logoUrl": "data/logos/239.png",
+        "logoUrl": null,
         "played": "18",
         "wins": "3",
         "draws": "0",
@@ -258,7 +258,7 @@
       {
         "pos": "8",
         "team": "Frisk Asker",
-        "logoUrl": "data/logos/104.png",
+        "logoUrl": null,
         "played": "17",
         "wins": "4",
         "draws": "0",
@@ -271,7 +271,7 @@
       {
         "pos": "9",
         "team": "Fagerborg 2",
-        "logoUrl": "data/logos/171.png",
+        "logoUrl": null,
         "played": "18",
         "wins": "1",
         "draws": "1",
@@ -284,7 +284,7 @@
       {
         "pos": "10",
         "team": "Veitvet",
-        "logoUrl": "data/logos/200.png",
+        "logoUrl": null,
         "played": "18",
         "wins": "0",
         "draws": "0",
